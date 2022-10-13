@@ -17,7 +17,7 @@ import edu.eci.arsw.digital_waiter.persistence.DigitalWaiterNotFoundException;
 
 /**
  *
- * @author hcadavid
+ * @author Andres - David - Juan
  */
 
 @RestController
@@ -40,11 +40,11 @@ public class DigitalWaiterServicesAPIController {
         try {
             return new ResponseEntity<>(digitalWaiterServices.getUserByName(name),HttpStatus.ACCEPTED);
         } catch (DigitalWaiterNotFoundException ex){
-            return new ResponseEntity<>("404 ERROR \n The blueprint wasn't found ",HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>("404 ERROR \n The user wasn't found ",HttpStatus.NOT_FOUND);
         }
     }
 
-    @RequestMapping(method = RequestMethod.POST, value="{name}")
+    @RequestMapping(method = RequestMethod.POST, value="/{name}")
     public ResponseEntity<?> addNewUser(@PathVariable String name){
         try {
             User user = new Client(name);

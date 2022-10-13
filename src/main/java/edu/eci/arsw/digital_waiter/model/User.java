@@ -7,7 +7,7 @@ package edu.eci.arsw.digital_waiter.model;
 
 /**
  *
- * @author hcadavid
+ * @author Andres - David - Juan
  */
 public abstract class User {
    

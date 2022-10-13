@@ -5,6 +5,8 @@
  */
 package edu.eci.arsw.digital_waiter.persistence.impl;
 
+import edu.eci.arsw.digital_waiter.model.Client;
+import edu.eci.arsw.digital_waiter.model.Restaurant;
 import edu.eci.arsw.digital_waiter.model.User;
 import edu.eci.arsw.digital_waiter.persistence.DigitalWaiterPersistence;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -17,7 +19,7 @@ import java.util.Set;
 
 /**
  *
- * @author hcadavid
+ * @author Andres - David - Juan
  */
 @Component
 @Qualifier("inMemory")
@@ -27,7 +29,13 @@ public class InMemoryDigitalWaiterPersistence implements DigitalWaiterPersistenc
 
     public InMemoryDigitalWaiterPersistence() {
         //load stub data
-        // User userTest1 = new Client("test client");
+        User userTest1 = new Client("gyan");
+        User userTest2 = new Restaurant("crepes_and_waffle");
+        User userTest3 = new Client("andre");
+
+        users.put(new Tuple<>("gyan","gyan"),userTest1);
+        users.put(new Tuple<>("crepes_and_waffle","crepes_and_waffle"),userTest2);
+        users.put(new Tuple<>("andre","andre"),userTest3);
     }    
     
     @Override
@@ -47,9 +55,11 @@ public class InMemoryDigitalWaiterPersistence implements DigitalWaiterPersistenc
 
     @Override
     public Set<User> getAllUsers()  {
+        System.out.println(users.size());
         Set<User> set = new HashSet<>();
         for (Tuple<String,String> tuple : users.keySet()){
-
+            User user = getUser(tuple.o1);
+            set.add(user);
         }
         return set;
     }

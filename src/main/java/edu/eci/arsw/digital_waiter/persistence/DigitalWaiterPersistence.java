@@ -6,7 +6,7 @@ import java.util.Set;
 
 /**
  *
- * @author hcadavid
+ * @author Andres - David - Juan
  */
 public interface DigitalWaiterPersistence {
     
