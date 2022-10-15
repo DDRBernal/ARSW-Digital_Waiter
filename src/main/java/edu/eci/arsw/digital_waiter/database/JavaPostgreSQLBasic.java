@@ -3,8 +3,8 @@ import java.sql.*;
 
 public class JavaPostgreSQLBasic {
     /**
-     * We establish the connection with the database <b>customerdb</b>.
-     * Establecemos la conexión con la base de datos <b>customerdb</b>.
+     * We establish the connection with the database digitalwaiter.
+     * Establecemos la conexión con la base de datos digitalwaiter.
      *
      * @return
      */
@@ -81,8 +81,6 @@ public class JavaPostgreSQLBasic {
 //            String c = rs.getString("email");
 //            String d = rs.getString("age");
 //            String e = rs.getString("pswd");
-            //String  title = rs.getString("Title");
-            //int artistid  = rs.getInt("ArtistId");
             System.out.println( "id: "+ id);
 
         }
@@ -100,7 +98,6 @@ public class JavaPostgreSQLBasic {
         JavaPostgreSQLBasic javaPostgreSQLBasic = new JavaPostgreSQLBasic();
         Connection connection = javaPostgreSQLBasic.connectDatabase();
         javaPostgreSQLBasic.Query(connection);
-
         String host = "35.199.183.114";
         String port = "5432";
         String database = "digitalwaiter";
