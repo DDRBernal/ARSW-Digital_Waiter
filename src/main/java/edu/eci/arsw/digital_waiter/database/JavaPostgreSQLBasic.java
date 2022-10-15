@@ -2,6 +2,7 @@ package edu.eci.arsw.digital_waiter.database;
 import java.sql.*;
 
 public class JavaPostgreSQLBasic {
+
     /**
      * We establish the connection with the database digitalwaiter.
      * Establecemos la conexión con la base de datos digitalwaiter.
@@ -35,13 +36,12 @@ public class JavaPostgreSQLBasic {
 
     /**
      * Method to connect to the database by passing parameters.
-     * Método para establecer la conexión a la base de datos mediante el paso de parámetros.
      *
-     * @param host String host name or ip. Nombre del host o ip.
-     * @param port String listening database port. Puerto en el que escucha la base de datos.
-     * @param database String database name for the connection. Nombre de la base de datos para la conexión.
-     * @param user String user name. Nombre de usuario.
-     * @param password String user password. Password del usuario.
+     * @param host String host name or ip.
+     * @param port String listening database port.
+     * @param database String database name for the connection.
+     * @param user String user name.
+     * @param password String user password.
      */
     public void connectDatabase(String host, String port, String database,
                                 String user, String password) {
