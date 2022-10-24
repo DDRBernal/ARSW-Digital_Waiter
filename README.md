@@ -7,7 +7,7 @@
 ### Arquitecturas de Software
 
 
->Integrantes
+***Integrantes***
 
 ```
 Juan Esteban Cortés
