@@ -4,8 +4,18 @@ var app = (function () {
 
     function login(username, passwd){
         apiclient.getUserByName(username, passwd, (req,res) => {
-
+            //login succefully
+            if (res==true){
+                console.log("Valid");
+                window.location.replace("menuLists.html");
+            }else{
+                alert("The user doesn't exists or the email/password are invalids");
+            }
         });
+    }
+
+    function verifyUser(email,passwd){
+
     }
 
     function getNameAuthor(name) {
@@ -25,7 +35,8 @@ var app = (function () {
 
   return {
     getNameAuthor: getNameAuthor,
-    addNewName : addNewName
+    addNewName : addNewName,
+    login : login
   };
 
 })();

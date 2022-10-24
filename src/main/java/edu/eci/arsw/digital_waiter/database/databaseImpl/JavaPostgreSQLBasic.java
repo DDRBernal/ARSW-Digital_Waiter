@@ -1,18 +1,31 @@
-package edu.eci.arsw.digital_waiter.database;
+package edu.eci.arsw.digital_waiter.database.databaseImpl;
+
+import edu.eci.arsw.digital_waiter.database.JavaPostgreSQL;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
 
-public class JavaPostgreSQLBasic {
+@Component
+@Qualifier("SQLConnection")
+public class JavaPostgreSQLBasic implements JavaPostgreSQL {
+
+    private Connection connection;
+
+    public JavaPostgreSQLBasic() {
+        this.connection = connectDatabase();
+    }
 
     /**
-     * We establish the connection with the database digitalwaiter.
-     * Establecemos la conexión con la base de datos digitalwaiter.
+     * We establish the connection with the database digitalwaiter. Establecemos
+     * la conexión con la base de datos digitalwaiter.
      *
      * @return
      */
     public Connection connectDatabase() {
-        Connection connection = null;
+        Connection conn = null;
         try {
             // We register the PostgreSQL driver
             // Registramos el driver de PostgresSQL
@@ -24,16 +37,16 @@ public class JavaPostgreSQLBasic {
 
             // Database connect
             // Conectamos con la base de datos
-            connection = DriverManager.getConnection(
+            conn = DriverManager.getConnection(
                     "jdbc:postgresql://35.199.183.114:5432/digitalwaiter",
                     "postgres", "1^T023)f?u]=f\")d");
 
-            boolean valid = connection.isValid(50000);
+            boolean valid = conn.isValid(50000);
             System.out.println(valid ? "TEST OK" : "TEST FAIL");
         } catch (java.sql.SQLException sqle) {
             System.out.println("Error: " + sqle);
         }
-        return connection;
+        return conn;
     }
 
     /**
@@ -73,51 +86,27 @@ public class JavaPostgreSQLBasic {
 
     }
 
-
-    public void Query(Connection connection) throws SQLException {
+    public HashMap<String, ArrayList<String>> Query(String sentence) throws SQLException {
         Statement stmt = connection.createStatement();
-        ResultSet rs = stmt.executeQuery( "select * from usuario;");
+        ResultSet rs = stmt.executeQuery(sentence);
         ResultSetMetaData rsmd = rs.getMetaData();
         int columnCount = rsmd.getColumnCount();
-        HashMap<String, ArrayList<String>> hashMap = new HashMap<>();
+        HashMap<String, ArrayList<String>> table = new HashMap<>();
         ArrayList<String> namesColumns = new ArrayList<>();
-        for (int i = 1; i <= columnCount; i++ ) {
-            rs = stmt.executeQuery( "select * from usuario;");
+        for (int i = 1; i <= columnCount; i++) {
+            rs = stmt.executeQuery(sentence);
             ArrayList<String> values = new ArrayList<>();
             String nameColumn = rsmd.getColumnName(i);
             namesColumns.add(nameColumn);
-            while ( rs.next() ) {
+            while (rs.next()) {
                 String value = rs.getString(nameColumn);
                 values.add(value);
             }
-            hashMap.put(nameColumn,values);
+            table.put(nameColumn, values);
         }
-
-        for (String name: hashMap.keySet()) {
-            String key = name;
-            String value = hashMap.get(name).toString();
-            System.out.println(key + " " + value);
-        }
-
-        rs.close();stmt.close();connection.close();
+        rs.close();
+        stmt.close();
+        return table;
     }
 
-
-
-    /**
-     * Testing Java PostgreSQL connection with host and port
-     * Probando la conexión en Java a PostgreSQL especificando el host y el puerto.
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) throws SQLException {
-        JavaPostgreSQLBasic javaPostgreSQLBasic = new JavaPostgreSQLBasic();
-        Connection connection = javaPostgreSQLBasic.connectDatabase();
-        javaPostgreSQLBasic.Query(connection);
-        String host = "35.199.183.114";
-        String port = "5432";
-        String database = "digitalwaiter";
-        String user = "postgres";
-        String password = "1^T023)f?u]=f\")d";
-        javaPostgreSQLBasic.connectDatabase(host,port,database,user,password);
-    }
 }

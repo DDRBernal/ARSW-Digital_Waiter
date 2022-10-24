@@ -1,14 +1,14 @@
 apiclient=(function(){
 
 	return {
-		getUserByName:function(name,password){
+	    //dg/login/prueba@gmail.com/123456
+		getUserByName:function(name, password, callback){
            const get_request = $.get({
-                url: "/users/" + name,
+                url: "/dg/login/"+name+"/"+password,
                 contentType: "application/json",
             });
             get_request.then(function (data) {
-            console.log(data);
-                callback(data,data);
+                callback(data,data,data);
               }, function (error) {
                 alert("The user doesn't exists !")
               }
