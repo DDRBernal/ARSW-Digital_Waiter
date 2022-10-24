@@ -2,8 +2,19 @@ var app = (function () {
 
   let name;
 
+    function login(username, passwd){
+        apiclient.getUserByName(username, passwd, (req,res) => {
 
-    function getNameAuthor() {
+        });
+    }
+
+    function getNameAuthor(name) {
+        apiclient.getUserByName( name, (req,res)=>{
+            //in construction
+        });
+    }
+
+    function getMenuList(){
 
     }
 

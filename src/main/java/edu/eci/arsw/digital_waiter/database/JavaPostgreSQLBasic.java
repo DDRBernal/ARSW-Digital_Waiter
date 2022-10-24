@@ -1,5 +1,7 @@
 package edu.eci.arsw.digital_waiter.database;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 public class JavaPostgreSQLBasic {
 
@@ -74,16 +76,29 @@ public class JavaPostgreSQLBasic {
 
     public void Query(Connection connection) throws SQLException {
         Statement stmt = connection.createStatement();
-        ResultSet rs = stmt.executeQuery( "select id from client;" );
-        while ( rs.next() ) {
-            String id = rs.getString("id");
-//            String b = rs.getString("phonenomber");
-//            String c = rs.getString("email");
-//            String d = rs.getString("age");
-//            String e = rs.getString("pswd");
-            System.out.println( "id: "+ id);
-
+        ResultSet rs = stmt.executeQuery( "select * from usuario;");
+        ResultSetMetaData rsmd = rs.getMetaData();
+        int columnCount = rsmd.getColumnCount();
+        HashMap<String, ArrayList<String>> hashMap = new HashMap<>();
+        ArrayList<String> namesColumns = new ArrayList<>();
+        for (int i = 1; i <= columnCount; i++ ) {
+            rs = stmt.executeQuery( "select * from usuario;");
+            ArrayList<String> values = new ArrayList<>();
+            String nameColumn = rsmd.getColumnName(i);
+            namesColumns.add(nameColumn);
+            while ( rs.next() ) {
+                String value = rs.getString(nameColumn);
+                values.add(value);
+            }
+            hashMap.put(nameColumn,values);
         }
+
+        for (String name: hashMap.keySet()) {
+            String key = name;
+            String value = hashMap.get(name).toString();
+            System.out.println(key + " " + value);
+        }
+
         rs.close();stmt.close();connection.close();
     }
 
