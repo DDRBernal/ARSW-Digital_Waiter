@@ -13,7 +13,7 @@ David Ricardo Otalora
 ```
 ###Contenido
 
->1.[Tecnologias usadas en el proyecto](#Tecnologias usadas en el proyecto)
+1.[Tecnologias usadas en el proyecto](#Tecnologias usadas en el proyecto)
 
 
 ##Construción de proyecto 
@@ -25,17 +25,6 @@ David Ricardo Otalora
 
 
 
-
-
-
-
-
-
-#Frontend de Digital Waiter
-![](image/Front.png)
-Para el frontend utilizamos css3 y html5 para poder brindar una experiencia de UX 
-amable y visualmente entendible para el cliente final 
-=======
 # Frontend de Digital Waiter
 
 ![](image/Front.png)
@@ -45,14 +34,6 @@ amable y visualmente entendible para el cliente final
 
 
 
-
-
-
-
-#Backend de Digital Waiter
-
->Diagrama de base de datos 
-=======
 # Backend de Digital Waiter
 
 >Diagrama de base de datos
