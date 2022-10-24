@@ -25,4 +25,6 @@ public interface DigitalWaiterPersistence {
 
     Set<User> getAllUsers() ;
     
+    public boolean login (String email, String pswd);
+    
 }

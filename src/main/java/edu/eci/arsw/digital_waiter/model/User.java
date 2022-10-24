@@ -9,17 +9,28 @@ package edu.eci.arsw.digital_waiter.model;
  *
  * @author Andres - David - Juan
  */
-public abstract class User {
-   
-    private String name;
-
-    public User(String name) {
-        this.name = name;
-    }    
+public interface User {  
 
     public abstract void rol();
 
-    public String getName() {
-        return name;
-    }
+    public String getName();
+    
+    public String getPhonenumber();
+    
+    public String getEmail();
+    
+    public String getAge();
+    
+    public String getPswd();
+    
+    public void setName(String newName);
+    
+    public void setPhonenumber(String newPhone);
+    
+    public void setEmail(String newEmail);
+    
+    public void setAge(String newAge);
+    
+    public void setPswd(String newPswd);
+    
 }

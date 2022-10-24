@@ -21,7 +21,7 @@ import edu.eci.arsw.digital_waiter.persistence.DigitalWaiterNotFoundException;
  */
 
 @RestController
-@RequestMapping(value = "/users")
+@RequestMapping(value = "/dg")
 public class DigitalWaiterServicesAPIController {
     @Autowired
     DigitalWaiterServices digitalWaiterServices;
@@ -30,6 +30,24 @@ public class DigitalWaiterServicesAPIController {
     public ResponseEntity<?> GetResource() {
         try {
             return new ResponseEntity<>(digitalWaiterServices.getAllUsers(), HttpStatus.ACCEPTED);
+        } catch (DigitalWaiterPersistenceException ex){
+            return new ResponseEntity<>("NOT FOUND",HttpStatus.NOT_FOUND);
+        }
+    }
+    
+    @RequestMapping(method = RequestMethod.GET, value = "/all")
+    public ResponseEntity<?> getAllSUers() {
+        try {
+            return new ResponseEntity<>(digitalWaiterServices.getAllUsers(), HttpStatus.ACCEPTED);
+        } catch (DigitalWaiterPersistenceException ex){
+            return new ResponseEntity<>("NOT FOUND",HttpStatus.NOT_FOUND);
+        }
+    }
+    
+    @RequestMapping(method = RequestMethod.GET, value = "/login/{email}/{pswd}")
+    public ResponseEntity<?> login(@PathVariable("email") String email,@PathVariable("pswd") String pswd) {
+        try {
+            return new ResponseEntity<>(digitalWaiterServices.login(email,pswd), HttpStatus.ACCEPTED);
         } catch (DigitalWaiterPersistenceException ex){
             return new ResponseEntity<>("NOT FOUND",HttpStatus.NOT_FOUND);
         }
@@ -44,16 +62,16 @@ public class DigitalWaiterServicesAPIController {
         }
     }
 
-    @RequestMapping(method = RequestMethod.POST, value="/{name}")
-    public ResponseEntity<?> addNewUser(@PathVariable String name){
-        try {
-            User user = new Client(name);
-            digitalWaiterServices.addNewUser(user);
-            return new ResponseEntity<>(HttpStatus.ACCEPTED);
-        } catch (DigitalWaiterPersistenceException e) {
-            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-        }
-    }
+//    @RequestMapping(method = RequestMethod.POST, value="/{name}")
+//    public ResponseEntity<?> addNewUser(@PathVariable String name){
+//        try {
+//            User user = new Client(name, phonenumber, email, age, pswd);
+//            digitalWaiterServices.addNewUser(user);
+//            return new ResponseEntity<>(HttpStatus.ACCEPTED);
+//        } catch (DigitalWaiterPersistenceException e) {
+//            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+//        }
+//    }
 
 
 }

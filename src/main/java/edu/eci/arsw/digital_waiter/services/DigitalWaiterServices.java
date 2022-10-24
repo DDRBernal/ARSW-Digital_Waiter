@@ -36,6 +36,10 @@ public class DigitalWaiterServices {
     public Set<User> getAllUsers() throws DigitalWaiterPersistenceException {
         return dpp.getAllUsers();
     }
+    
+    public boolean login(String email, String pswd) throws DigitalWaiterPersistenceException{
+        return dpp.login(email, pswd);
+    }
 
     /**
      *
