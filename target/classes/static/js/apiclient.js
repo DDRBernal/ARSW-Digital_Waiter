@@ -8,7 +8,6 @@ apiclient=(function(){
                 contentType: "application/json",
             });
             get_request.then(function (data) {
-                console.log(data);
                 callback(data,data,data);
               }, function (error) {
                 alert("The user doesn't exists !")
