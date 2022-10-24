@@ -1,11 +1,14 @@
 #DIGITAL WAITER
+
 #ARSW-Digital_Waiter
+
 ##Escuela Colombiana de Ingeniería
 
 ### Arquitecturas de Software
 
 
 >Integrantes
+
 ```
 Juan Esteban Cortés
 Andrés Felipe Martínez
