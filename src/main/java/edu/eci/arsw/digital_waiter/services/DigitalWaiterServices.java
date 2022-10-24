@@ -1,8 +1,10 @@
 package edu.eci.arsw.digital_waiter.services;
 
+import edu.eci.arsw.digital_waiter.model.Ingredient;
+import edu.eci.arsw.digital_waiter.model.Menu;
+import edu.eci.arsw.digital_waiter.model.Plato;
 import edu.eci.arsw.digital_waiter.model.Restaurant;
 import edu.eci.arsw.digital_waiter.model.User;
-import edu.eci.arsw.digital_waiter.persistence.DigitalWaiterNotFoundException;
 import edu.eci.arsw.digital_waiter.persistence.DigitalWaiterPersistenceException;
 import edu.eci.arsw.digital_waiter.persistence.DigitalWaiterPersistence;
 
@@ -19,14 +21,14 @@ public class DigitalWaiterServices {
    
     @Autowired
     DigitalWaiterPersistence dpp=null;
-
+    
     /**
-     *
-     * @param user
-     * @throws DigitalWaiterPersistenceException
+     * 
+     * @return
+     * @throws DigitalWaiterPersistenceException 
      */
-    public void addNewUser(User user) throws DigitalWaiterPersistenceException {
-        dpp.saveUser(user);
+    public Set<Ingredient> getAllIngredients()throws DigitalWaiterPersistenceException{
+        return dpp.getAllIngredients();
     }
     /**
      * 
@@ -36,7 +38,24 @@ public class DigitalWaiterServices {
     public Set<Restaurant> getAllRestaurants() throws DigitalWaiterPersistenceException{
         return dpp.getAllRestaurants();
     }
-
+    /**
+     * 
+     * @return
+     * @throws DigitalWaiterPersistenceException 
+     */
+    public Set<Menu> getAllMenus() throws DigitalWaiterPersistenceException{
+        return dpp.getAllMenus();
+    }
+    /**
+     * 
+     * @return
+     * @throws DigitalWaiterPersistenceException 
+     */
+    public Set<Plato> getAllPlatos() throws DigitalWaiterPersistenceException{
+        return dpp.getAllPlatos();
+    }
+    
+    
     /**
      *
      * @return
@@ -50,13 +69,6 @@ public class DigitalWaiterServices {
         return dpp.login(email, pswd);
     }
 
-    /**
-     *
-     * @param name
-     * @return the user given name
-     */
-    public User getUserByName(String name) throws DigitalWaiterNotFoundException {
-        return dpp.getUser(name);
-    }
+    
 
 }

@@ -35,10 +35,28 @@ public class DigitalWaiterServicesAPIController {
         }
     }
     
-    @RequestMapping(method = RequestMethod.GET, value = "/all")
+    @RequestMapping(method = RequestMethod.GET, value = "/allIngredients")
+    public ResponseEntity<?> getAllIngredients() {
+        try {
+            return new ResponseEntity<>(digitalWaiterServices.getAllIngredients(), HttpStatus.ACCEPTED);
+        } catch (DigitalWaiterPersistenceException ex){
+            return new ResponseEntity<>("NOT FOUND",HttpStatus.NOT_FOUND);
+        }
+    }
+    
+    @RequestMapping(method = RequestMethod.GET, value = "/allUsers")
     public ResponseEntity<?> getAllSUers() {
         try {
             return new ResponseEntity<>(digitalWaiterServices.getAllUsers(), HttpStatus.ACCEPTED);
+        } catch (DigitalWaiterPersistenceException ex){
+            return new ResponseEntity<>("NOT FOUND",HttpStatus.NOT_FOUND);
+        }
+    }
+    
+    @RequestMapping(method = RequestMethod.GET, value = "/allPlatos")
+    public ResponseEntity<?> getAllSPlatos() {
+        try {
+            return new ResponseEntity<>(digitalWaiterServices.getAllPlatos(), HttpStatus.ACCEPTED);
         } catch (DigitalWaiterPersistenceException ex){
             return new ResponseEntity<>("NOT FOUND",HttpStatus.NOT_FOUND);
         }
@@ -53,21 +71,21 @@ public class DigitalWaiterServicesAPIController {
         }
     }
     
+    @RequestMapping(method = RequestMethod.GET, value = "/allMenus")
+    public ResponseEntity<?> getAllMenus() {
+        try {
+            return new ResponseEntity<>(digitalWaiterServices.getAllMenus(), HttpStatus.ACCEPTED);
+        } catch (DigitalWaiterPersistenceException ex){
+            return new ResponseEntity<>("NOT FOUND",HttpStatus.NOT_FOUND);
+        }
+    }
+    
     @RequestMapping(method = RequestMethod.GET, value = "/login/{email}/{pswd}")
     public ResponseEntity<?> login(@PathVariable("email") String email,@PathVariable("pswd") String pswd) {
         try {
             return new ResponseEntity<>(digitalWaiterServices.login(email,pswd), HttpStatus.ACCEPTED);
         } catch (DigitalWaiterPersistenceException ex){
             return new ResponseEntity<>("NOT FOUND",HttpStatus.NOT_FOUND);
-        }
-    }
-
-    @RequestMapping(method = RequestMethod.GET, value = "/{name}")
-    public ResponseEntity<?> getBlueprint(@PathVariable("name") String name){
-        try {
-            return new ResponseEntity<>(digitalWaiterServices.getUserByName(name),HttpStatus.ACCEPTED);
-        } catch (DigitalWaiterNotFoundException ex){
-            return new ResponseEntity<>("404 ERROR \n The user wasn't found ",HttpStatus.NOT_FOUND);
         }
     }
 
