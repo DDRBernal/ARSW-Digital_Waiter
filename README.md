@@ -1,8 +1,8 @@
-#DIGITAL WAITER
+# DIGITAL WAITER
 
-#ARSW-Digital_Waiter
+# ARSW-Digital_Waiter
 
-##Escuela Colombiana de Ingeniería
+## Escuela Colombiana de Ingeniería
 
 ### Arquitecturas de Software
 
@@ -16,11 +16,11 @@ David Ricardo Otalora
 
 ```
 
-##Construción de proyecto 
+## Construción de proyecto 
 
 
 
-####Tecnologias usadas en el proyecto
+#### Tecnologias usadas en el proyecto
 	1.
 	2.
 	3.
@@ -34,7 +34,7 @@ David Ricardo Otalora
 
 
 
-#######Frontend de Digital Waiter
+####### Frontend de Digital Waiter
 
 ![](image/Front.png)
 
