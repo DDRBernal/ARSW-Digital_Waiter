@@ -11,21 +11,26 @@ Andrés Felipe Martínez
 David Ricardo Otalora 
 
 ```
-###Contenido
-
-1. [Tecnologias usadas en el proyecto](#Tecnologias usadas en el proyecto)
-
 
 ##Construción de proyecto 
 
 #DIGITAL WAITER
 
-###Tecnologias usadas en el proyecto
+####Tecnologias usadas en el proyecto
+	1.
+	2.
+	3.
+	4.
+	5.
+	6.
+	7.
+	8.
+	9.
+	10.
 
 
 
-
-# Frontend de Digital Waiter
+####### Frontend de Digital Waiter
 
 ![](image/Front.png)
 
@@ -34,7 +39,7 @@ amable y visualmente entendible para el cliente final
 
 
 
-# Backend de Digital Waiter
+######## Backend de Digital Waiter
 
 >Diagrama de base de datos
 
