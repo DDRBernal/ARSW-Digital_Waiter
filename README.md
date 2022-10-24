@@ -34,7 +34,7 @@ David Ricardo Otalora
 
 
 
-####### Frontend de Digital Waiter
+###### Frontend de Digital Waiter
 
 ![](image/Front.png)
 
@@ -43,7 +43,7 @@ amable y visualmente entendible para el cliente final
 
 
 
-########Backend de Digital Waiter
+###### Backend de Digital Waiter
 
 >Diagrama de base de datos
 
