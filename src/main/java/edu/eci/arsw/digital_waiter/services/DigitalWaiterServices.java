@@ -1,5 +1,6 @@
 package edu.eci.arsw.digital_waiter.services;
 
+import edu.eci.arsw.digital_waiter.model.Restaurant;
 import edu.eci.arsw.digital_waiter.model.User;
 import edu.eci.arsw.digital_waiter.persistence.DigitalWaiterNotFoundException;
 import edu.eci.arsw.digital_waiter.persistence.DigitalWaiterPersistenceException;
@@ -26,6 +27,14 @@ public class DigitalWaiterServices {
      */
     public void addNewUser(User user) throws DigitalWaiterPersistenceException {
         dpp.saveUser(user);
+    }
+    /**
+     * 
+     * @return
+     * @throws DigitalWaiterPersistenceException 
+     */
+    public Set<Restaurant> getAllRestaurants() throws DigitalWaiterPersistenceException{
+        return dpp.getAllRestaurants();
     }
 
     /**

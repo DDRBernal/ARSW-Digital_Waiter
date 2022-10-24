@@ -4,7 +4,6 @@ import edu.eci.arsw.digital_waiter.database.JavaPostgreSQL;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 

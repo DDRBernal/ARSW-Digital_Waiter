@@ -1,6 +1,7 @@
 
 package edu.eci.arsw.digital_waiter.persistence;
 
+import edu.eci.arsw.digital_waiter.model.Restaurant;
 import edu.eci.arsw.digital_waiter.model.User;
 import java.util.Set;
 
@@ -16,6 +17,8 @@ public interface DigitalWaiterPersistence {
      *   or any other low-level persistence error occurs.
      */
     public void saveUser(User user) ;
+    
+    public Set<Restaurant> getAllRestaurants();
     
     /**
      *

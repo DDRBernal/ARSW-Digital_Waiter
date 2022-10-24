@@ -9,6 +9,7 @@ import edu.eci.arsw.digital_waiter.database.SQLSentences;
 import edu.eci.arsw.digital_waiter.database.databaseImpl.JavaPostgreSQLBasic;
 import edu.eci.arsw.digital_waiter.login.Hash;
 import edu.eci.arsw.digital_waiter.model.Client;
+import edu.eci.arsw.digital_waiter.model.Admin;
 import edu.eci.arsw.digital_waiter.model.Restaurant;
 import edu.eci.arsw.digital_waiter.model.User;
 import edu.eci.arsw.digital_waiter.persistence.DigitalWaiterPersistence;
@@ -64,7 +65,7 @@ public class InMemoryDigitalWaiterPersistence implements DigitalWaiterPersistenc
                 if ("f".equals(i)) {
                     us = new Client(users.get("name").get(p), users.get("phonenumber").get(p), users.get("email").get(p), users.get("age").get(p), users.get("pswd").get(p));
                 } else if ("t".equals(i)) {
-                    us = new Restaurant(users.get("name").get(p), users.get("phonenumber").get(p), users.get("email").get(p), users.get("age").get(p), users.get("pswd").get(p));
+                    us = new Admin(users.get("name").get(p), users.get("phonenumber").get(p), users.get("email").get(p), users.get("age").get(p), users.get("pswd").get(p));
                 }
                 set.add(us);
                 p += 1;
@@ -77,18 +78,40 @@ public class InMemoryDigitalWaiterPersistence implements DigitalWaiterPersistenc
 
     @Override
     public boolean login(String email, String pswd) {
-        
+
         boolean valid = false;
         pswd = Hash.hashThis(pswd);
         String sentence = SQLSentences.emailPswd(email, pswd);
         try {
             HashMap<String, ArrayList<String>> data = sqlConnection.Query(sentence);
-            if (!data.get("pswd").isEmpty()){valid = true;}
-            
+            if (!data.get("pswd").isEmpty()) {
+                valid = true;
+            }
+
         } catch (SQLException ex) {
             Logger.getLogger(InMemoryDigitalWaiterPersistence.class.getName()).log(Level.SEVERE, null, ex);
         }
         return valid;
+    }
+
+    @Override
+    public Set<Restaurant> getAllRestaurants() {
+        Set<Restaurant> set = new HashSet<>();
+        String sentence = SQLSentences.all("restaurant");
+        
+        try {
+            HashMap<String, ArrayList<String>> restaurants = sqlConnection.Query(sentence);
+            int p = 0;
+            for (String i : restaurants.get("id")) {
+                Restaurant us = new Restaurant(i, restaurants.get("name").get(p), restaurants.get("address").get(p), restaurants.get("phonenumber").get(p));
+                set.add(us);
+                p += 1;
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(InMemoryDigitalWaiterPersistence.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return set;
     }
 
 }

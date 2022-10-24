@@ -7,7 +7,7 @@ var app = (function () {
             //login succefully
             if (res==true){
                 console.log("Valid");
-                window.location.replace("menuLists.html");
+                window.location.replace("restaurant.html");
             }else{
                 alert("The user doesn't exists or the email/password are invalids");
             }
