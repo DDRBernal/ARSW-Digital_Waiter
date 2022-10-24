@@ -1,55 +1,44 @@
 package edu.eci.arsw.digital_waiter.model;
 
-public class Restaurant implements User{
+/**
+ *
+ * @author juane
+ */
+public class Restaurant {
 
+    private String id;
     private String name;
+    private String address;
     private String phonenumber;
-    private String email;
-    private String age;
-    private String pswd;
-
-    public Restaurant(String name, String phonenumber, String email, String age, String pswd) {
+    
+    
+    public Restaurant(String id, String name, String address, String phonenumber){
+        this.id = id;
         this.name = name;
+        this.address = address;
         this.phonenumber = phonenumber;
-        this.email = email;
-        this.age = age;
-        this.pswd = pswd;
-    }    
-
-    public String getName() {
-        return name;
     }
-    public String getPhonenumber() {
-        return phonenumber;
-    }
-    public String getEmail() {
-        return email;
-    }
-    public String getAge() {
-        return age;
-    }
-    public String getPswd() {
-        return pswd;
+    public String getName(){
+        return this.name;
     }
     
-    public void setName(String newName) {
+    public String getAddress(){
+        return this.address;
+    }
+    
+    public String getPhonenumber(){
+        return this.phonenumber;
+    }
+    
+    public void setName(String newName){
         this.name = newName;
     }
-    public void setPhonenumber(String newPhone) {
-        this.phonenumber = newPhone;
+    
+    public void setAddress(String newAddress){
+        this.address = newAddress;
     }
-    public void setEmail(String newEmail) {
-        this.email = newEmail;
-    }
-    public void setAge(String newAge) {
-        this.age = newAge;
-    }
-    public void setPswd(String newPswd) {
-        this.pswd = newPswd;
-    }
-
-    @Override
-    public void rol() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    
+    public void setPhonenumber(String newPhonenumber){
+        this.phonenumber = newPhonenumber;
     }
 }

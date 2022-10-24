@@ -44,6 +44,15 @@ public class DigitalWaiterServicesAPIController {
         }
     }
     
+    @RequestMapping(method = RequestMethod.GET, value = "/allRestaurants")
+    public ResponseEntity<?> getAllRestaurants() {
+        try {
+            return new ResponseEntity<>(digitalWaiterServices.getAllRestaurants(), HttpStatus.ACCEPTED);
+        } catch (DigitalWaiterPersistenceException ex){
+            return new ResponseEntity<>("NOT FOUND",HttpStatus.NOT_FOUND);
+        }
+    }
+    
     @RequestMapping(method = RequestMethod.GET, value = "/login/{email}/{pswd}")
     public ResponseEntity<?> login(@PathVariable("email") String email,@PathVariable("pswd") String pswd) {
         try {
