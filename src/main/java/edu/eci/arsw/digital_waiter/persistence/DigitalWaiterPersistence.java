@@ -50,4 +50,6 @@ public interface DigitalWaiterPersistence {
 
     public Set<Restaurant> getRestaurantById(String id);
     
+    public void addNewUser(String name, String age, String phonenumber, String email, String password, boolean isRestaurant);
+    
 }

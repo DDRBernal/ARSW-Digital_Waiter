@@ -149,16 +149,15 @@ public class DigitalWaiterServicesAPIController {
         }
     }
 
-//    @RequestMapping(method = RequestMethod.POST, value="/{name}")
-//    public ResponseEntity<?> addNewUser(@PathVariable String name){
-//        try {
-//            User user = new Client(name, phonenumber, email, age, pswd);
-//            digitalWaiterServices.addNewUser(user);
-//            return new ResponseEntity<>(HttpStatus.ACCEPTED);
-//        } catch (DigitalWaiterPersistenceException e) {
-//            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
-//        }
-//    }
+    @RequestMapping(method = RequestMethod.POST, value="/addUser/{name}/{age}/{phonenumber}/{email}/{password}/{isRestaurant}")
+    public ResponseEntity<?> addNewUser(@PathVariable String name, @PathVariable String age, @PathVariable String phonenumber, @PathVariable String email, @PathVariable String password, @PathVariable boolean isRestaurant){
+        try {
+            digitalWaiterServices.addNewUser( name, age, phonenumber, email,  password, isRestaurant);           
+            return new ResponseEntity<>(HttpStatus.ACCEPTED);
+        } catch (DigitalWaiterPersistenceException e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
 
 
 }

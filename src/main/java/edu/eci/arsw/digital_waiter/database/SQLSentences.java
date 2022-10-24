@@ -1,6 +1,8 @@
 
 package edu.eci.arsw.digital_waiter.database;
 
+import edu.eci.arsw.digital_waiter.login.Hash;
+
 /**
  *
  * @author juane
@@ -35,5 +37,9 @@ public class SQLSentences {
     
     public static String tableById(String id){
         return "SELECT * FROM mesa WHERE id = '"+id+"';";
+    }
+    
+    public static String addNewUser(String name, String age, String phonenumber, String email, String password, boolean isRestaurant){
+        return "INSERT INTO usuario (id , phonenumber, email, age, pswd, name, isadmin) VALUES ('"+Hash.hashThis(email+password)+"', '"+phonenumber+"', '"+email+"', '"+age+"', '"+password+"', '"+name+"', '"+isRestaurant+"');";
     }
 }

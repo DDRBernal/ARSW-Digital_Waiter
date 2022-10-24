@@ -49,6 +49,15 @@ public class InMemoryDigitalWaiterPersistence implements DigitalWaiterPersistenc
         }
         return result;
     }
+    
+    private void insertSQLQuery(String sentence) {
+        HashMap<String, ArrayList<String>> result = null;
+        try {
+            sqlConnection.insertQuery(sentence);
+        } catch (SQLException ex) {
+            Logger.getLogger(InMemoryDigitalWaiterPersistence.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
     @Override
     public Set<User> getAllUsers() {
@@ -146,6 +155,12 @@ public class InMemoryDigitalWaiterPersistence implements DigitalWaiterPersistenc
         String sentence = SQLSentences.restaurantById(id);
         HashMap<String, ArrayList<String>> restaurants = SQLQuery(sentence);
         return maker.makeRestaurant(restaurants);
+    }
+
+    @Override
+    public void addNewUser(String name, String age, String phonenumber, String email, String password, boolean isRestaurant) {
+        String sentence = SQLSentences.addNewUser(name, age, phonenumber, email, password, isRestaurant);
+        insertSQLQuery(sentence);
     }
 
 }
