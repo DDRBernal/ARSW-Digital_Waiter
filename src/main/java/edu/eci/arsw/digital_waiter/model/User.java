@@ -12,7 +12,8 @@ package edu.eci.arsw.digital_waiter.model;
 public interface User {  
 
     public abstract void rol();
-
+    public String getId();
+    
     public String getName();
     
     public String getPhonenumber();
@@ -22,6 +23,7 @@ public interface User {
     public String getAge();
     
     public String getPswd();
+    public void setId(String newId);
     
     public void setName(String newName);
     

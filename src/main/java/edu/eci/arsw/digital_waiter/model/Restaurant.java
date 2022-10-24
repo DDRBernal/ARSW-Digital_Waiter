@@ -18,6 +18,10 @@ public class Restaurant {
         this.address = address;
         this.phonenumber = phonenumber;
     }
+    
+    public String getId(){
+        return this.id;
+    }
     public String getName(){
         return this.name;
     }
@@ -28,6 +32,10 @@ public class Restaurant {
     
     public String getPhonenumber(){
         return this.phonenumber;
+    }
+    
+    public void setId(String newId){
+        this.id = newId;
     }
     
     public void setName(String newName){
