@@ -13,7 +13,7 @@ David Ricardo Otalora
 ```
 ###Contenido
 
-1.[Tecnologias usadas en el proyecto](#Tecnologias usadas en el proyecto)
+1. [Tecnologias usadas en el proyecto](#Tecnologias usadas en el proyecto)
 
 
 ##Construción de proyecto 
