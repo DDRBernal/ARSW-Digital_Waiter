@@ -18,7 +18,17 @@ David Ricardo Otalora
 
 ## Construción de proyecto 
 
-
+### Secciones
+	1. # Tecnologias usadas en el proyecto
+	2. # Frontend de Digital Waiter
+	3.
+	4.
+	5.
+	6.
+	7.
+	8.
+	9.
+	10.
 
 #### Tecnologias usadas en el proyecto
 	1.
