@@ -15,4 +15,25 @@ public class SQLSentences {
         return "SELECT email, pswd FROM usuario WHERE email = '"+email+"' AND pswd= '"+pswd+"';";
     }
     
+    public static String userById(String id){
+        return "SELECT * FROM usuario WHERE id = '"+id+"';";
+    }
+    
+    public static String restaurantById(String id){
+        return "SELECT * FROM restaurant WHERE id = '"+id+"';";
+    }
+    public static String menuById(String id){
+        return "SELECT * FROM menu WHERE id = '"+id+"';";
+    }
+    public static String platoById(String id){
+        return "SELECT * FROM plato WHERE id = '"+id+"';";
+    }
+    
+    public static String ingredientById(String id){
+        return "SELECT * FROM ingredient WHERE id = '"+id+"';";
+    }
+    
+    public static String tableById(String id){
+        return "SELECT * FROM mesa WHERE id = '"+id+"';";
+    }
 }

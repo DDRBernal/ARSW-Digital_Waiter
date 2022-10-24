@@ -4,6 +4,7 @@ import edu.eci.arsw.digital_waiter.model.Ingredient;
 import edu.eci.arsw.digital_waiter.model.Menu;
 import edu.eci.arsw.digital_waiter.model.Plato;
 import edu.eci.arsw.digital_waiter.model.Restaurant;
+import edu.eci.arsw.digital_waiter.model.Table;
 import edu.eci.arsw.digital_waiter.model.User;
 import edu.eci.arsw.digital_waiter.persistence.DigitalWaiterPersistenceException;
 import edu.eci.arsw.digital_waiter.persistence.DigitalWaiterPersistence;
@@ -55,6 +56,64 @@ public class DigitalWaiterServices {
         return dpp.getAllPlatos();
     }
     
+    public Set<Table> getAllTables() throws DigitalWaiterPersistenceException{
+        return dpp.getAllTables();
+    }
+    
+    /**
+     * 
+     * @param id
+     * @return
+     * @throws DigitalWaiterPersistenceException 
+     */
+    public Set<User> getUserByID(String id) throws DigitalWaiterPersistenceException{
+        return dpp.getUserByID(id);
+    }
+    /**
+     * 
+     * @param id
+     * @return
+     * @throws DigitalWaiterPersistenceException 
+     */
+    public Set<Table> getTableById(String id) throws DigitalWaiterPersistenceException{
+        return dpp.getTableById(id);
+    }
+    /**
+     * 
+     * @param id
+     * @return
+     * @throws DigitalWaiterPersistenceException 
+     */
+    public Set<Ingredient> getIngredientById(String id) throws DigitalWaiterPersistenceException{
+        return dpp.getIngredientById(id);
+    }
+    /**
+     * 
+     * @param id
+     * @return
+     * @throws DigitalWaiterPersistenceException 
+     */
+    public Set<Plato> getPlatoById(String id) throws DigitalWaiterPersistenceException{
+        return dpp.getPlatoById(id);
+    }
+    /**
+     * 
+     * @param id
+     * @return
+     * @throws DigitalWaiterPersistenceException 
+     */
+    public Set<Menu> getMenuById(String id) throws DigitalWaiterPersistenceException{
+        return dpp.getMenuById(id);
+    }
+    /**
+     * 
+     * @param id
+     * @return
+     * @throws DigitalWaiterPersistenceException 
+     */
+    public Set<Restaurant> getRestaurantById(String id) throws DigitalWaiterPersistenceException{
+        return dpp.getRestaurantById(id);
+    }
     
     /**
      *
@@ -64,7 +123,13 @@ public class DigitalWaiterServices {
     public Set<User> getAllUsers() throws DigitalWaiterPersistenceException {
         return dpp.getAllUsers();
     }
-    
+    /**
+     * 
+     * @param email
+     * @param pswd
+     * @return
+     * @throws DigitalWaiterPersistenceException 
+     */
     public boolean login(String email, String pswd) throws DigitalWaiterPersistenceException{
         return dpp.login(email, pswd);
     }
