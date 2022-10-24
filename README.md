@@ -11,25 +11,16 @@ Andrés Felipe Martínez
 David Ricardo Otalora 
 
 ```
+###Contenido
+
+>1.[Tecnologias usadas en el proyecto](#Tecnologias usadas en el proyecto)
 
 
-## Construción de proyecto 
+##Construción de proyecto 
 
 #DIGITAL WAITER
 
- 
 ###Tecnologias usadas en el proyecto
-=======
- 
-
-
-
-## Construción de proyecto
-
-# DIGITAL WAITER
-
-
-### Tecnologias usadas en el proyecto
 
 
 
