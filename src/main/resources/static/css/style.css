@@ -69,3 +69,70 @@
 		.custom-checkbox .custom-control-input:checked~.custom-control-label::before {
 			background-color: #c0392b !important;
 		}
+		=============================================RESTAURANT=========================================================
+		------------------------------------------LOGO RESTAURANT-------------------------------------------------
+
+		------------------------------------------DISENO DE NAVBAR-----------------------------------------------------
+        * {
+          margin: 0;
+          padding: 0;
+          -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+        }
+
+        .navMenu {
+          position: fixed;
+          top: 10%;
+          left: 15%;
+          -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+        }
+
+        .navMenu a {
+          font-family: 	sans-serif;
+          color: #f6f4e6;
+          text-decoration: none;
+          font-size: 1.2em;
+          text-transform: uppercase;
+          font-weight: 300;
+          width: 80;
+          -webkit-transition: all 0.2s ease-in-out;
+          transition: all 0.2s ease-in-out;
+          padding: 20px;
+        }
+
+        .navMenu .dot {
+          width: 6px;
+          height: 6px;
+          background: red;
+          border-radius: 50%;
+          opacity: 0;
+          -webkit-transform: translateX(50px);
+          transform: translateX(50px);
+          -webkit-transition: all 0.2s ease-in-out;
+          transition: all 0.2s ease-in-out;
+        }
+
+        .navMenu a:nth-child(1):hover ~ .dot {
+          -webkit-transform: translateX(45px);
+          transform: translateX(45px);
+          -webkit-transition: all 0.2s ease-in-out;
+          transition: all 0.2s ease-in-out;
+          opacity: 1;
+        }
+
+        .navMenu a:nth-child(2):hover ~ .dot {
+          -webkit-transform: translateX(190px);
+          transform: translateX(190px);
+          -webkit-transition: all 0.2s ease-in-out;
+          transition: all 0.2s ease-in-out;
+          opacity: 1;
+        }
+
+        .navMenu a:nth-child(3):hover ~ .dot {
+          -webkit-transform: translateX(360px);
+          transform: translateX(360px);
+          -webkit-transition: all 0.2s ease-in-out;
+          transition: all 0.2s ease-in-out;
+          opacity: 1;
+        }
