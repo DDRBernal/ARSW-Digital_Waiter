@@ -45,16 +45,8 @@ var app = (function () {
     }
 
     function getMenusByRestaurant(){
-        console.log("xxx");
         apiclient.getMenusByRestaurant("",(req,res)=>{
-            console.log(res);
-        });
-    }
-
-
-    function getNameAuthor(name) {
-        apiclient.getUserByName( name, (req,res)=>{
-            //in construction
+            console.log(req);
         });
     }
 
@@ -74,7 +66,6 @@ var app = (function () {
 
 
   return {
-    getNameAuthor: getNameAuthor,
     addNewName : addNewName,
     login : login,
     signUp : signUp,

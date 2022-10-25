@@ -31,7 +31,7 @@ apiclient=(function(){
         },
 
         getTablesByRestaurant:function(idRestaurant,callback){
-        const get_request = $.get({
+            const get_request = $.ajax({
                 url: "dg/tablesByR/"+idRestaurant,
                 contentType: "application/json",
             });
@@ -45,12 +45,12 @@ apiclient=(function(){
         },
 
         getMenusByRestaurant:function(idRestaurant,callback){
+        console.log(idRestaurant);
             const get_request = $.get({
-                url: "dg/allMenus",
+                url: "/dg/allMenus/",
                 contentType: "application/json",
             });
             get_request.then(function (data) {
-                console.log(data);
                 callback(data,data);
               }, function (error) {
                 alert("The user doesn't exists !")
