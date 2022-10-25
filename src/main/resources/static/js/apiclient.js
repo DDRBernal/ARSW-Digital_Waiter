@@ -16,7 +16,6 @@ apiclient=(function(){
 		},
 
         addNewUser:function(name,age,phonenumber,email,password,isRestaurant,callback){
-        console.log(name+" "+age+" "+phonenumber+" "+email+" "+password+" "+isRestaurant);
             const post_request = $.ajax({
                 url: "dg/addUser/"+name+"/"+age+"/"+phonenumber+"/"+email+"/"+password+"/"+isRestaurant,
                 type: "POST",
@@ -30,6 +29,48 @@ apiclient=(function(){
               }
             );
         },
+
+        getTablesByRestaurant:function(idRestaurant,callback){
+            const get_request = $.ajax({
+                url: "dg/tablesByR/"+idRestaurant,
+                contentType: "application/json",
+            });
+            get_request.then(function (data) {
+                console.log(data);
+                callback(data,data);
+              }, function (error) {
+                alert("The user doesn't exists !")
+              }
+            );
+        },
+
+        getMenusByRestaurant:function(idRestaurant,callback){
+            const get_request = $.get({
+                url: "/dg/allMenus/",
+                contentType: "application/json",
+            });
+            get_request.then(function (data) {
+                callback(data,data);
+              }, function (error) {
+                alert("The user doesn't exists !")
+              }
+            );
+        },
+
+
+        getRestaurants:function(callback){
+            const get_request = $.get({
+                url: "/dg/allRestaurants/",
+                contentType: "application/json",
+            });
+            get_request.then(function (data) {
+                callback(data,data);
+              }, function (error) {
+                alert("There aren't restaurants in the Database !")
+              }
+            );
+        }
+
 
 	}
 
