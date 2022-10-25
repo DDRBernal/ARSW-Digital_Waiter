@@ -18,7 +18,7 @@ var app = (function () {
             if (validateDataSignUp(name, email, password,repassword)){
                 apiclient.addNewUser(name,age,phonenumber,email,password,false,(req,res) => {
                     if (res){
-                        //goToSite("index.html");
+                        goToSite("index.html");
                     }
                 });
             }

@@ -24,7 +24,6 @@ apiclient=(function(){
                 contentType: "application/json",
             });
             post_request.then(function (data) {
-            console.log(data);
                 callback(true,true,true,true,true,true,true);
               }, function (error) {
                 alert("Couldn't add the user")
