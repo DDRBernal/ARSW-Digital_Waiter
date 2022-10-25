@@ -68,7 +68,7 @@ public class MakeModelImpl implements MakeModel {
 
         int p = 0;
         for (String i : menus.get("id")) {
-            Menu us = new Menu(i, menus.get("name").get(p), menus.get("price").get(p), menus.get("calories").get(p));
+            Menu us = new Menu(i, menus.get("name").get(p), menus.get("price").get(p), menus.get("calories").get(p),menus.get("idrestaurant").get(p));
             set.add(us);
             p += 1;
         }
@@ -81,7 +81,7 @@ public class MakeModelImpl implements MakeModel {
 
         int p = 0;
         for (String i : platos.get("id")) {
-            Plato us = new Plato(i, platos.get("name").get(p), platos.get("price").get(p), platos.get("calories").get(p));
+            Plato us = new Plato(i, platos.get("name").get(p), platos.get("price").get(p), platos.get("calories").get(p),platos.get("idrestaurant").get(p));
             set.add(us);
             p += 1;
         }
@@ -96,7 +96,7 @@ public class MakeModelImpl implements MakeModel {
         for (String i : tables.get("id")) {
             boolean dis;
             dis = !"f".equals(tables.get("disponibility").get(p));
-            Table us = new Table(tables.get("name").get(p), i, tables.get("zone").get(p), dis);
+            Table us = new Table(tables.get("name").get(p), i, tables.get("zone").get(p), dis,tables.get("idrestaurant").get(p));
             set.add(us);
             p += 1;
         }

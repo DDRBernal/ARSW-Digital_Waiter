@@ -44,11 +44,15 @@ public class SQLSentences {
     }
     
     public static String tablesByRestaurant(String idRestaurant){
-        return "select mesa.id, mesa.\"zone\", mesa.disponibility, mesa.\"name\"  from mesa join tablerestaurant on mesa.id = tablerestaurant.idtable join restaurant on tablerestaurant.idrestaurant = restaurant.id where restaurant.id = '"+idRestaurant+"';";
+        return "SELECT * FROM mesa WHERE idrestaurant = '"+idRestaurant+"';";
     }
     
     public static String menusByRestaurant(String idRestaurant){
-        return "select menu.id, menu.\"name\", menu.price, menu.calories  from menu join restaurantmenu on restaurantmenu.idmenu = menu.id  join restaurant on restaurant.id = restaurantmenu.idrestaurant  where restaurant.id = '"+idRestaurant+"';";
+        return "SELECT * FROM menu WHERE idrestaurant = '"+idRestaurant+"';";
+    }
+    
+    public static String platosByRestaurant(String idRestaurant){
+        return "SELECT * FROM plato WHERE idrestaurant = '"+idRestaurant+"';";
     }
     
     public static String platosByMenu(String idMenu){

@@ -10,12 +10,14 @@ public class Table {
     private String name;
     private String zone;
     private boolean disponibility;
+    private String idRestaurant;
     
-    public Table(String name, String id, String zone, boolean disponibility){
+    public Table(String name, String id, String zone, boolean disponibility, String idRestaurant){
         this.id = id;
         this.name = name;
         this.disponibility = disponibility;
         this.zone = zone;
+        this.idRestaurant= idRestaurant;
     }
     
     public String getId(){
@@ -34,6 +36,10 @@ public class Table {
         return this.disponibility;
     }
     
+    public String getIdRestaurant(){
+        return this.idRestaurant;
+    }
+    
     public void setId(String newId){
         this.id = newId;
     }
@@ -48,5 +54,9 @@ public class Table {
     
     public void setDisponibility(boolean newDisponibility){
         this.disponibility = newDisponibility;
+    }
+    
+    public void setDIdRestaurant(String newIdRestaurant){
+        this.idRestaurant = newIdRestaurant;
     }
 }

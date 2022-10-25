@@ -51,7 +51,6 @@ public class InMemoryDigitalWaiterPersistence implements DigitalWaiterPersistenc
     }
 
     private void insertSQLQuery(String sentence) {
-        HashMap<String, ArrayList<String>> result = null;
         try {
             sqlConnection.insertQuery(sentence);
         } catch (SQLException ex) {
