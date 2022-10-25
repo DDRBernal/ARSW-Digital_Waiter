@@ -5,7 +5,6 @@
 			padding: 0;
 			height: 100%;
 			background: #60a3bc !important;
-            //background-image: url("../img/background_login.jpg");
 		}
 		.login-background {
 			height: 400px;
@@ -69,6 +68,7 @@
 		.custom-checkbox .custom-control-input:checked~.custom-control-label::before {
 			background-color: #c0392b !important;
 		}
+<<<<<<< HEAD
 		=============================================RESTAURANT=========================================================
 		------------------------------------------LOGO RESTAURANT-------------------------------------------------
 
@@ -136,3 +136,11 @@
           transition: all 0.2s ease-in-out;
           opacity: 1;
         }
+=======
+
+		.form-check-input2 {
+          position: absolute;
+          margin-top: 0.3rem;
+          margin-right: 18rem;
+        }
+>>>>>>> 7baf74b3397355c237362ffce9a15d16c5285d10

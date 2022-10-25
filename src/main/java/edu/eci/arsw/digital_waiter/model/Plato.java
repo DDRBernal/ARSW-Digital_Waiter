@@ -9,12 +9,14 @@ public class Plato {
     private String name;
     private String price;
     private String calories;
+    private String idRestaurant;
     
-    public Plato(String id, String name, String price, String calories){
+    public Plato(String id, String name, String price, String calories, String idRestaurant){
         this.id = id;
         this.name = name;
         this.price = price;
         this.calories = calories;
+        this.idRestaurant = idRestaurant;
     }
     public String getId(){
         return this.id;
@@ -36,6 +38,10 @@ public class Plato {
         this.name = newName;
     }
     
+    public String getIdRestaurant(){
+        return this.idRestaurant;
+    }
+    
     public void setPrice(String newPrice){
         this.price = newPrice;
     }
@@ -46,5 +52,9 @@ public class Plato {
     
     public void setId(String newId){
         this.id = newId;
+    }
+    
+    public void setDIdRestaurant(String newIdRestaurant){
+        this.idRestaurant = newIdRestaurant;
     }
 }
