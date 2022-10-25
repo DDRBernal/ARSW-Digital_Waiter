@@ -117,5 +117,4 @@ public class JavaPostgreSQLBasic implements JavaPostgreSQL {
         stmt.executeUpdate(sentence);
         stmt.close();
     }
-
 }

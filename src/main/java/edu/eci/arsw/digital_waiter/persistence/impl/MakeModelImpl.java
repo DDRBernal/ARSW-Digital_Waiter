@@ -96,7 +96,7 @@ public class MakeModelImpl implements MakeModel {
         for (String i : tables.get("id")) {
             boolean dis;
             dis = !"f".equals(tables.get("disponibility").get(p));
-            Table us = new Table(i, tables.get("name").get(p), tables.get("zone").get(p), dis);
+            Table us = new Table(tables.get("name").get(p), i, tables.get("zone").get(p), dis);
             set.add(us);
             p += 1;
         }

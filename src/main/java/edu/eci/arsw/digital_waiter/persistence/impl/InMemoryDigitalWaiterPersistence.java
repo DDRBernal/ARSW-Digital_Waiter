@@ -49,7 +49,7 @@ public class InMemoryDigitalWaiterPersistence implements DigitalWaiterPersistenc
         }
         return result;
     }
-    
+
     private void insertSQLQuery(String sentence) {
         HashMap<String, ArrayList<String>> result = null;
         try {
@@ -164,4 +164,31 @@ public class InMemoryDigitalWaiterPersistence implements DigitalWaiterPersistenc
         insertSQLQuery(sentence);
     }
 
+    @Override
+    public Set<Table> getTablesByRestaurant(String restaurantId) {
+        String sentence = SQLSentences.tablesByRestaurant(restaurantId);
+        HashMap<String, ArrayList<String>> tables = SQLQuery(sentence);
+        return maker.makeTable(tables);
+    }
+
+    @Override
+    public Set<Menu> getMenusByRestaurant(String restaurantId) {
+        String sentence = SQLSentences.menusByRestaurant(restaurantId);
+        HashMap<String, ArrayList<String>> menus = SQLQuery(sentence);
+        return maker.makeMenu(menus);
+    }
+
+    @Override
+    public Set<Plato> getPlatosByMenu(String menuId) {
+        String sentence = SQLSentences.platosByMenu(menuId);
+        HashMap<String, ArrayList<String>> platos = SQLQuery(sentence);
+        return maker.makePlato(platos);
+    }
+
+    @Override
+    public Set<Ingredient> getInredientByPlato(String platoId) {
+        String sentence = SQLSentences.ingredentByPlato(platoId);
+        HashMap<String, ArrayList<String>> ingredients = SQLQuery(sentence);
+        return maker.makeIngredient(ingredients);
+    }
 }

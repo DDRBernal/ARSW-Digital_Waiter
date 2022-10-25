@@ -26,7 +26,7 @@ public class Table {
         return this.name;
     }
     
-    public String gatZone(){
+    public String getZone(){
         return this.zone;
     }
     

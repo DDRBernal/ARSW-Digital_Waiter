@@ -82,6 +82,33 @@ public class DigitalWaiterServices {
     public Set<Table> getTableById(String id) throws DigitalWaiterPersistenceException {
         return dpp.getTableById(id);
     }
+    /**
+     * 
+     * @param restaurantId
+     * @return
+     * @throws DigitalWaiterPersistenceException 
+     */
+    public Set<Table> getTablesByRestaurant(String restaurantId)throws DigitalWaiterPersistenceException{
+        return dpp.getTablesByRestaurant(restaurantId);
+    }
+    /**
+     * 
+     * @param restaurantId
+     * @return
+     * @throws DigitalWaiterPersistenceException 
+     */
+    public Set<Menu> getMenusByRestaurant(String restaurantId)throws DigitalWaiterPersistenceException{
+        return dpp.getMenusByRestaurant(restaurantId);
+    }
+    /**
+     * 
+     * @param menuId
+     * @return
+     * @throws DigitalWaiterPersistenceException 
+     */
+    public Set<Plato> getPlatosByMenu(String menuId)throws DigitalWaiterPersistenceException{
+        return dpp.getPlatosByMenu(menuId);
+    }
 
     /**
      *
@@ -101,6 +128,10 @@ public class DigitalWaiterServices {
      */
     public Set<Plato> getPlatoById(String id) throws DigitalWaiterPersistenceException {
         return dpp.getPlatoById(id);
+    }
+    
+    public Set<Ingredient> getInredientByPlato(String platoId) throws DigitalWaiterPersistenceException {
+        return dpp.getInredientByPlato(platoId);
     }
 
     /**

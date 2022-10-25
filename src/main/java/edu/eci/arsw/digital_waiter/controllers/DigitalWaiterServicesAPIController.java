@@ -148,6 +148,42 @@ public class DigitalWaiterServicesAPIController {
             return new ResponseEntity<>("NOT FOUND",HttpStatus.NOT_FOUND);
         }
     }
+    
+    @RequestMapping(method = RequestMethod.GET, value = "/tablesByR/{restaurant}")
+    public ResponseEntity<?> getTablesByRestaurant(@PathVariable("restaurant") String restaurantId) {
+        try {
+            return new ResponseEntity<>(digitalWaiterServices.getTablesByRestaurant(restaurantId), HttpStatus.ACCEPTED);
+        } catch (DigitalWaiterPersistenceException ex){
+            return new ResponseEntity<>("NOT FOUND",HttpStatus.NOT_FOUND);
+        }
+    }
+    
+    @RequestMapping(method = RequestMethod.GET, value = "/menusByR/{restaurant}")
+    public ResponseEntity<?> getMenusByRestaurant(@PathVariable("restaurant") String restaurantId) {
+        try {
+            return new ResponseEntity<>(digitalWaiterServices.getMenusByRestaurant(restaurantId), HttpStatus.ACCEPTED);
+        } catch (DigitalWaiterPersistenceException ex){
+            return new ResponseEntity<>("NOT FOUND",HttpStatus.NOT_FOUND);
+        }
+    }
+    
+    @RequestMapping(method = RequestMethod.GET, value = "/platosByM/{menu}")
+    public ResponseEntity<?> getPlatosByMenu(@PathVariable("menu") String menuId) {
+        try {
+            return new ResponseEntity<>(digitalWaiterServices.getPlatosByMenu(menuId), HttpStatus.ACCEPTED);
+        } catch (DigitalWaiterPersistenceException ex){
+            return new ResponseEntity<>("NOT FOUND",HttpStatus.NOT_FOUND);
+        }
+    }
+    
+    @RequestMapping(method = RequestMethod.GET, value = "/ingredientByP/{plato}")
+    public ResponseEntity<?> getInredientByPlato(@PathVariable("plato") String platoId) {
+        try {
+            return new ResponseEntity<>(digitalWaiterServices.getInredientByPlato(platoId), HttpStatus.ACCEPTED);
+        } catch (DigitalWaiterPersistenceException ex){
+            return new ResponseEntity<>("NOT FOUND",HttpStatus.NOT_FOUND);
+        }
+    }
 
     @RequestMapping(method = RequestMethod.POST, value="/addUser/{name}/{age}/{phonenumber}/{email}/{password}/{isRestaurant}")
     public ResponseEntity<?> addNewUser(@PathVariable String name, @PathVariable String age, @PathVariable String phonenumber, @PathVariable String email, @PathVariable String password, @PathVariable boolean isRestaurant){
