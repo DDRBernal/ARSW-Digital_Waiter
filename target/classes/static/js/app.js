@@ -1,4 +1,5 @@
 var app = (function () {
+    let idRestaurant;
 
     function login(username, passwd){
         apiclient.getUserByName(username, passwd, (req,res) => {
@@ -37,9 +38,19 @@ var app = (function () {
         return isValid;
     }
 
-    function verifyUser(email,passwd){
+    function getTablesByRestaurant(idRestaurant){
+        apiclient.getTablesByRestaurant(idRestaurant, (req,res)=>{
 
+        });
     }
+
+    function getMenusByRestaurant(){
+        console.log("xxx");
+        apiclient.getMenusByRestaurant("",(req,res)=>{
+            console.log(res);
+        });
+    }
+
 
     function getNameAuthor(name) {
         apiclient.getUserByName( name, (req,res)=>{
@@ -66,7 +77,8 @@ var app = (function () {
     getNameAuthor: getNameAuthor,
     addNewName : addNewName,
     login : login,
-    signUp : signUp
+    signUp : signUp,
+    getMenusByRestaurant : getMenusByRestaurant
   };
 
 })();
