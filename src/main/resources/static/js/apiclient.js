@@ -15,13 +15,19 @@ apiclient=(function(){
             );
 		},
 
-        addNewUser:function(name,nickname,password,callback){
-            const put_request = $.ajax({
-                url: "/users/"+name+"/"+nickname+"/"+password,
+        addNewUser:function(name,age,phonenumber,email,password,isRestaurant,callback){
+            const post_request = $.ajax({
+                url: "dg/addUser/"+name+"/"+age+"/"+phonenumber+"/"+email+"/"+password+"/"+isRestaurant,
                 type: "POST",
-                data: '{"name":'+name+',"nickname":'+nickname+',"password:":'+password+'}',
+                data: '{"name":'+name+',"age:"'+age+',"phonenumber:"'+phonenumber+',"email":'+email+',"password:":'+password+',"isRestaurant:"'+isRestaurant+'}',
                 contentType: "application/json",
-            }); callback(null,name,name);
+            });
+            post_request.then(function (data) {
+                callback(true,true,true,true,true,true,true);
+              }, function (error) {
+                alert("Couldn't add the user")
+              }
+            );
         },
 
 	}

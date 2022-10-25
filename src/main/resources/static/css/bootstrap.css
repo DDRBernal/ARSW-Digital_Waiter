@@ -208,6 +208,7 @@ figure {
 img {
   vertical-align: middle;
   border-style: none;
+  padding: 0px 0px 54px 0px;
 }
 
 svg:not(:root) {
@@ -2145,7 +2146,7 @@ select.form-control-lg:not([size]):not([multiple]), .input-group-lg > select.for
 .form-check-input {
   position: absolute;
   margin-top: 0.3rem;
-  margin-left: -1.25rem;
+  margin-right: 18rem;
 }
 
 .form-check-input:disabled ~ .form-check-label {
