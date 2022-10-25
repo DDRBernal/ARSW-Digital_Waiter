@@ -159,6 +159,7 @@ public class InMemoryDigitalWaiterPersistence implements DigitalWaiterPersistenc
 
     @Override
     public void addNewUser(String name, String age, String phonenumber, String email, String password, boolean isRestaurant) {
+        password = Hash.hashThis(password);
         String sentence = SQLSentences.addNewUser(name, age, phonenumber, email, password, isRestaurant);
         insertSQLQuery(sentence);
     }
