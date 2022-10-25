@@ -190,4 +190,17 @@ public class InMemoryDigitalWaiterPersistence implements DigitalWaiterPersistenc
         HashMap<String, ArrayList<String>> ingredients = SQLQuery(sentence);
         return maker.makeIngredient(ingredients);
     }
+
+    @Override
+    public Set<Plato> getPlatosByrestaurant(String restaurantId) {
+        String sentence = SQLSentences.platosByRestaurant(restaurantId);
+        HashMap<String, ArrayList<String>> platos = SQLQuery(sentence);
+        return maker.makePlato(platos);
+    }
+
+    @Override
+    public void setTableDisponibilityByRestaurant(String idTable, String idRestaurant, boolean state) {
+        String sentence = SQLSentences.setTableDisponibilityByRestaurant(idRestaurant, idTable, state);
+        insertSQLQuery(sentence);
+    }
 }
