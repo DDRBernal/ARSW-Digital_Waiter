@@ -161,6 +161,16 @@ public class DigitalWaiterServices {
     public Set<User> getAllUsers() throws DigitalWaiterPersistenceException {
         return dpp.getAllUsers();
     }
+    
+    /**
+     * 
+     * @param restaurantId
+     * @return
+     * @throws DigitalWaiterPersistenceException 
+     */
+    public Set<Plato> getPlatosByrestaurant(String restaurantId)throws DigitalWaiterPersistenceException{
+        return dpp.getPlatosByrestaurant(restaurantId);
+    }
 
     /**
      *
@@ -172,9 +182,22 @@ public class DigitalWaiterServices {
     public boolean login(String email, String pswd) throws DigitalWaiterPersistenceException {
         return dpp.login(email, pswd);
     }
-
+    /**
+     * 
+     * @param name
+     * @param age
+     * @param phonenumber
+     * @param email
+     * @param password
+     * @param isRestaurant
+     * @throws DigitalWaiterPersistenceException 
+     */
     public void addNewUser(String name, String age, String phonenumber, String email, String password, boolean isRestaurant) throws DigitalWaiterPersistenceException {
          dpp.addNewUser(name, age, phonenumber, email,  password, isRestaurant);
+    }
+    
+    public void setTableDisponibilityByRestaurant( String idTable, String idRestaurant, boolean state)throws DigitalWaiterPersistenceException{
+        dpp.setTableDisponibilityByRestaurant( idTable, idRestaurant, state);
     }
 
 }

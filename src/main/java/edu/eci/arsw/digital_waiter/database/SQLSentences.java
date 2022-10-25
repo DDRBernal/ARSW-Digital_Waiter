@@ -43,6 +43,10 @@ public class SQLSentences {
         return "INSERT INTO usuario (id , phonenumber, email, age, pswd, name, isadmin) VALUES ('"+Hash.hashThis(email+password)+"', '"+phonenumber+"', '"+email+"', '"+age+"', '"+password+"', '"+name+"', '"+isRestaurant+"');";
     }
     
+     public static String setTableDisponibilityByRestaurant(String idRestaurant, String idTable, boolean state){
+         return"UPDATE mesa SET disponibility = '"+state+"' WHERE id = '"+idTable+"' AND idrestaurant = '"+idRestaurant+"';";
+     }
+    
     public static String tablesByRestaurant(String idRestaurant){
         return "SELECT * FROM mesa WHERE idrestaurant = '"+idRestaurant+"';";
     }

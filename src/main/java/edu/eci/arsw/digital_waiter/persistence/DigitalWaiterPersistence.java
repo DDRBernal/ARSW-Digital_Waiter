@@ -25,18 +25,11 @@ public interface DigitalWaiterPersistence {
     
     public Set<Table> getAllTables();       
     
-    /**
-     * 
-     * @return 
-     */
     public Set<Menu> getAllMenus();
-    /**
-     *
-     * @return the user of the given name
-     */
+
     public Set<Plato> getAllPlatos();
 
-    Set<User> getAllUsers() ;
+    public Set<User> getAllUsers() ;
     
     public boolean login (String email, String pswd);
 
@@ -60,6 +53,7 @@ public interface DigitalWaiterPersistence {
 
     public Set<Ingredient> getInredientByPlato(String platoId);
 
+    public Set<Plato> getPlatosByrestaurant(String restaurantId);
 
-    
+    public void setTableDisponibilityByRestaurant(String idTable, String idRestaurant, boolean state);
 }
