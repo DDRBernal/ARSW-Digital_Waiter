@@ -51,7 +51,6 @@ public class InMemoryDigitalWaiterPersistence implements DigitalWaiterPersistenc
     }
 
     private void insertSQLQuery(String sentence) {
-        HashMap<String, ArrayList<String>> result = null;
         try {
             sqlConnection.insertQuery(sentence);
         } catch (SQLException ex) {
@@ -190,5 +189,18 @@ public class InMemoryDigitalWaiterPersistence implements DigitalWaiterPersistenc
         String sentence = SQLSentences.ingredentByPlato(platoId);
         HashMap<String, ArrayList<String>> ingredients = SQLQuery(sentence);
         return maker.makeIngredient(ingredients);
+    }
+
+    @Override
+    public Set<Plato> getPlatosByrestaurant(String restaurantId) {
+        String sentence = SQLSentences.platosByRestaurant(restaurantId);
+        HashMap<String, ArrayList<String>> platos = SQLQuery(sentence);
+        return maker.makePlato(platos);
+    }
+
+    @Override
+    public void setTableDisponibilityByRestaurant(String idTable, String idRestaurant, boolean state) {
+        String sentence = SQLSentences.setTableDisponibilityByRestaurant(idRestaurant, idTable, state);
+        insertSQLQuery(sentence);
     }
 }
