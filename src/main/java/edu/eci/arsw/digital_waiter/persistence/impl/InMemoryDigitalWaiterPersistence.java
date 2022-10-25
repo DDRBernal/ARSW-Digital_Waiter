@@ -203,4 +203,17 @@ public class InMemoryDigitalWaiterPersistence implements DigitalWaiterPersistenc
         String sentence = SQLSentences.setTableDisponibilityByRestaurant(idRestaurant, idTable, state);
         insertSQLQuery(sentence);
     }
+
+    @Override
+    public Set<Restaurant> getRestaurantByUser(String userId) {
+        String sentence = SQLSentences.restaurantsByUser(userId);
+        HashMap<String, ArrayList<String>> restaurants = SQLQuery(sentence);
+        return maker.makeRestaurant(restaurants);
+    }
+
+    @Override
+    public void addNewRestaurant(String name, String address, String phonenumber, String idUsuario) {
+        String sentence = SQLSentences.addRestaurant( name, address, phonenumber, idUsuario);
+        insertSQLQuery(sentence);
+    }
 }

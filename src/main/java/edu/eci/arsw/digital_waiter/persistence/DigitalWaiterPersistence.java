@@ -56,4 +56,8 @@ public interface DigitalWaiterPersistence {
     public Set<Plato> getPlatosByrestaurant(String restaurantId);
 
     public void setTableDisponibilityByRestaurant(String idTable, String idRestaurant, boolean state);
+
+    public Set<Restaurant> getRestaurantByUser(String userId);
+
+    public void addNewRestaurant(String name, String address, String phonenumber, String idUsuario);
 }

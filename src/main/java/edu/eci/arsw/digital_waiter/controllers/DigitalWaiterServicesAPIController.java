@@ -193,11 +193,30 @@ public class DigitalWaiterServicesAPIController {
             return new ResponseEntity<>("NOT FOUND",HttpStatus.NOT_FOUND);
         }
     }
+    
+    @RequestMapping(method = RequestMethod.GET, value = "/restaurantByU/{user}")
+    public ResponseEntity<?> getRestaurantByUser(@PathVariable("user") String userId) {
+        try {
+            return new ResponseEntity<>(digitalWaiterServices.getRestaurantByUser(userId), HttpStatus.ACCEPTED);
+        } catch (DigitalWaiterPersistenceException ex){
+            return new ResponseEntity<>("NOT FOUND",HttpStatus.NOT_FOUND);
+        }
+    }
 
     @RequestMapping(method = RequestMethod.POST, value="/addUser/{name}/{age}/{phonenumber}/{email}/{password}/{isRestaurant}")
     public ResponseEntity<?> addNewUser(@PathVariable String name, @PathVariable String age, @PathVariable String phonenumber, @PathVariable String email, @PathVariable String password, @PathVariable boolean isRestaurant){
         try {
             digitalWaiterServices.addNewUser( name, age, phonenumber, email,  password, isRestaurant);           
+            return new ResponseEntity<>(HttpStatus.ACCEPTED);
+        } catch (DigitalWaiterPersistenceException e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+    
+    @RequestMapping(method = RequestMethod.POST, value="/addRestaurant/{name}/{address}/{phonenumber}/{idusuario}")
+    public ResponseEntity<?> addNewRestaurant(@PathVariable("name") String name, @PathVariable("address") String address, @PathVariable("phonenumber") String phonenumber, @PathVariable("idusuario") String idUsuario){
+        try {
+            digitalWaiterServices.addNewRestaurant( name, address, phonenumber, idUsuario);           
             return new ResponseEntity<>(HttpStatus.ACCEPTED);
         } catch (DigitalWaiterPersistenceException e) {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);

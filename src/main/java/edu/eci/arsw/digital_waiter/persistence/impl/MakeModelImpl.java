@@ -44,7 +44,7 @@ public class MakeModelImpl implements MakeModel {
         Set<Restaurant> set = new HashSet<>();
         int p = 0;
         for (String i : restaurants.get("id")) {
-            Restaurant us = new Restaurant(i, restaurants.get("name").get(p), restaurants.get("address").get(p), restaurants.get("phonenumber").get(p));
+            Restaurant us = new Restaurant(i, restaurants.get("name").get(p), restaurants.get("address").get(p), restaurants.get("phonenumber").get(p), restaurants.get("idusuario").get(p));
             set.add(us);
             p += 1;
         }
