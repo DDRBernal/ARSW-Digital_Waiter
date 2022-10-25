@@ -46,8 +46,19 @@ var app = (function () {
 
     function getMenusByRestaurant(){
         apiclient.getMenusByRestaurant("",(req,res)=>{
-            console.log(req);
+            console.log(res);
         });
+    }
+
+    function getRestaurants(){
+        apiclient.getRestaurants((req,res)=>{
+            console.log(res);
+            createTable(res);
+        });
+    }
+
+    function createTable(data){
+
     }
 
     function getMenuList(){
@@ -69,7 +80,8 @@ var app = (function () {
     addNewName : addNewName,
     login : login,
     signUp : signUp,
-    getMenusByRestaurant : getMenusByRestaurant
+    getMenusByRestaurant : getMenusByRestaurant,
+    getRestaurants : getRestaurants
   };
 
 })();

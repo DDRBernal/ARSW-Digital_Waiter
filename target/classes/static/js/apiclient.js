@@ -45,19 +45,32 @@ apiclient=(function(){
         },
 
         getMenusByRestaurant:function(idRestaurant,callback){
-        console.log(idRestaurant);
             const get_request = $.get({
                 url: "/dg/allMenus/",
                 contentType: "application/json",
             });
             get_request.then(function (data) {
-                console.log(data);
                 callback(data,data);
               }, function (error) {
                 alert("The user doesn't exists !")
               }
             );
         },
+
+
+        getRestaurants:function(callback){
+            const get_request = $.get({
+                url: "/dg/allRestaurants/",
+                contentType: "application/json",
+            });
+            get_request.then(function (data) {
+                callback(data,data);
+              }, function (error) {
+                alert("There aren't restaurants in the Database !")
+              }
+            );
+        }
+
 
 	}
 
