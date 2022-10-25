@@ -23,6 +23,7 @@ public class JavaPostgreSQLBasic implements JavaPostgreSQL {
      *
      * @return
      */
+    @Override
     public Connection connectDatabase() {
         Connection conn = null;
         try {
@@ -57,8 +58,9 @@ public class JavaPostgreSQLBasic implements JavaPostgreSQL {
      * @param user String user name.
      * @param password String user password.
      */
+    @Override
     public void connectDatabase(String host, String port, String database,
-                                String user, String password) {
+            String user, String password) {
         Connection connection = null;
         String url = "";
         try {
@@ -85,6 +87,7 @@ public class JavaPostgreSQLBasic implements JavaPostgreSQL {
 
     }
 
+    @Override
     public HashMap<String, ArrayList<String>> Query(String sentence) throws SQLException {
         Statement stmt = connection.createStatement();
         ResultSet rs = stmt.executeQuery(sentence);
@@ -106,6 +109,13 @@ public class JavaPostgreSQLBasic implements JavaPostgreSQL {
         rs.close();
         stmt.close();
         return table;
+    }
+
+    @Override
+    public void insertQuery(String sentence) throws SQLException {
+        Statement stmt = connection.createStatement();
+        stmt.executeUpdate(sentence);
+        stmt.close();
     }
 
 }

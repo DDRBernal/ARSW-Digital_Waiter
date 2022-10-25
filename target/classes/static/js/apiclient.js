@@ -16,6 +16,7 @@ apiclient=(function(){
 		},
 
         addNewUser:function(name,age,phonenumber,email,password,isRestaurant,callback){
+        console.log(name+" "+age+" "+phonenumber+" "+email+" "+password+" "+isRestaurant);
             const post_request = $.ajax({
                 url: "dg/addUser/"+name+"/"+age+"/"+phonenumber+"/"+email+"/"+password+"/"+isRestaurant,
                 type: "POST",
@@ -23,6 +24,7 @@ apiclient=(function(){
                 contentType: "application/json",
             });
             post_request.then(function (data) {
+            console.log(data);
                 callback(true,true,true,true,true,true,true);
               }, function (error) {
                 alert("Couldn't add the user")

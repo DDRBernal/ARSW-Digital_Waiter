@@ -12,14 +12,13 @@ var app = (function () {
         });
     }
 
-    function signUp(name, email, password,repassword){
+    function signUp(name,age,phonenumber, email, password,repassword){
         if (name === "" || email === "" || password==="") alert("The name, email and password can't be empty");
         else {
-        goToSite("");
             if (validateDataSignUp(name, email, password,repassword)){
-                apiclient.addNewUser(name,email,password,(req,res) => {
+                apiclient.addNewUser(name,age,phonenumber,email,password,false,(req,res) => {
                     if (res){
-                        goToSite("index.html");
+                        //goToSite("index.html");
                     }
                 });
             }

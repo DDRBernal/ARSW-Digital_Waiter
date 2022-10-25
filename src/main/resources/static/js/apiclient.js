@@ -16,6 +16,7 @@ apiclient=(function(){
 		},
 
         addNewUser:function(name,age,phonenumber,email,password,isRestaurant,callback){
+        console.log(name+" "+age+" "+phonenumber+" "+email+" "+password+" "+isRestaurant);
             const post_request = $.ajax({
                 url: "dg/addUser/"+name+"/"+age+"/"+phonenumber+"/"+email+"/"+password+"/"+isRestaurant,
                 type: "POST",

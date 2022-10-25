@@ -5,12 +5,14 @@
  */
 package edu.eci.arsw.digital_waiter.persistence.impl;
 
+import edu.eci.arsw.digital_waiter.database.JavaPostgreSQL;
 import edu.eci.arsw.digital_waiter.database.SQLSentences;
-import edu.eci.arsw.digital_waiter.database.databaseImpl.JavaPostgreSQLBasic;
 import edu.eci.arsw.digital_waiter.login.Hash;
-import edu.eci.arsw.digital_waiter.model.Client;
-import edu.eci.arsw.digital_waiter.model.Admin;
+import edu.eci.arsw.digital_waiter.model.Ingredient;
+import edu.eci.arsw.digital_waiter.model.Menu;
+import edu.eci.arsw.digital_waiter.model.Plato;
 import edu.eci.arsw.digital_waiter.model.Restaurant;
+import edu.eci.arsw.digital_waiter.model.Table;
 import edu.eci.arsw.digital_waiter.model.User;
 import edu.eci.arsw.digital_waiter.persistence.DigitalWaiterPersistence;
 import java.sql.SQLException;
@@ -19,8 +21,7 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
+
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -34,46 +35,35 @@ import org.springframework.beans.factory.annotation.Autowired;
 @Qualifier("inMemory")
 public class InMemoryDigitalWaiterPersistence implements DigitalWaiterPersistence {
 
-    private final Map<Tuple<String, String>, User> users = new HashMap<>();
-
     @Autowired
-    JavaPostgreSQLBasic sqlConnection;
+    JavaPostgreSQL sqlConnection = null;
+    @Autowired
+    MakeModel maker = null;
 
-    @Override
-    public void saveUser(User user) {
-        if (users.containsKey(new Tuple<>(user.getName(), user.getName()))) {
-            //user already exists
-        } else {
-            users.put(new Tuple<>(user.getName(), user.getName()), user);
+    private HashMap<String, ArrayList<String>> SQLQuery(String sentence) {
+        HashMap<String, ArrayList<String>> result = null;
+        try {
+            result = sqlConnection.Query(sentence);
+        } catch (SQLException ex) {
+            Logger.getLogger(InMemoryDigitalWaiterPersistence.class.getName()).log(Level.SEVERE, null, ex);
         }
+        return result;
     }
-
-    @Override
-    public User getUser(String name) {
-        return users.get(new Tuple<>(name, name));
+    
+    private void insertSQLQuery(String sentence) {
+        HashMap<String, ArrayList<String>> result = null;
+        try {
+            sqlConnection.insertQuery(sentence);
+        } catch (SQLException ex) {
+            Logger.getLogger(InMemoryDigitalWaiterPersistence.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     @Override
     public Set<User> getAllUsers() {
-        Set<User> set = new HashSet<>();
         String sentence = SQLSentences.all("usuario");
-        try {
-            HashMap<String, ArrayList<String>> users = sqlConnection.Query(sentence);
-            int p = 0;
-            for (String i : users.get("isadmin")) {
-                User us = null;
-                if ("f".equals(i)) {
-                    us = new Client(users.get("name").get(p), users.get("phonenumber").get(p), users.get("email").get(p), users.get("age").get(p), users.get("pswd").get(p));
-                } else if ("t".equals(i)) {
-                    us = new Admin(users.get("name").get(p), users.get("phonenumber").get(p), users.get("email").get(p), users.get("age").get(p), users.get("pswd").get(p));
-                }
-                set.add(us);
-                p += 1;
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(InMemoryDigitalWaiterPersistence.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return set;
+        HashMap<String, ArrayList<String>> users = SQLQuery(sentence);
+        return maker.makeUser(users);
     }
 
     @Override
@@ -82,36 +72,95 @@ public class InMemoryDigitalWaiterPersistence implements DigitalWaiterPersistenc
         boolean valid = false;
         pswd = Hash.hashThis(pswd);
         String sentence = SQLSentences.emailPswd(email, pswd);
-        try {
-            HashMap<String, ArrayList<String>> data = sqlConnection.Query(sentence);
-            if (!data.get("pswd").isEmpty()) {
-                valid = true;
-            }
-
-        } catch (SQLException ex) {
-            Logger.getLogger(InMemoryDigitalWaiterPersistence.class.getName()).log(Level.SEVERE, null, ex);
+        HashMap<String, ArrayList<String>> data = SQLQuery(sentence);
+        if (!data.get("pswd").isEmpty()) {
+            valid = true;
         }
         return valid;
     }
 
     @Override
     public Set<Restaurant> getAllRestaurants() {
-        Set<Restaurant> set = new HashSet<>();
         String sentence = SQLSentences.all("restaurant");
-        
-        try {
-            HashMap<String, ArrayList<String>> restaurants = sqlConnection.Query(sentence);
-            int p = 0;
-            for (String i : restaurants.get("id")) {
-                Restaurant us = new Restaurant(i, restaurants.get("name").get(p), restaurants.get("address").get(p), restaurants.get("phonenumber").get(p));
-                set.add(us);
-                p += 1;
-            }
-            
-        } catch (SQLException ex) {
-            Logger.getLogger(InMemoryDigitalWaiterPersistence.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        return set;
+        HashMap<String, ArrayList<String>> restaurants = SQLQuery(sentence);
+        return maker.makeRestaurant(restaurants);
+    }
+
+    @Override
+    public Set<Menu> getAllMenus() {
+        String sentence = SQLSentences.all("menu");
+        HashMap<String, ArrayList<String>> menus = SQLQuery(sentence);
+        return maker.makeMenu(menus);
+    }
+
+    @Override
+    public Set<Plato> getAllPlatos() {
+        String sentence = SQLSentences.all("plato");
+        HashMap<String, ArrayList<String>> platos = SQLQuery(sentence);
+        return maker.makePlato(platos);
+    }
+
+    @Override
+    public Set<Ingredient> getAllIngredients() {
+        String sentence = SQLSentences.all("ingredient");
+        HashMap<String, ArrayList<String>> ingredients = SQLQuery(sentence);
+        return maker.makeIngredient(ingredients);
+    }
+
+    @Override
+    public Set<Table> getAllTables() {
+        String sentence = SQLSentences.all("mesa");
+        HashMap<String, ArrayList<String>> tables = SQLQuery(sentence);
+        return maker.makeTable(tables);
+    }
+
+    @Override
+    public Set<User> getUserByID(String id) {
+
+        String sentence = SQLSentences.userById(id);
+        HashMap<String, ArrayList<String>> users = SQLQuery(sentence);
+        return maker.makeUser(users);
+    }
+
+    @Override
+    public Set<Table> getTableById(String id) {
+        String sentence = SQLSentences.tableById(id);
+        HashMap<String, ArrayList<String>> tables = SQLQuery(sentence);
+        return maker.makeTable(tables);
+    }
+
+    @Override
+    public Set<Ingredient> getIngredientById(String id) {
+        String sentence = SQLSentences.ingredientById(id);
+        HashMap<String, ArrayList<String>> ingredients = SQLQuery(sentence);
+        return maker.makeIngredient(ingredients);
+    }
+
+    @Override
+    public Set<Plato> getPlatoById(String id) {
+        String sentence = SQLSentences.platoById(id);
+        HashMap<String, ArrayList<String>> platos = SQLQuery(sentence);
+        return maker.makePlato(platos);
+    }
+
+    @Override
+    public Set<Menu> getMenuById(String id) {
+        String sentence = SQLSentences.menuById(id);
+        HashMap<String, ArrayList<String>> menus = SQLQuery(sentence);
+        return maker.makeMenu(menus);
+    }
+
+    @Override
+    public Set<Restaurant> getRestaurantById(String id) {
+        String sentence = SQLSentences.restaurantById(id);
+        HashMap<String, ArrayList<String>> restaurants = SQLQuery(sentence);
+        return maker.makeRestaurant(restaurants);
+    }
+
+    @Override
+    public void addNewUser(String name, String age, String phonenumber, String email, String password, boolean isRestaurant) {
+        String sentence = SQLSentences.addNewUser(name, age, phonenumber, email, password, isRestaurant);
+        insertSQLQuery(sentence);
     }
 
 }
