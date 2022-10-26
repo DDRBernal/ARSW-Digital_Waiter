@@ -45,8 +45,11 @@ var app = (function () {
     }
 
     function getMenusByRestaurant(){
-        apiclient.getMenusByRestaurant("",(req,res)=>{
-            console.log(res);
+        var link = window.location.href;
+        idRestaurant = link.replace("http://localhost:8080/menuLists.html?","");
+        console.log(idRestaurant);
+        apiclient.getMenusByRestaurant(idRestaurant,(req,res)=>{
+            createTableMenus(res);
         });
     }
 
@@ -57,30 +60,70 @@ var app = (function () {
         });
     }
 
+    function createTableMenus(data){
+        let table = $("#fl-table1 tbody");
+        table.empty();
+        if (data !== undefined) {
+          const datanew = data.map((menu) => {
+              return {
+                  name: menu.name,
+                  price: menu.price,
+                  calories: menu.calories
+              }
+          });
+          datanew.forEach(({name, price,calories}) => {
+          table.append(
+                    `<div class="menu-content">
+                     <div class="row">
+                         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                             <div class="dish-img"><a href="#"><img src="http://via.placeholder.com/70x70" alt="" class="img-circle"></a></div>
+                         </div>
+                         <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                             <div class="dish-content">
+                                 <h5 class="dish-title"><a href="#">${name}</a></h5>
+                                 <span class="dish-meta"> Calories: ${calories}</span>
+                                 <div class="dish-price">
+                                     <a>$ ${price} </a>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                 </div>`
+         );
+           })
+       }
+       }
+
     function createTable(data){
             let table = $("#fl-table tbody");
             table.empty();
             if (data !== undefined) {
               const datanew = data.map((restaurant) => {
                   return {
+                      id: restaurant.id,
                       name: restaurant.name,
                       address: restaurant.address,
                       phonenumber: restaurant.phonenumber
                   }
               });
               console.log(datanew);
-              datanew.forEach(({name, address, phonenumber}) => {
+              datanew.forEach(({id,name, address, phonenumber}) => {
               table.append(
                       `<tr>
                         <td>${name}</td>
                         <td>${address}</td>
                         <td>${phonenumber}</td>
+                        <td><button onclick="app.setIdRestaurant('${id}')">Seleccionar</button></td></tr>
                       `
-                      +"<td> <button onclick= app.get()>Seleccionar</button></td></tr>"
                   );
               })
         }
+    }
 
+    function setIdRestaurant(newid){
+        idRestaurant=newid;
+        console.log("menuLists.html?"+idRestaurant);
+        goToSite("menuLists.html?"+idRestaurant);
     }
 
     function getMenuList(){
@@ -103,7 +146,8 @@ var app = (function () {
     login : login,
     signUp : signUp,
     getMenusByRestaurant : getMenusByRestaurant,
-    getRestaurants : getRestaurants
+    getRestaurants : getRestaurants,
+    setIdRestaurant : setIdRestaurant
   };
 
 })();
