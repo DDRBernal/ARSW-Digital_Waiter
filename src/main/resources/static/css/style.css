@@ -1,0 +1,315 @@
+
+    body,
+    html {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+        background: #60a3bc !important;
+    }
+    .login-background {
+        height: 400px;
+        width: 350px;
+        margin-top: auto;
+        margin-bottom: auto;
+        background: #DE8C0B;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        padding: 10px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        border-radius: 5px;
+
+    }
+    .brand_logo_container {
+        position: absolute;
+        height: 170px;
+        width: 170px;
+        top: -75px;
+        border-radius: 50%;
+        background: #60a3bc;
+        padding: 10px;
+        text-align: center;
+    }
+    .brand_logo {
+        height: 150px;
+        width: 150px;
+        border-radius: 50%;
+        border: 2px solid white;
+    }
+    .form_container {
+        margin-top: 100px;
+    }
+    .login_btn {
+        width: 100%;
+        background: #c0392b !important;
+        color: white !important;
+    }
+    .login_btn:focus {
+        box-shadow: none !important;
+        outline: 0px !important;
+    }
+    .login_container {
+        padding: 0 2rem;
+    }
+    .input-group-text {
+        background: #c0392b !important;
+        color: white !important;
+        border: 0 !important;
+        border-radius: 0.25rem 0 0 0.25rem !important;
+    }
+    .input_user,
+    .input_pass:focus {
+        box-shadow: none !important;
+        outline: 0px !important;
+    }
+    .custom-checkbox .custom-control-input:checked~.custom-control-label::before {
+        background-color: #c0392b !important;
+    }
+
+    .form-check-input2 {
+      position: absolute;
+      margin-top: 0.3rem;
+      margin-right: 18rem;
+    }
+
+    .blurred-image {
+       /* The image used */
+       background-image: url("../img/background-menu.jpg");
+
+       /* Add the blur effect */
+       filter: blur(8px);
+       -webkit-filter: blur(8px);
+
+       /* Full height */
+       height: 100%;
+
+       /* Center and scale the image nicely */
+       background-position: center;
+       background-repeat: no-repeat;
+       background-size: cover;
+     }
+     .bg-text {
+        background-color: rgb(0,0,0); /* Fallback color */
+        background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
+        color: white;
+        font-weight: bold;
+        border: 3px solid #f1f1f1;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 2;
+        width: 80%;
+        padding: 20px;
+        text-align: center;
+      }
+
+
+      /*--------------------------------------------------------------
+      # Events
+      --------------------------------------------------------------*/
+      .events {
+        background-size: cover;
+        position: relative;
+      }
+
+      .events::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+      }
+
+      .events .section-title h2 {
+        color: #fff;
+      }
+
+      .events .container {
+        position: relative;
+      }
+
+      @media (min-width: 1024px) {
+        .events {
+          background-attachment: fixed;
+        }
+      }
+
+      .events .events-carousel {
+        background: rgba(255, 255, 255, 0.08);
+        padding: 30px;
+      }
+
+      .events .event-item {
+        color: #fff;
+      }
+
+      .events .event-item h3 {
+        font-weight: 600;
+        font-size: 26px;
+        color: #428bca;
+      }
+
+      .events .event-item .price {
+        font-size: 26px;
+        font-family: "Open Sans", sans-serif;
+        font-weight: 700;
+        margin-bottom: 15px;
+      }
+
+      .events .event-item .price span {
+        border-bottom: 2px solid #cda45e;
+      }
+
+      .events .event-item ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .events .event-item ul li {
+        padding-bottom: 10px;
+      }
+
+      .events .event-item ul i {
+        font-size: 20px;
+        padding-right: 4px;
+        color: #cda45e;
+      }
+
+      .events .event-item p:last-child {
+        margin-bottom: 0;
+      }
+
+      .events .swiper-pagination {
+        margin-top: 30px;
+        position: relative;
+      }
+
+      .events .swiper-pagination .swiper-pagination-bullet {
+        width: 12px;
+        height: 12px;
+        background-color: rgba(255, 255, 255, 0.4);
+        opacity: 1;
+      }
+
+      .events .swiper-pagination .swiper-pagination-bullet-active {
+        background-color: #428bca;
+      }
+
+
+		------------------------------------------------LOGO------------------------------------------------------------
+        .brand_logo_container_page {
+                padding: 50px;
+            }
+        .brand_logo_page {
+            height: 150px;
+            width: 150px;
+            border-radius: 50%;
+            border: 2px solid white;
+        }
+
+		------------------------------------------TITULO RESTAURANT-----------------------------------------------------
+        body {
+          margin: 0;
+          padding: 0;
+          height: 50vw;
+          background: #60a3bc;
+        }
+
+        .threeD {
+          color: red;
+          white-space: nowrap;
+          position: absolute;
+          top: 9%;
+          left: 25%;
+          transform: translate(-50%, -50%);
+          font-size: 2.5em;
+          font-family: sans-serif;
+          letter-spacing: 0.1em;
+          transition: 0.3s;
+          text-shadow: 1px 1px 0 white, 1px 2px 0 white, 1px 3px 0 white, 1px 4px 0 white,
+            1px 5px 0 white, 1px 6px 0 white, 1px 7px 0 white, 1px 8px 0 white,
+            5px 13px 15px black;
+        }
+
+        .threeD:hover {
+          transition: 0.3s;
+          transform: scale(1.1)translate(-50%, -50%);
+          text-shadow: 1px -1px 0 white, 1px -2px 0 white, 1px -3px 0 white,
+            1px -4px 0 white, 1px -5px 0 white, 1px -6px 0 white, 1px -7px 0 white,
+            1px -8px 0 white, 5px -13px 15px black, 5px -13px 25px #808080;
+        }
+
+
+		------------------------------------------DISENO DE NAVBAR-----------------------------------------------------
+        * {
+          margin: 0;
+          padding: 0;
+          -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+        }
+
+        .navMenu {
+          position: fixed;
+          top: 20%;
+          left: 25%;
+          -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+        }
+
+        .navMenu a {
+          font-family: 	sans-serif;
+          color: #f6f4e6;
+          text-decoration: none;
+          font-size: 1.2em;
+          text-transform: uppercase;
+          font-weight: 300;
+          width: 80;
+          -webkit-transition: all 0.2s ease-in-out;
+          transition: all 0.2s ease-in-out;
+          padding: 20px;
+        }
+
+        .navMenu .dot {
+          width: 6px;
+          height: 6px;
+          background: red;
+          border-radius: 50%;
+          opacity: 0;
+          -webkit-transform: translateX(50px);
+          transform: translateX(50px);
+          -webkit-transition: all 0.2s ease-in-out;
+          transition: all 0.2s ease-in-out;
+        }
+
+        .navMenu a:nth-child(1):hover ~ .dot {
+          -webkit-transform: translateX(45px);
+          transform: translateX(45px);
+          -webkit-transition: all 0.2s ease-in-out;
+          transition: all 0.2s ease-in-out;
+          opacity: 1;
+        }
+
+        .navMenu a:nth-child(2):hover ~ .dot {
+          -webkit-transform: translateX(190px);
+          transform: translateX(190px);
+          -webkit-transition: all 0.2s ease-in-out;
+          transition: all 0.2s ease-in-out;
+          opacity: 1;
+        }
+
+        .navMenu a:nth-child(3):hover ~ .dot {
+          -webkit-transform: translateX(360px);
+          transform: translateX(360px);
+          -webkit-transition: all 0.2s ease-in-out;
+          transition: all 0.2s ease-in-out;
+          opacity: 1;
+        }
+    ------------------------------------------DISENO DE LISTA RESTAURATES---------------------------------------------
+    .table_container{
+        transform: translate(10px,100px) ;
+    }
