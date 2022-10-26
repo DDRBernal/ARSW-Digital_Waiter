@@ -58,7 +58,7 @@ apiclient=(function(){
         },
 
 
-        getRestaurants:function(idrcallback){
+        getRestaurants:function(callback){
             const get_request = $.get({
                 url: "/dg/allRestaurants/",
                 contentType: "application/json",

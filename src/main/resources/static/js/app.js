@@ -45,15 +45,18 @@ var app = (function () {
     }
 
     function getMenusByRestaurant(){
-        apiclient.getMenusByRestaurant("r001",(req,res)=>{
+        var link = window.location.href;
+        idRestaurant = link.replace("http://localhost:8080/menuLists.html?","");
+        console.log(idRestaurant);
+        apiclient.getMenusByRestaurant(idRestaurant,(req,res)=>{
             createTableMenus(res);
-
         });
     }
 
     function getRestaurants(){
         apiclient.getRestaurants((req,res)=>{
-
+            console.log(res);
+            createTable(res);
         });
     }
 
@@ -80,16 +83,47 @@ var app = (function () {
                                  <h5 class="dish-title"><a href="#">${name}</a></h5>
                                  <span class="dish-meta"> Calories: ${calories}</span>
                                  <div class="dish-price">
-                                     <p>$ ${price} </p>
+                                     <a>$ ${price} </a>
                                  </div>
                              </div>
                          </div>
                      </div>
                  </div>`
+         );
+           })
+       }
+       }
 
-              );
-          })
-      }
+    function createTable(data){
+            let table = $("#fl-table tbody");
+            table.empty();
+            if (data !== undefined) {
+              const datanew = data.map((restaurant) => {
+                  return {
+                      id: restaurant.id,
+                      name: restaurant.name,
+                      address: restaurant.address,
+                      phonenumber: restaurant.phonenumber
+                  }
+              });
+              console.log(datanew);
+              datanew.forEach(({id,name, address, phonenumber}) => {
+              table.append(
+                      `<tr>
+                        <td>${name}</td>
+                        <td>${address}</td>
+                        <td>${phonenumber}</td>
+                        <td><button onclick="app.setIdRestaurant('${id}')">Seleccionar</button></td></tr>
+                      `
+                  );
+              })
+        }
+    }
+
+    function setIdRestaurant(newid){
+        idRestaurant=newid;
+        console.log("menuLists.html?"+idRestaurant);
+        goToSite("menuLists.html?"+idRestaurant);
     }
 
     function getMenuList(){
@@ -112,7 +146,8 @@ var app = (function () {
     login : login,
     signUp : signUp,
     getMenusByRestaurant : getMenusByRestaurant,
-    getRestaurants : getRestaurants
+    getRestaurants : getRestaurants,
+    setIdRestaurant : setIdRestaurant
   };
 
 })();

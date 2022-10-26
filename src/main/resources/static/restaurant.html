@@ -32,17 +32,22 @@
       </nav>
 </head>
 
-<body onload="app.getMenusByRestaurant()">
+<body onload="app.getRestaurants()">
 <div class="Informacion">
-  <p>
-    nombre
-  </p>
-  <p>
-    direccion
-  </p>
-  <p>
-    telefono
-  </p>
+    <div class="table_container">
+        <table class="table table-striped table-hover" id="fl-table">
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Direccion</th>
+                <th scope="col">Telefono</th>
+            </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+
 </div>
 </body>
 

@@ -10,13 +10,15 @@ public class Restaurant {
     private String name;
     private String address;
     private String phonenumber;
+    private String userid;
     
     
-    public Restaurant(String id, String name, String address, String phonenumber){
+    public Restaurant(String id, String name, String address, String phonenumber, String userid){
         this.id = id;
         this.name = name;
         this.address = address;
         this.phonenumber = phonenumber;
+        this.userid = userid;
     }
     
     public String getId(){
@@ -34,6 +36,10 @@ public class Restaurant {
         return this.phonenumber;
     }
     
+    public String getUserId(){
+        return this.userid;
+    }
+    
     public void setId(String newId){
         this.id = newId;
     }
@@ -48,5 +54,9 @@ public class Restaurant {
     
     public void setPhonenumber(String newPhonenumber){
         this.phonenumber = newPhonenumber;
+    }
+    
+    public void setUserId(String newUserId){
+        this.userid = newUserId;
     }
 }
