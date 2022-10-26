@@ -58,6 +58,28 @@ var app = (function () {
     }
 
     function createTable(data){
+            let table = $("#fl-table tbody");
+            table.empty();
+            if (data !== undefined) {
+              const datanew = data.map((restaurant) => {
+                  return {
+                      name: restaurant.name,
+                      address: restaurant.address,
+                      phonenumber: restaurant.phonenumber
+                  }
+              });
+              console.log(datanew);
+              datanew.forEach(({name, address, phonenumber}) => {
+              table.append(
+                      `<tr>
+                        <td>${name}</td>
+                        <td>${address}</td>
+                        <td>${phonenumber}</td>
+                      `
+                      +"<td> <button onclick= app.get()>Seleccionar</button></td></tr>"
+                  );
+              })
+        }
 
     }
 
