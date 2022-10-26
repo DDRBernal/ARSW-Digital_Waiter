@@ -46,19 +46,19 @@ apiclient=(function(){
 
         getMenusByRestaurant:function(idRestaurant,callback){
             const get_request = $.get({
-                url: "/dg/allMenus/",
+                url: "/dg/menusByR/"+idRestaurant,
                 contentType: "application/json",
             });
             get_request.then(function (data) {
                 callback(data,data);
               }, function (error) {
-                alert("The user doesn't exists !")
+
               }
             );
         },
 
 
-        getRestaurants:function(callback){
+        getRestaurants:function(idrcallback){
             const get_request = $.get({
                 url: "/dg/allRestaurants/",
                 contentType: "application/json",

@@ -45,20 +45,51 @@ var app = (function () {
     }
 
     function getMenusByRestaurant(){
-        apiclient.getMenusByRestaurant("",(req,res)=>{
-            console.log(res);
+        apiclient.getMenusByRestaurant("r001",(req,res)=>{
+            createTableMenus(res);
+
         });
     }
 
     function getRestaurants(){
         apiclient.getRestaurants((req,res)=>{
-            console.log(res);
-            createTable(res);
+
         });
     }
 
-    function createTable(data){
+    function createTableMenus(data){
+        let table = $("#fl-table1 tbody");
+        table.empty();
+        if (data !== undefined) {
+          const datanew = data.map((menu) => {
+              return {
+                  name: menu.name,
+                  price: menu.price,
+                  calories: menu.calories
+              }
+          });
+          datanew.forEach(({name, price,calories}) => {
+          table.append(
+                    `<div class="menu-content">
+                     <div class="row">
+                         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                             <div class="dish-img"><a href="#"><img src="http://via.placeholder.com/70x70" alt="" class="img-circle"></a></div>
+                         </div>
+                         <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                             <div class="dish-content">
+                                 <h5 class="dish-title"><a href="#">${name}</a></h5>
+                                 <span class="dish-meta"> Calories: ${calories}</span>
+                                 <div class="dish-price">
+                                     <p>$ ${price} </p>
+                                 </div>
+                             </div>
+                         </div>
+                     </div>
+                 </div>`
 
+              );
+          })
+      }
     }
 
     function getMenuList(){
