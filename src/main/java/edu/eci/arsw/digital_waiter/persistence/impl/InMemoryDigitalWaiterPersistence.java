@@ -213,7 +213,14 @@ public class InMemoryDigitalWaiterPersistence implements DigitalWaiterPersistenc
 
     @Override
     public void addNewRestaurant(String name, String address, String phonenumber, String idUsuario) {
-        String sentence = SQLSentences.addRestaurant( name, address, phonenumber, idUsuario);
+        String sentence = SQLSentences.addRestaurant(name, address, phonenumber, idUsuario);
         insertSQLQuery(sentence);
+    }
+
+    @Override
+    public Set<User> getUserByEmail(String email) {
+        String sentence = SQLSentences.userByEmail(email);
+        HashMap<String, ArrayList<String>> user = SQLQuery(sentence);
+        return maker.makeUser(user);
     }
 }

@@ -72,6 +72,16 @@ public class DigitalWaiterServices {
     public Set<User> getUserByID(String id) throws DigitalWaiterPersistenceException {
         return dpp.getUserByID(id);
     }
+    
+    /**
+     * 
+     * @param email
+     * @return
+     * @throws DigitalWaiterPersistenceException 
+     */
+    public Set<User> getUserByEmail(String email) throws DigitalWaiterPersistenceException {
+        return dpp.getUserByEmail(email);
+    }
 
     /**
      *

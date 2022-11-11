@@ -51,10 +51,19 @@ public class DigitalWaiterServicesAPIController {
             return new ResponseEntity<>("NOT FOUND",HttpStatus.NOT_FOUND);
         }
     }
-    @RequestMapping(method = RequestMethod.GET, value = "/user/{id}")
+    @RequestMapping(method = RequestMethod.GET, value = "/userById/{id}")
     public ResponseEntity<?> getUserById(@PathVariable("id") String id) {
         try {
             return new ResponseEntity<>(digitalWaiterServices.getUserByID(id), HttpStatus.ACCEPTED);
+        } catch (DigitalWaiterPersistenceException ex){
+            return new ResponseEntity<>("NOT FOUND",HttpStatus.NOT_FOUND);
+        }
+    }
+    
+    @RequestMapping(method = RequestMethod.GET, value = "/user/{email}")
+    public ResponseEntity<?> getUserByEmail(@PathVariable("email") String email) {
+        try {
+            return new ResponseEntity<>(digitalWaiterServices.getUserByEmail(email), HttpStatus.ACCEPTED);
         } catch (DigitalWaiterPersistenceException ex){
             return new ResponseEntity<>("NOT FOUND",HttpStatus.NOT_FOUND);
         }
@@ -105,7 +114,7 @@ public class DigitalWaiterServicesAPIController {
     }
     
     @RequestMapping(method = RequestMethod.GET, value = "/allPlatos")
-    public ResponseEntity<?> getAllSPlatos() {
+    public ResponseEntity<?> getAllPlatos() {
         try {
             return new ResponseEntity<>(digitalWaiterServices.getAllPlatos(), HttpStatus.ACCEPTED);
         } catch (DigitalWaiterPersistenceException ex){
