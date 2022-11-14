@@ -45,7 +45,8 @@ apiclient=(function(){
         },
 
         getMenusByRestaurant:function(idRestaurant,callback){
-            const get_request = $.get({
+        console.log(idRestaurant);
+            const get_request = $.ajax({
                 url: "/dg/menusByR/"+idRestaurant,
                 contentType: "application/json",
             });

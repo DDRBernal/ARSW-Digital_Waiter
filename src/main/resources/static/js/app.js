@@ -55,14 +55,16 @@ var app = (function () {
 
     function getRestaurants(){
         apiclient.getRestaurants((req,res)=>{
-            console.log(res);
             createTable(res);
         });
     }
 
     function createTableMenus(data){
+        //row-starters gy-5
         let table = $("#fl-table1 tbody");
         table.empty();
+        var elemento = document.getElementById("starters");
+
         if (data !== undefined) {
           const datanew = data.map((menu) => {
               return {
@@ -72,26 +74,21 @@ var app = (function () {
               }
           });
           datanew.forEach(({name, price,calories}) => {
-          table.append(
-                    `<div class="menu-content">
-                     <div class="row">
-                         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                             <div class="dish-img"><a href="#"><img src="http://via.placeholder.com/70x70" alt="" class="img-circle"></a></div>
-                         </div>
-                         <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                             <div class="dish-content">
-                                 <h5 class="dish-title"><a href="#">${name}</a></h5>
-                                 <span class="dish-meta"> Calories: ${calories}</span>
-                                 <div class="dish-price">
-                                     <a>$ ${price} </a>
-                                 </div>
-                             </div>
-                         </div>
-                     </div>
-                 </div>`
-         );
+
+          elemento.innerHTML +=
+                    `<div class="col-lg-4 menu-item">
+                     <a href="img/menu/menu-item-1.png" class="glightbox"><img src="img/menu/menu-item-1.png" class="menu-img img-fluid" alt=""></a>
+                     <h4>${name}</h4>
+                     <p class="ingredients">
+                       Lorem, deren, trataro, filede, nerada
+                     </p>
+                     <p class="price">
+                       ${price}
+                     </p>
+                   </div><!-- Menu Item -->`
+
            })
-       }
+       }console.log(elemento.innerHTML);
        }
 
     function createTable(data){

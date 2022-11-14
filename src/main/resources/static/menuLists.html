@@ -1,601 +1,186 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script
-        src="https://code.jquery.com/jquery-3.3.1.js"
-        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-        crossorigin="anonymous"></script>
-<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
-<link href="css/swiper/swiper-bundle.min.css" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="css/menuLists.css" />
-<link rel="stylesheet" type="text/css" href="css/style.css" />
-<script src="js/apiclient.js"></script>
-<script src="js/app.js"></script>
-
-
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
+
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script
+          src="https://code.jquery.com/jquery-3.3.1.js"
+          integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+          crossorigin="anonymous"></script>
+  <!-- bootstrap CSS Files -->
+  <link href="css/bootstrap/bootstrap.min.css" rel="stylesheet">
+  <!-- Template menu CSS File -->
+  <link href="css/menuStyle.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <script src="js/apiclient.js"></script>
+  <script src="js/app.js"></script>
 </head>
 
 <body onload="app.getMenusByRestaurant()">
-<!-- menu -->
-<div class="blurred-image"></div>
-<div class="content ">
-    <div class="container">
-        <div class="row ">
-            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
-                <div class="col-lg-10 mx-auto col-12 text-center mb-3">
-                </div>
-            </div>
-        </div>
-        <div class="row bg-text">
-            <h1 class="mt-0 text-primary">Nuestro Menú</h1>
-            <p class="lead">
-                Digital Waiter tiene a su mano los mejores servicios,
-                aqui podras visualizar la carta de tus restaurantes preferidos
 
-                en un solo click y sin necesidad de aplicaciones
-                accederás a tu menú y podrás hacer tu pedido.</p>
+<!-- ======= Header ======= -->
+<header id="header">
+  <div class="d-flex flex-column">
 
-            <!-- ======= Events Section ======= -->
-            <section id="events" class="events">
-                <div class="container" data-aos="fade-up">
-
-
-
-                    <div class="events-slider swiper" data-aos="fade-up" data-aos-delay="100">
-                        <div class="swiper-wrapper">
-
-                            <div class="swiper-slide">
-                                <div class="row event-item">
-                                    <!-- main course -->
-                                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 mb40">
-                                        <div class="menu-block">
-                                            <h3 class="menu-title">Main Course</h3>
-                                            <table class="table table-striped table-hover" id="fl-table1">
-                                            <div class="menu-content">
-                                                <div class="row">
-                                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                        <div class="dish-img"><a href="#"><img src="http://via.placeholder.com/70x70" alt="" class="img-circle"></a></div>
-                                                    </div>
-                                                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                        <div class="dish-content">
-                                                            <h5 class="dish-title"><a href="#">Biryani</a></h5>
-                                                            <span class="dish-meta"> Onion  /  Tomato</span>
-                                                            <div class="dish-price">
-                                                                <p>$14</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                                <tbody>
-                                                </tbody>
-                                            </table>
-
-                                        </div>
-                                    </div>
-                                    <!-- /.main Course -->
-                                    <!-- Soup -->
-                                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 mb40">
-                                        <div class="menu-block">
-                                            <h3 class="menu-title">Soup</h3>
-                                            <div class="menu-content">
-                                                <div class="row">
-                                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                        <div class="dish-img"><a href="#"><img src="http://via.placeholder.com/70x70" alt="" class="img-circle"></a></div>
-                                                    </div>
-                                                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                        <div class="dish-content">
-                                                            <h5 class="dish-title"><a href="#">Minestrone</a></h5>
-                                                            <span class="dish-meta"> beans  / onions celery / carrots</span>
-                                                            <div class="dish-price">
-                                                                <p>$15</p>
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="menu-content">
-                                                <div class="row">
-                                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                        <div class="dish-img"><a href="#"><img src="http://via.placeholder.com/70x70" alt="" class="img-circle"></a></div>
-                                                    </div>
-                                                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                        <div class="dish-content">
-                                                            <h5 class="dish-title"><a href="#">Tomato soup</a></h5>
-                                                            <span class="dish-meta">Cheesiy   / Creamy  /  Sweet</span>
-                                                            <div class="dish-price">
-                                                                <p>$14</p>
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="menu-content">
-                                                <div class="row">
-                                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                        <div class="dish-img"><a href="#"><img src="http://via.placeholder.com/70x70" alt="" class="img-circle"></a></div>
-                                                    </div>
-                                                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                        <div class="dish-content">
-                                                            <h5 class="dish-title"><a href="#">Cream of broccoli</a> </h5>
-                                                            <span class="dish-meta"> broccoli /  milk  / cream </span>
-                                                            <div class="dish-price">
-                                                                <p>$9</p>
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- /.soup -->
-                                    <!-- Juice -->
-                                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 mb40">
-                                        <div class="menu-block">
-                                            <h3 class="menu-title">Juice</h3>
-                                            <div class="menu-content">
-                                                <div class="row">
-                                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                        <div class="dish-img"><a href="#"><img src="http://via.placeholder.com/70x70" alt="" class="img-circle"></a></div>
-                                                    </div>
-                                                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                        <div class="dish-content">
-                                                            <h5 class="dish-title"><a href="#">Aloo and Dal ki Tikki</a></h5>
-                                                            <span class="dish-meta">Onion  /  Tomato</span>
-                                                            <div class="dish-price">
-                                                                <p>$10</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="menu-content">
-                                                <div class="row">
-                                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                        <div class="dish-img"><a href="#"><img src="http://via.placeholder.com/70x70" alt="" class="img-circle"></a></div>
-                                                    </div>
-                                                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                        <div class="dish-content">
-                                                            <h5 class="dish-title"><a href="#">Cheese Balls</a></h5>
-                                                            <span class="dish-meta">puffed corn  /  cheese-flavored  </span>
-                                                            <div class="dish-price">
-                                                                <p>$8</p>
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="menu-content">
-                                                <div class="row">
-                                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                        <div class="dish-img"><a href="#"><img src="http://via.placeholder.com/70x70" alt="" class="img-circle"></a></div>
-                                                    </div>
-                                                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                        <div class="dish-content">
-                                                            <h5 class="dish-title"><a href="#">Veg Crispy</a> </h5>
-                                                            <span class="dish-meta">Ginger garlic /  Black pepper</span>
-                                                            <div class="dish-price">
-                                                                <p>$12</p>
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- /.Juice -->
-                                </div>
-                            </div><!-- End testimonial item -->
-                                </tr>
-                                </thead>
-                                <tbody>
-                                </tbody>
-                            </table>
-
-                            <div class="swiper-slide">
-                                <div class="row event-item">
-
-                                    <!-- main course -->
-                                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 mb40">
-                                        <div class="menu-block">
-                                            <h3 class="menu-title">Main Course</h3>
-                                            <div class="menu-content">
-                                                <div class="row">
-                                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                        <div class="dish-img"><a href="#"><img src="http://via.placeholder.com/70x70" alt="" class="img-circle"></a></div>
-                                                    </div>
-                                                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                        <div class="dish-content">
-                                                            <h5 class="dish-title"><a href="#">Biryani</a></h5>
-                                                            <span class="dish-meta"> Onion  /  Tomato</span>
-                                                            <div class="dish-price">
-                                                                <p>$14</p>
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="menu-content">
-                                                <div class="row">
-                                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                        <div class="dish-img"><a href="#"><img src="http://via.placeholder.com/70x70" alt="" class="img-circle"></a></div>
-                                                    </div>
-                                                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                        <div class="dish-content">
-                                                            <h5 class="dish-title"><a href="#">Paneer Butter Masala</a></h5>
-                                                            <span class="dish-meta">Aloo Masala  /  Aloo Palak</span>
-                                                            <div class="dish-price">
-                                                                <p>$11</p>
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-
-
-                                            <div class="menu-content">
-                                                <div class="row">
-                                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                        <div class="dish-img"><a href="#"><img src="http://via.placeholder.com/70x70" alt="" class="img-circle"></a></div>
-                                                    </div>
-                                                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                        <div class="dish-content">
-                                                            <h5 class="dish-title"><a href="#">Chole Bhature</a> </h5>
-                                                            <span class="dish-meta"> Rice Soft Idli  /  Ragi idli  /  Oats Idli </span>
-                                                            <div class="dish-price">
-                                                                <p>$8</p>
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-
-
-
-                                        </div>
-                                    </div>
-
-                                    <!-- /.main Course -->
-                                    <!-- Soup -->
-                                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 mb40">
-                                        <div class="menu-block">
-                                            <h3 class="menu-title">Soup</h3>
-                                            <div class="menu-content">
-                                                <div class="row">
-                                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                        <div class="dish-img"><a href="#"><img src="http://via.placeholder.com/70x70" alt="" class="img-circle"></a></div>
-                                                    </div>
-                                                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                        <div class="dish-content">
-                                                            <h5 class="dish-title"><a href="#">Minestrone</a></h5>
-                                                            <span class="dish-meta"> beans  / onions celery / carrots</span>
-                                                            <div class="dish-price">
-                                                                <p>$15</p>
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="menu-content">
-                                                <div class="row">
-                                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                        <div class="dish-img"><a href="#"><img src="http://via.placeholder.com/70x70" alt="" class="img-circle"></a></div>
-                                                    </div>
-                                                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                        <div class="dish-content">
-                                                            <h5 class="dish-title"><a href="#">Tomato soup</a></h5>
-                                                            <span class="dish-meta">Cheesiy   / Creamy  /  Sweet</span>
-                                                            <div class="dish-price">
-                                                                <p>$14</p>
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="menu-content">
-                                                <div class="row">
-                                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                        <div class="dish-img"><a href="#"><img src="http://via.placeholder.com/70x70" alt="" class="img-circle"></a></div>
-                                                    </div>
-                                                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                        <div class="dish-content">
-                                                            <h5 class="dish-title"><a href="#">Cream of broccoli</a> </h5>
-                                                            <span class="dish-meta"> broccoli /  milk  / cream </span>
-                                                            <div class="dish-price">
-                                                                <p>$9</p>
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- /.soup -->
-                                    <!-- Juice -->
-                                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 mb40">
-                                        <div class="menu-block">
-                                            <h3 class="menu-title">Juice</h3>
-                                            <div class="menu-content">
-                                                <div class="row">
-                                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                        <div class="dish-img"><a href="#"><img src="http://via.placeholder.com/70x70" alt="" class="img-circle"></a></div>
-                                                    </div>
-                                                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                        <div class="dish-content">
-                                                            <h5 class="dish-title"><a href="#">Aloo and Dal ki Tikki</a></h5>
-                                                            <span class="dish-meta">Onion  /  Tomato</span>
-                                                            <div class="dish-price">
-                                                                <p>$10</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="menu-content">
-                                                <div class="row">
-                                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                        <div class="dish-img"><a href="#"><img src="http://via.placeholder.com/70x70" alt="" class="img-circle"></a></div>
-                                                    </div>
-                                                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                        <div class="dish-content">
-                                                            <h5 class="dish-title"><a href="#">Cheese Balls</a></h5>
-                                                            <span class="dish-meta">puffed corn  /  cheese-flavored  </span>
-                                                            <div class="dish-price">
-                                                                <p>$8</p>
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="menu-content">
-                                                <div class="row">
-                                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                        <div class="dish-img"><a href="#"><img src="http://via.placeholder.com/70x70" alt="" class="img-circle"></a></div>
-                                                    </div>
-                                                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                        <div class="dish-content">
-                                                            <h5 class="dish-title"><a href="#">Veg Crispy</a> </h5>
-                                                            <span class="dish-meta">Ginger garlic /  Black pepper</span>
-                                                            <div class="dish-price">
-                                                                <p>$12</p>
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- /.Juice -->
-
-                                </div>
-                            </div><!-- End testimonial item -->
-
-                            <div class="swiper-slide">
-                                <div class="row event-item">
-
-                                    <!-- main course -->
-                                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 mb40">
-                                        <div class="menu-block">
-                                            <h3 class="menu-title">Main Course</h3>
-                                            <div class="menu-content">
-                                                <div class="row">
-                                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                        <div class="dish-img"><a href="#"><img src="http://via.placeholder.com/70x70" alt="" class="img-circle"></a></div>
-                                                    </div>
-                                                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                        <div class="dish-content">
-                                                            <h5 class="dish-title"><a href="#">Biryani</a></h5>
-                                                            <span class="dish-meta"> Onion  /  Tomato</span>
-                                                            <div class="dish-price">
-                                                                <p>$14</p>
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-
-                                            <div class="menu-content">
-                                                <div class="row">
-                                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                        <div class="dish-img"><a href="#"><img src="http://via.placeholder.com/70x70" alt="" class="img-circle"></a></div>
-                                                    </div>
-                                                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                        <div class="dish-content">
-                                                            <h5 class="dish-title"><a href="#">Paneer Butter Masala</a></h5>
-                                                            <span class="dish-meta">Aloo Masala  /  Aloo Palak</span>
-                                                            <div class="dish-price">
-                                                                <p>$11</p>
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-
-
-                                            <div class="menu-content">
-                                                <div class="row">
-                                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                        <div class="dish-img"><a href="#"><img src="http://via.placeholder.com/70x70" alt="" class="img-circle"></a></div>
-                                                    </div>
-                                                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                        <div class="dish-content">
-                                                            <h5 class="dish-title"><a href="#">Chole Bhature</a> </h5>
-                                                            <span class="dish-meta"> Rice Soft Idli  /  Ragi idli  /  Oats Idli </span>
-                                                            <div class="dish-price">
-                                                                <p>$8</p>
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-
-
-
-                                        </div>
-                                    </div>
-
-                                    <!-- /.main Course -->
-                                    <!-- Soup -->
-                                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 mb40">
-                                        <div class="menu-block">
-                                            <h3 class="menu-title">Soup</h3>
-                                            <div class="menu-content">
-                                                <div class="row">
-                                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                        <div class="dish-img"><a href="#"><img src="http://via.placeholder.com/70x70" alt="" class="img-circle"></a></div>
-                                                    </div>
-                                                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                        <div class="dish-content">
-                                                            <h5 class="dish-title"><a href="#">Minestrone</a></h5>
-                                                            <span class="dish-meta"> beans  / onions celery / carrots</span>
-                                                            <div class="dish-price">
-                                                                <p>$15</p>
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="menu-content">
-                                                <div class="row">
-                                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                        <div class="dish-img"><a href="#"><img src="http://via.placeholder.com/70x70" alt="" class="img-circle"></a></div>
-                                                    </div>
-                                                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                        <div class="dish-content">
-                                                            <h5 class="dish-title"><a href="#">Tomato soup</a></h5>
-                                                            <span class="dish-meta">Cheesiy   / Creamy  /  Sweet</span>
-                                                            <div class="dish-price">
-                                                                <p>$14</p>
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="menu-content">
-                                                <div class="row">
-                                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                        <div class="dish-img"><a href="#"><img src="http://via.placeholder.com/70x70" alt="" class="img-circle"></a></div>
-                                                    </div>
-                                                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                        <div class="dish-content">
-                                                            <h5 class="dish-title"><a href="#">Cream of broccoli</a> </h5>
-                                                            <span class="dish-meta"> broccoli /  milk  / cream </span>
-                                                            <div class="dish-price">
-                                                                <p>$9</p>
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- /.soup -->
-                                    <!-- Juice -->
-                                    <div class="col-lg-4 col-md-4 col-sm-6 col-xs-12 mb40">
-                                        <div class="menu-block">
-                                            <h3 class="menu-title">Juice</h3>
-                                            <div class="menu-content">
-                                                <div class="row">
-                                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                        <div class="dish-img"><a href="#"><img src="http://via.placeholder.com/70x70" alt="" class="img-circle"></a></div>
-                                                    </div>
-                                                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                        <div class="dish-content">
-                                                            <h5 class="dish-title"><a href="#">Aloo and Dal ki Tikki</a></h5>
-                                                            <span class="dish-meta">Onion  /  Tomato</span>
-                                                            <div class="dish-price">
-                                                                <p>$10</p>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="menu-content">
-                                                <div class="row">
-                                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                        <div class="dish-img"><a href="#"><img src="http://via.placeholder.com/70x70" alt="" class="img-circle"></a></div>
-                                                    </div>
-                                                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                        <div class="dish-content">
-                                                            <h5 class="dish-title"><a href="#">Cheese Balls</a></h5>
-                                                            <span class="dish-meta">puffed corn  /  cheese-flavored  </span>
-                                                            <div class="dish-price">
-                                                                <p>$8</p>
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="menu-content">
-                                                <div class="row">
-                                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                        <div class="dish-img"><a href="#"><img src="http://via.placeholder.com/70x70" alt="" class="img-circle"></a></div>
-                                                    </div>
-                                                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                        <div class="dish-content">
-                                                            <h5 class="dish-title"><a href="#">Veg Crispy</a> </h5>
-                                                            <span class="dish-meta">Ginger garlic /  Black pepper</span>
-                                                            <div class="dish-price">
-                                                                <p>$12</p>
-                                                            </div>
-                                                        </div>
-
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <!-- /.Juice -->
-
-                                </div>
-                            </div><!-- End testimonial item -->
-
-                        </div>
-                        <div class="swiper-pagination"></div>
-                    </div>
-                </div>
-            </section><!-- End Events Section -->
-
-
-        </div>
+    <div class="profile">
+      <img src="img/profile-img.jpg" alt="" class="img-fluid rounded-circle">
+      <h1 class="text-light"><a href="index.html">Alex Smith</a></h1>
     </div>
-</div>
 
-<script src="css/swiper/swiper-bundle.min.js"></script>
-<script src="js/main.js"></script>
-<!-- /.menu -->
+    <nav  class="nav-submenu navbar">
+      <ul>
+        <li><a href="#"> <i class="image-home"></i> <span>Home</span></a></li>
+        <li><a href="#"> <i class="image-restaurant"></i> <span>Restaurantes</span></a></li>
+        <li><a href="#"> <i class="image-orders"></i> <span>Mis pedidos</span></a></li>
+        <li><a href="#"> <i class="image-port"></i> <span>Portfolio</span></a></li>
+        <li><a href="#"> <i class="image-services"></i> <span>Services</span></a></li>
+        <li><a href="#"> <i class="image-contact"></i> <span>Contact</span></a></li>
+      </ul>
+    </nav><!-- .nav-menu -->
+  </div>
+</header><!-- End Header -->
+
+    <!-- ======= Menu Section ======= -->
+    <section id="menu" class="menu">
+      <div data-aos="fade-up">
+
+        <div class="section-header">
+          <h2>Menu</h2>
+          <p>Check this <span>Delicious Menu!</span></p>
+        </div>
+
+        <ul class="nav nav-tabs d-flex justify-content-center" data-aos="fade-up" data-aos-delay="200">
+
+          <li class="nav-item">
+            <a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#menu-starters">
+              <h4>Starters</h4>
+            </a>
+          </li><!-- End tab nav item -->
+
+          <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#menu-breakfast">
+              <h4>Breakfast</h4>
+            </a><!-- End tab nav item -->
+
+          <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#menu-lunch">
+              <h4>Lunch</h4>
+            </a>
+          </li><!-- End tab nav item -->
+
+          <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#menu-dinner">
+              <h4>Dinner</h4>
+            </a>
+          </li><!-- End tab nav item -->
+
+        </ul>
+
+        <div class="tab-content" data-aos="fade-up" data-aos-delay="300">
+          <div class="tab-pane fade active show" id="menu-starters">
+            <div class="tab-header text-center">
+              <p>Menu</p>
+              <h3>Starters</h3>
+            </div>
+
+            <div id="starters" class="row gy-5">
+              <!--Code generate in JS-->
+              <div class="col-lg-4 col-md-6 portfolio-item filter-app">
+                <div class="portfolio-wrap">
+                  <img src="img/menu/menu-item-1.png" class="img-fluid" alt="">
+                  <div class="portfolio-links">
+                    <a href="assets/img/portfolio/portfolio-1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="App 1"><i class="bx bx-plus"></i></a>
+                    <a href="portfolio-details.html" title="More Details"><i class="bx bx-link"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div><!-- End Starter Menu Content -->
+
+          <div class="tab-pane fade" id="menu-breakfast">
+
+            <div class="tab-header text-center">
+              <p>Menu</p>
+              <h3>Breakfast</h3>
+            </div>
+
+            <div id="breakfast" class="row gy-5">
+
+              <div class="col-lg-4 menu-item">
+                <a href="img/menu/menu-item-1.png" class="glightbox"><img src="img/menu/menu-item-1.png" class="menu-img img-fluid" alt=""></a>
+                <h4>Magnam Tiste</h4>
+                <p class="ingredients">
+                  Lorem, deren, trataro, filede, nerada
+                </p>
+                <p class="price">
+                  $5.95
+                </p>
+              </div><!-- Menu Item -->
+
+            </div>
+          </div><!-- End Breakfast Menu Content -->
+
+          <div class="tab-pane fade" id="menu-lunch">
+
+            <div class="tab-header text-center">
+              <p>Menu</p>
+              <h3>Lunch</h3>
+            </div>
+
+            <div id="lunch" class="row gy-5">
+
+              <div class="col-lg-4 menu-item">
+                <a href="img/menu/menu-item-1.png" class="glightbox"><img src="img/menu/menu-item-1.png" class="menu-img img-fluid" alt=""></a>
+                <h4>Magnam Tiste</h4>
+                <p class="ingredients">
+                  Lorem, deren, trataro, filede, nerada
+                </p>
+                <p class="price">
+                  $5.95
+                </p>
+              </div><!-- Menu Item -->
+
+            </div>
+          </div><!-- End Lunch Menu Content -->
+
+          <div id="dinner" class="tab-pane fade" id="menu-dinner">
+
+            <div class="tab-header text-center">
+              <p>Menu</p>
+              <h3>Dinner</h3>
+            </div>
+
+            <div class="row gy-5">
+
+              <div class="col-lg-4 menu-item">
+                <a href="img/menu/menu-item-1.png" class="glightbox"><img src="img/menu/menu-item-1.png" class="menu-img img-fluid" alt=""></a>
+                <h4>Magnam Tiste</h4>
+                <p class="ingredients">
+                  Lorem, deren, trataro, filede, nerada
+                </p>
+                <p class="price">
+                  $5.95
+                </p>
+              </div><!-- Menu Item -->
+
+            </div>
+          </div><!-- End Dinner Menu Content -->
+
+        </div>
+
+      </div>
+    </section><!-- End Menu Section -->
+  </main><!-- End #main -->
+
+ 
+
+
+  <!-- Vendor JS Files -->
+  <script src="js/bootstrap/bootstrap.bundle.min.js"></script>
+
 </body>
+
 </html>
