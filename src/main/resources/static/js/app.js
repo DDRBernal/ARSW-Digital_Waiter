@@ -74,23 +74,21 @@ var app = (function() {
                 }
             });
             datanew.forEach(({ name, price, calories }) => {
-
                 elemento.innerHTML +=
                     `<div class="col-lg-4 menu-item">
                      <a href="img/menu/menu-item-1.png" class="glightbox"><img src="img/menu/menu-item-1.png" class="menu-img img-fluid" alt=""></a>
                      <h4>${name}</h4>
                      <p class="ingredients">
-                       Lorem, deren, trataro, filede, nerada
+                       Calorias: ${calories}
                      </p>
                      <p class="price">
-                       ${price}
+                       ${price}$
                      </p>
                      <button type="button" class="btn btn-outline-danger">Seleccionar</button>
                    </div><!-- Menu Item -->`
 
             })
         }
-        console.log(elemento.innerHTML);
     }
 
     function createTable(data) {
@@ -105,7 +103,6 @@ var app = (function() {
                     phonenumber: restaurant.phonenumber
                 }
             });
-            console.log(datanew);
             datanew.forEach(({ id, name, address, phonenumber }) => {
                 table.append(
                     `<tr>
