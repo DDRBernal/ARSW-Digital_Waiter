@@ -6,6 +6,7 @@
 package edu.eci.arsw.digital_waiter.controllers;
 
 
+import edu.eci.arsw.digital_waiter.model.Admin;
 import edu.eci.arsw.digital_waiter.services.DigitalWaiterServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -55,6 +56,15 @@ public class DigitalWaiterServicesAPIController {
     public ResponseEntity<?> getUserById(@PathVariable("id") String id) {
         try {
             return new ResponseEntity<>(digitalWaiterServices.getUserByID(id), HttpStatus.ACCEPTED);
+        } catch (DigitalWaiterPersistenceException ex){
+            return new ResponseEntity<>("NOT FOUND",HttpStatus.NOT_FOUND);
+        }
+    }
+    
+    @RequestMapping(method = RequestMethod.GET, value = "/imIAdmin/{email}")
+    public ResponseEntity<?> imIAdmin(@PathVariable("email") String email) {
+        try {
+            return new ResponseEntity<>(digitalWaiterServices.getUserByEmail(email).iterator().next() instanceof Admin, HttpStatus.ACCEPTED);
         } catch (DigitalWaiterPersistenceException ex){
             return new ResponseEntity<>("NOT FOUND",HttpStatus.NOT_FOUND);
         }
