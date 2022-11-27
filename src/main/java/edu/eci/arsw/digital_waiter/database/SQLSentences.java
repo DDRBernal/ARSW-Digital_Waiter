@@ -69,7 +69,7 @@ public class SQLSentences {
     }
 
     public static String platosByMenu(String idMenu) {
-        return "select plato.id, plato.\"name\", plato.price, plato.calories  from plato join menuplato on menuplato.idplato = plato.id  join menu on menu.id = menuplato.idmenu  where menu.id  = '" + idMenu + "';";
+        return "select plato.id, plato.\"name\", plato.price, plato.calories, plato.idrestaurant  from plato join menuplato on menuplato.idplato = plato.id  join menu on menu.id = menuplato.idmenu  where menu.id  = '" + idMenu + "';";
     }
 
     public static String ingredentByPlato(String idPlato) {
