@@ -44,7 +44,10 @@ public class InMemoryDigitalWaiterPersistence implements DigitalWaiterPersistenc
     private HashMap<String, ArrayList<String>> SQLQuery(String sentence) {
         HashMap<String, ArrayList<String>> result = null;
         try {
-            result = sqlConnection.Query(sentence);
+            synchronized(sqlConnection){
+                result = sqlConnection.Query(sentence);
+            }
+            
         } catch (SQLException ex) {
             Logger.getLogger(InMemoryDigitalWaiterPersistence.class.getName()).log(Level.SEVERE, null, ex);
         }
