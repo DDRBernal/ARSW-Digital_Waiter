@@ -5,6 +5,7 @@
  */
 package edu.eci.arsw.digital_waiter.persistence.impl;
 
+import edu.eci.arsw.digital_waiter.persistence.maker.MakeModel;
 import edu.eci.arsw.digital_waiter.database.JavaPostgreSQL;
 import edu.eci.arsw.digital_waiter.database.SQLSentences;
 import edu.eci.arsw.digital_waiter.login.Hash;
