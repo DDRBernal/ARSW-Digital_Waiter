@@ -6,18 +6,42 @@ var app = (function() {
             //login succefully
             if (res == true) {
                 console.log("Valid");
-                goToSite("restaurant.html");
+                sessionStorage.setItem('usuario', username); // Here we save the user name
+                //check if the user is a restaurant or not
+                apiclient.imIAdmin(username, (req, res) => {
+                    alert(res);
+                    if (res) {
+                        goToSite("restaurant.html");
+                    } else {
+                        goToSite("restaurant.html");
+                    }
+                });
             } else {
                 alert("The user doesn't exists or the email/password are invalids");
             }
         });
     }
 
+    function checkCookies() {
+        var email_user = sessionStorage.getItem('usuario');
+        console.log(email_user);
+        apiclient.getUserByEmail(email_user, (req, res) => {
+            console.log(res);
+            var string_res = JSON.stringify(res[0]);
+            var parse_res = JSON.parse(string_res);
+            console.log(string_res);
+            console.log(parse_res);
+            document.getElementById("username").textContent = parse_res.name;
+        });
+    }
+
     function signUp(name, age, phonenumber, email, password, repassword) {
+        var checkedValue = document.getElementById('isRestaurant').checked;
+        console.log(checkedValue);
         if (name === "" || email === "" || password === "") alert("The name, email and password can't be empty");
         else {
             if (validateDataSignUp(name, email, password, repassword)) {
-                apiclient.addNewUser(name, age, phonenumber, email, password, false, (req, res) => {
+                apiclient.addNewUser(name, age, phonenumber, email, password, checkedValue, (req, res) => {
                     if (res) {
                         goToSite("index.html");
                     }
@@ -143,7 +167,8 @@ var app = (function() {
         signUp: signUp,
         getMenusByRestaurant: getMenusByRestaurant,
         getRestaurants: getRestaurants,
-        setIdRestaurant: setIdRestaurant
+        setIdRestaurant: setIdRestaurant,
+        checkCookies: checkCookies
     };
 
 })();
