@@ -17,49 +17,49 @@ public interface DigitalWaiterPersistence {
     
 
     
-    public Set<Restaurant> getAllRestaurants();
+    public Set<Restaurant> getAllRestaurants() throws DigitalWaiterPersistenceException;
     
-    public Set<Ingredient> getAllIngredients();
+    public Set<Ingredient> getAllIngredients() throws DigitalWaiterPersistenceException;
     
-    public Set<User> getUserByID(String id);
+    public Set<User> getUserByID(String id) throws DigitalWaiterPersistenceException;
     
-    public Set<Table> getAllTables();       
+    public Set<Table> getAllTables() throws DigitalWaiterPersistenceException;       
     
-    public Set<Menu> getAllMenus();
+    public Set<Menu> getAllMenus() throws DigitalWaiterPersistenceException;
 
-    public Set<Plato> getAllPlatos();
+    public Set<Plato> getAllPlatos() throws DigitalWaiterPersistenceException;
 
-    public Set<User> getAllUsers() ;
+    public Set<User> getAllUsers() throws DigitalWaiterPersistenceException;
     
-    public boolean login (String email, String pswd);
+    public boolean login (String email, String pswd) throws DigitalWaiterPersistenceException;
 
-    public Set<Table> getTableById(String id);
+    public Set<Table> getTableById(String id) throws DigitalWaiterPersistenceException;
 
-    public Set<Ingredient> getIngredientById(String id);
+    public Set<Ingredient> getIngredientById(String id) throws DigitalWaiterPersistenceException;
 
-    public Set<Plato> getPlatoById(String id);
+    public Set<Plato> getPlatoById(String id) throws DigitalWaiterPersistenceException;
 
-    public Set<Menu> getMenuById(String id);
+    public Set<Menu> getMenuById(String id) throws DigitalWaiterPersistenceException;
 
-    public Set<Restaurant> getRestaurantById(String id);
+    public Set<Restaurant> getRestaurantById(String id) throws DigitalWaiterPersistenceException;
     
-    public void addNewUser(String name, String age, String phonenumber, String email, String password, boolean isRestaurant);
+    public void addNewUser(String name, String age, String phonenumber, String email, String password, boolean isRestaurant) throws DigitalWaiterPersistenceException;
 
-    public Set<Table> getTablesByRestaurant(String restaurantId);
+    public Set<Table> getTablesByRestaurant(String restaurantId) throws DigitalWaiterPersistenceException;
 
-    public Set<Menu> getMenusByRestaurant(String restaurantId);
+    public Set<Menu> getMenusByRestaurant(String restaurantId) throws DigitalWaiterPersistenceException;
 
-    public Set<Plato> getPlatosByMenu(String menuId);
+    public Set<Plato> getPlatosByMenu(String menuId) throws DigitalWaiterPersistenceException;
 
-    public Set<Ingredient> getInredientByPlato(String platoId);
+    public Set<Ingredient> getInredientByPlato(String platoId) throws DigitalWaiterPersistenceException;
 
-    public Set<Plato> getPlatosByrestaurant(String restaurantId);
+    public Set<Plato> getPlatosByrestaurant(String restaurantId) throws DigitalWaiterPersistenceException;
 
-    public void setTableDisponibilityByRestaurant(String idTable, String idRestaurant, boolean state);
+    public void setTableDisponibilityByRestaurant(String idTable, String idRestaurant, boolean state) throws DigitalWaiterPersistenceException;
 
-    public Set<Restaurant> getRestaurantByUser(String userId);
+    public Set<Restaurant> getRestaurantByUser(String userId) throws DigitalWaiterPersistenceException;
 
-    public void addNewRestaurant(String name, String address, String phonenumber, String idUsuario);
+    public void addNewRestaurant(String name, String address, String phonenumber, String idUsuario) throws DigitalWaiterPersistenceException;
 
-    public Set<User> getUserByEmail(String email);
+    public Set<User> getUserByEmail(String email) throws DigitalWaiterPersistenceException;
 }

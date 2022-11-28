@@ -64,7 +64,7 @@ public class DigitalWaiterServicesAPIController {
     @RequestMapping(method = RequestMethod.GET, value = "/imIAdmin/{email}")
     public ResponseEntity<?> imIAdmin(@PathVariable("email") String email) {
         try {
-            return new ResponseEntity<>(digitalWaiterServices.getUserByEmail(email).iterator().next() instanceof Admin, HttpStatus.ACCEPTED);
+            return new ResponseEntity<>(digitalWaiterServices.imIAdmin(email), HttpStatus.ACCEPTED);
         } catch (DigitalWaiterPersistenceException ex){
             return new ResponseEntity<>("NOT FOUND",HttpStatus.NOT_FOUND);
         }
