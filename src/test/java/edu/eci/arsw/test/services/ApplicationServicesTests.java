@@ -145,4 +145,16 @@ public class ApplicationServicesTests {
             Logger.getLogger(ApplicationServicesTests.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    @Test
+    public void deberiaAgregarRestaurantes(){
+        try {
+            dgservices.addNewRestaurant("RestauranteTest", "Calle falsa123", "3224587548", "fe20b0291bf1b8e32d2e4be90ff79cc5");
+            Assert.assertTrue(dgservices.getRestaurantByUser("fe20b0291bf1b8e32d2e4be90ff79cc5").iterator().hasNext());
+            sqlConnection.insertQuery("DELETE FROM restaurant where idusuario= 'fe20b0291bf1b8e32d2e4be90ff79cc5'");
+            Assert.assertFalse(dgservices.getRestaurantByUser("fe20b0291bf1b8e32d2e4be90ff79cc5").iterator().hasNext());
+        } catch (DigitalWaiterPersistenceException | SQLException ex) {
+            Logger.getLogger(ApplicationServicesTests.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 }
