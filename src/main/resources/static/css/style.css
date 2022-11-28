@@ -204,13 +204,16 @@
 
 		------------------------------------------------LOGO------------------------------------------------------------
         .brand_logo_container_page {
-                padding: 50px;
+                padding: 2000px;
             }
         .brand_logo_page {
             height: 150px;
             width: 150px;
             border-radius: 50%;
             border: 2px solid white;
+        }
+        .logo_position{
+            padding: 50px;
         }
 
 		------------------------------------------TITULO RESTAURANT-----------------------------------------------------
@@ -246,76 +249,7 @@
         }
 
 
-		------------------------------------------DISENO DE NAVBAR-----------------------------------------------------
-        * {
-          margin: 0;
-          padding: 0;
-          -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-        }
 
-        .navMenu {
-          position: fixed;
-          top: 20%;
-          left: 25%;
-          -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-        }
-
-        .navMenu a {
-          font-family: 	sans-serif;
-          color: #f6f4e6;
-          text-decoration: none;
-          font-size: 1.2em;
-          text-transform: uppercase;
-          font-weight: 300;
-          width: 80;
-          -webkit-transition: all 0.2s ease-in-out;
-          transition: all 0.2s ease-in-out;
-          padding: 20px;
-        }
-
-        .navMenu .dot {
-          width: 6px;
-          height: 6px;
-          background: red;
-          border-radius: 50%;
-          opacity: 0;
-          -webkit-transform: translateX(50px);
-          transform: translateX(50px);
-          -webkit-transition: all 0.2s ease-in-out;
-          transition: all 0.2s ease-in-out;
-        }
-
-        .navMenu a:nth-child(1):hover ~ .dot {
-          -webkit-transform: translateX(45px);
-          transform: translateX(45px);
-          -webkit-transition: all 0.2s ease-in-out;
-          transition: all 0.2s ease-in-out;
-          opacity: 1;
-        }
-
-        .navMenu a:nth-child(2):hover ~ .dot {
-          -webkit-transform: translateX(190px);
-          transform: translateX(190px);
-          -webkit-transition: all 0.2s ease-in-out;
-          transition: all 0.2s ease-in-out;
-          opacity: 1;
-        }
-
-        .navMenu a:nth-child(3):hover ~ .dot {
-          -webkit-transform: translateX(360px);
-          transform: translateX(360px);
-          -webkit-transition: all 0.2s ease-in-out;
-          transition: all 0.2s ease-in-out;
-          opacity: 1;
-        }
-    ------------------------------------------DISENO DE LISTA RESTAURATES---------------------------------------------
-    .table_container{
-        transform: translate(10px,100px) ;
-    }
-
-    -----------
 
 
 /*--------------------------------------------------------------
@@ -437,7 +371,7 @@ h6 {
 .nav-submenu a:focus {
   display: flex;
   align-items: center;
-  color: #a8a9b4;
+  color: #040b14;
   padding: 12px 15px;
   margin-bottom: 8px;
   transition: 0.3s;
@@ -465,7 +399,19 @@ h6 {
 .nav-submenu li:hover>a i {
   color: #149ddd;
 }
-
+.navbar-brand {
+    display: inline-block;
+    padding-top: 0.3125rem;
+    padding-bottom: 0.3125rem;
+    margin-right: 1rem;
+    font-size: 3.25rem;
+    line-height: inherit;
+    white-space: nowrap;
+    background: #040b14;
+}
+.navfondo{
+    background: #040b14;
+}
 
 
 /*--------------------------------------------------------------

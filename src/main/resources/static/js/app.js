@@ -9,7 +9,6 @@ var app = (function() {
                 sessionStorage.setItem('usuario', username); // Here we save the user name
                 //check if the user is a restaurant or not
                 apiclient.imIAdmin(username, (req, res) => {
-                    alert(res);
                     if (res) {
                         goToSite("restaurant.html");
                     } else {
@@ -24,13 +23,9 @@ var app = (function() {
 
     function checkCookies() {
         var email_user = sessionStorage.getItem('usuario');
-        console.log(email_user);
         apiclient.getUserByEmail(email_user, (req, res) => {
-            console.log(res);
             var string_res = JSON.stringify(res[0]);
             var parse_res = JSON.parse(string_res);
-            console.log(string_res);
-            console.log(parse_res);
             document.getElementById("username").textContent = parse_res.name;
         });
     }
@@ -62,9 +57,13 @@ var app = (function() {
         return isValid;
     }
 
-    function getTablesByRestaurant(idRestaurant) {
+    function getTablesByRestaurant() {
+        var link = window.location.href;
+        idRestaurant = link.replace("http://localhost:8080/tables.html?", "");
+        console.log(idRestaurant);
         apiclient.getTablesByRestaurant(idRestaurant, (req, res) => {
-
+            console.log(res);
+            addTableRestaurant(res);
         });
     }
 
@@ -98,6 +97,9 @@ var app = (function() {
                 }
             });
             datanew.forEach(({ name, price, calories }) => {
+                var link = window.location.href
+                idRestaurant = link.replace("http://localhost:8080/menuLists.html?", "");
+                console.log(idRestaurant);
                 elemento.innerHTML +=
                     `<div class="col-lg-4 menu-item">
                      <a href="img/menu/menu-item-1.png" class="glightbox"><img src="img/menu/menu-item-1.png" class="menu-img img-fluid" alt=""></a>
@@ -108,12 +110,44 @@ var app = (function() {
                      <p class="price">
                        ${price}$
                      </p>
+                     <button type="button" class="btn btn-outline-danger" onclick="app.setTableRestaurant('${idRestaurant}')">Seleccionar</button>
+                   </div><!-- Menu Item -->`
+
+            })
+        }
+    }
+
+    function addTableRestaurant(data) {
+        //row-starters gy-5
+        console.log(data);
+        let table = $("#fl-table1 tbody");
+        table.empty();
+        var elemento = document.getElementById("starters");
+        if (data !== undefined) {
+            const datanew = data.map((table) => {
+                return {
+                    id: table.id,
+                    name: table.name,
+                    zone: table.zone,
+                    disponibility: table.disponibility,
+                    idRestaurant: table.idRestaurant
+                }
+            });
+            datanew.forEach(({ id, name, zone, disponibility, idRestaurant }) => {
+                var image = "table_avaliable.png";
+                if (!disponibility) { image = "table_not_avaliable.png"; }
+                elemento.innerHTML +=
+                    `<div class="col-lg-4 menu-item">
+                     <a href="img/menu/menu-item-1.png" class="glightbox"><img src="img/${image}" class="menu-img img-fluid" alt=""></a>
+                     <h4>Mesa ${name}</h4>
                      <button type="button" class="btn btn-outline-danger">Seleccionar</button>
                    </div><!-- Menu Item -->`
 
             })
         }
     }
+
+
 
     function createTable(data) {
         let table = $("#fl-table tbody");
@@ -142,13 +176,15 @@ var app = (function() {
 
     function setIdRestaurant(newid) {
         idRestaurant = newid;
-        console.log("menuLists.html?" + idRestaurant);
         goToSite("menuLists.html?" + idRestaurant);
     }
 
-    function getMenuList() {
-
+    function setTableRestaurant() {
+        var link = window.location.href;
+        idRestaurant = link.replace("http://localhost:8080/menuLists.html?", "");
+        goToSite("tables.html?" + idRestaurant);
     }
+
 
     function addNewName() {
 
@@ -168,7 +204,9 @@ var app = (function() {
         getMenusByRestaurant: getMenusByRestaurant,
         getRestaurants: getRestaurants,
         setIdRestaurant: setIdRestaurant,
-        checkCookies: checkCookies
+        checkCookies: checkCookies,
+        getTablesByRestaurant: getTablesByRestaurant,
+        setTableRestaurant: setTableRestaurant
     };
 
 })();
