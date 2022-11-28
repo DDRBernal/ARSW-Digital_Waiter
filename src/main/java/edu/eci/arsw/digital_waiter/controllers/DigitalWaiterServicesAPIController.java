@@ -6,7 +6,7 @@
 package edu.eci.arsw.digital_waiter.controllers;
 
 
-import edu.eci.arsw.digital_waiter.model.Admin;
+
 import edu.eci.arsw.digital_waiter.services.DigitalWaiterServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

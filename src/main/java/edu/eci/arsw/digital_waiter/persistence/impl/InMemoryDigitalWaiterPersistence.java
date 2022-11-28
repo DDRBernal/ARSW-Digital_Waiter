@@ -25,8 +25,6 @@ import org.springframework.stereotype.Component;
 import java.util.HashMap;
 
 import java.util.Set;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
