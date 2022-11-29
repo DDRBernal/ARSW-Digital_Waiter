@@ -1,11 +1,13 @@
 package edu.eci.arsw.test.services;
 
 
+import edu.eci.arsw.digital_waiter.database.JavaPostgreSQL;
 import edu.eci.arsw.digital_waiter.model.Menu;
 import edu.eci.arsw.digital_waiter.model.Plato;
 import edu.eci.arsw.digital_waiter.model.Table;
 import edu.eci.arsw.digital_waiter.persistence.DigitalWaiterPersistenceException;
 import edu.eci.arsw.digital_waiter.services.DigitalWaiterServices;
+import java.sql.SQLException;
 import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -23,6 +25,8 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 public class ApplicationServicesTests {
     @Autowired
     DigitalWaiterServices dgservices = null;
+    @Autowired
+    JavaPostgreSQL sqlConnection = null;
     
     @Test
     public void deberiaConsultarUnUsuario() {
@@ -126,6 +130,30 @@ public class ApplicationServicesTests {
             Assert.assertTrue(dgservices.login(usr, pswd));
             Assert.assertFalse(dgservices.getUserByEmail(usr).iterator().next().getPswd().equals(pswd));
         } catch (DigitalWaiterPersistenceException ex) {
+            Logger.getLogger(ApplicationServicesTests.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    @Test
+    public void debriaAgregarNuevosUsuarios(){
+        try {
+            dgservices.addNewUser("UserTest", "50", "3158794526", "UserPrueba@test.com", "123456", false);
+            Assert.assertTrue(dgservices.getUserByEmail("UserPrueba@test.com").iterator().hasNext());
+            sqlConnection.insertQuery("DELETE FROM usuario where email= 'UserPrueba@test.com'");
+            Assert.assertFalse(dgservices.getUserByEmail("UserPrueba@test.com").iterator().hasNext());
+        } catch (DigitalWaiterPersistenceException | SQLException ex) {
+            Logger.getLogger(ApplicationServicesTests.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    @Test
+    public void deberiaAgregarRestaurantes(){
+        try {
+            dgservices.addNewRestaurant("RestauranteTest", "Calle falsa123", "3224587548", "fe20b0291bf1b8e32d2e4be90ff79cc5");
+            Assert.assertTrue(dgservices.getRestaurantByUser("fe20b0291bf1b8e32d2e4be90ff79cc5").iterator().hasNext());
+            sqlConnection.insertQuery("DELETE FROM restaurant where idusuario= 'fe20b0291bf1b8e32d2e4be90ff79cc5'");
+            Assert.assertFalse(dgservices.getRestaurantByUser("fe20b0291bf1b8e32d2e4be90ff79cc5").iterator().hasNext());
+        } catch (DigitalWaiterPersistenceException | SQLException ex) {
             Logger.getLogger(ApplicationServicesTests.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
