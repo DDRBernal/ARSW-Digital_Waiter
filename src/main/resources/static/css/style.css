@@ -1,273 +1,274 @@
+--------------------------------LOGIN CSS------------------------------- body,
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    background: #FFF !important;
+}
 
-    --------------------------------LOGIN CSS-------------------------------
-    body,
-    html {
-        margin: 0;
-        padding: 0;
-        height: 100%;
-        background: #FFF !important;
-    }
-    .login-background {
-        height: 400px;
-        width: 350px;
-        margin-top: auto;
-        margin-bottom: auto;
-        background: #DE8C0B;
-        position: relative;
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        padding: 10px;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-        -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-        -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-        border-radius: 5px;
+.login-background {
+    height: 400px;
+    width: 350px;
+    margin-top: auto;
+    margin-bottom: auto;
+    background: #DE8C0B;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 5px;
+}
 
-    }
-    .brand_logo_container {
-        position: absolute;
-        height: 170px;
-        width: 170px;
-        top: -75px;
-        border-radius: 50%;
-        background: #60a3bc;
-        padding: 10px;
-        text-align: center;
-    }
-    .brand_logo {
-        height: 150px;
-        width: 150px;
-        border-radius: 50%;
-        border: 2px solid white;
-    }
-    .form_container {
-        margin-top: 100px;
-    }
-    .login_btn {
-        width: 100%;
-        background: #c0392b !important;
-        color: white !important;
-    }
-    .login_btn:focus {
-        box-shadow: none !important;
-        outline: 0px !important;
-    }
-    .login_container {
-        padding: 0 2rem;
-    }
-    .input-group-text {
-        background: #c0392b !important;
-        color: white !important;
-        border: 0 !important;
-        border-radius: 0.25rem 0 0 0.25rem !important;
-    }
-    .input_user,
-    .input_pass:focus {
-        box-shadow: none !important;
-        outline: 0px !important;
-    }
-    .custom-checkbox .custom-control-input:checked~.custom-control-label::before {
-        background-color: #c0392b !important;
-    }
+.brand_logo_container {
+    position: absolute;
+    height: 170px;
+    width: 170px;
+    top: -75px;
+    border-radius: 50%;
+    background: #60a3bc;
+    padding: 10px;
+    text-align: center;
+}
 
-    .form-check-input2 {
-      position: absolute;
-      margin-top: 0.3rem;
-      margin-right: 18rem;
-    }
+.brand_logo {
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    border: 2px solid white;
+}
 
-    .blurred-image {
-       /* The image used */
-       background-image: url("../img/background-menu.jpg");
+.form_container {
+    margin-top: 100px;
+}
 
-       /* Add the blur effect */
-       filter: blur(8px);
-       -webkit-filter: blur(8px);
+.login_btn {
+    width: 100%;
+    background: #c0392b !important;
+    color: white !important;
+}
 
-       /* Full height */
-       height: 100%;
+.login_btn:focus {
+    box-shadow: none !important;
+    outline: 0px !important;
+}
 
-       /* Center and scale the image nicely */
-       background-position: center;
-       background-repeat: no-repeat;
-       background-size: cover;
-     }
-     .bg-text {
-        background-color: rgb(0,0,0); /* Fallback color */
-        background-color: rgba(0,0,0, 0.4); /* Black w/opacity/see-through */
-        color: white;
-        font-weight: bold;
-        border: 3px solid #f1f1f1;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        z-index: 2;
-        width: 80%;
-        padding: 20px;
-        text-align: center;
-      }
+.login_container {
+    padding: 0 2rem;
+}
+
+.input-group-text {
+    background: #c0392b !important;
+    color: white !important;
+    border: 0 !important;
+    border-radius: 0.25rem 0 0 0.25rem !important;
+}
+
+.input_user,
+.input_pass:focus {
+    box-shadow: none !important;
+    outline: 0px !important;
+}
+
+.custom-checkbox .custom-control-input:checked~.custom-control-label::before {
+    background-color: #c0392b !important;
+}
+
+.form-check-input2 {
+    position: absolute;
+    margin-top: 0.3rem;
+    margin-right: 18rem;
+}
+
+.blurred-image {
+    /* The image used */
+    background-image: url("../img/background-menu.jpg");
+    /* Add the blur effect */
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
+    /* Full height */
+    height: 100%;
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.bg-text {
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/opacity/see-through */
+    color: white;
+    font-weight: bold;
+    border: 3px solid #f1f1f1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: 80%;
+    padding: 20px;
+    text-align: center;
+}
 
 
-      /*--------------------------------------------------------------
+/*--------------------------------------------------------------
       # Events
       --------------------------------------------------------------*/
-      .events {
-        background-size: cover;
-        position: relative;
-      }
 
-      .events::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        right: 0;
-        left: 0;
-        bottom: 0;
-      }
+.events {
+    background-size: cover;
+    position: relative;
+}
 
-      .events .section-title h2 {
-        color: #fff;
-      }
+.events::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+}
 
-      .events .container {
-        position: relative;
-      }
+.events .section-title h2 {
+    color: #fff;
+}
 
-      @media (min-width: 1024px) {
-        .events {
-          background-attachment: fixed;
-        }
-      }
+.events .container {
+    position: relative;
+}
 
-      .events .events-carousel {
-        background: rgba(255, 255, 255, 0.08);
-        padding: 30px;
-      }
+@media (min-width: 1024px) {
+    .events {
+        background-attachment: fixed;
+    }
+}
 
-      .events .event-item {
-        color: #fff;
-      }
+.events .events-carousel {
+    background: rgba(255, 255, 255, 0.08);
+    padding: 30px;
+}
 
-      .events .event-item h3 {
-        font-weight: 600;
-        font-size: 26px;
-        color: #428bca;
-      }
+.events .event-item {
+    color: #fff;
+}
 
-      .events .event-item .price {
-        font-size: 26px;
-        font-family: "Open Sans", sans-serif;
-        font-weight: 700;
-        margin-bottom: 15px;
-      }
+.events .event-item h3 {
+    font-weight: 600;
+    font-size: 26px;
+    color: #428bca;
+}
 
-      .events .event-item .price span {
-        border-bottom: 2px solid #cda45e;
-      }
+.events .event-item .price {
+    font-size: 26px;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
 
-      .events .event-item ul {
-        list-style: none;
-        padding: 0;
-      }
+.events .event-item .price span {
+    border-bottom: 2px solid #cda45e;
+}
 
-      .events .event-item ul li {
-        padding-bottom: 10px;
-      }
+.events .event-item ul {
+    list-style: none;
+    padding: 0;
+}
 
-      .events .event-item ul i {
-        font-size: 20px;
-        padding-right: 4px;
-        color: #cda45e;
-      }
+.events .event-item ul li {
+    padding-bottom: 10px;
+}
 
-      .events .event-item p:last-child {
-        margin-bottom: 0;
-      }
+.events .event-item ul i {
+    font-size: 20px;
+    padding-right: 4px;
+    color: #cda45e;
+}
 
-      .events .swiper-pagination {
-        margin-top: 30px;
-        position: relative;
-      }
+.events .event-item p:last-child {
+    margin-bottom: 0;
+}
 
-      .events .swiper-pagination .swiper-pagination-bullet {
-        width: 12px;
-        height: 12px;
-        background-color: rgba(255, 255, 255, 0.4);
-        opacity: 1;
-      }
+.events .swiper-pagination {
+    margin-top: 30px;
+    position: relative;
+}
 
-      .events .swiper-pagination .swiper-pagination-bullet-active {
-        background-color: #428bca;
-      }
+.events .swiper-pagination .swiper-pagination-bullet {
+    width: 12px;
+    height: 12px;
+    background-color: rgba(255, 255, 255, 0.4);
+    opacity: 1;
+}
 
+.events .swiper-pagination .swiper-pagination-bullet-active {
+    background-color: #428bca;
+}
 
-		------------------------------------------------LOGO------------------------------------------------------------
-        .brand_logo_container_page {
-                padding: 2000px;
-            }
-        .brand_logo_page {
-            height: 150px;
-            width: 150px;
-            border-radius: 50%;
-            border: 2px solid white;
-        }
-        .logo_position{
-            padding: 50px;
-        }
+------------------------------------------------LOGO------------------------------------------------------------ .brand_logo_container_page {
+    padding: 2000px;
+}
 
-		------------------------------------------TITULO RESTAURANT-----------------------------------------------------
-        body {
-          margin: 0;
-          padding: 0;
-          height: 50vw;
-          background: #60a3bc;
-        }
+.brand_logo_page {
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    border: 2px solid white;
+}
 
-        .threeD {
-          color: red;
-          white-space: nowrap;
-          position: absolute;
-          top: 9%;
-          left: 25%;
-          transform: translate(-50%, -50%);
-          font-size: 2.5em;
-          font-family: sans-serif;
-          letter-spacing: 0.1em;
-          transition: 0.3s;
-          text-shadow: 1px 1px 0 white, 1px 2px 0 white, 1px 3px 0 white, 1px 4px 0 white,
-            1px 5px 0 white, 1px 6px 0 white, 1px 7px 0 white, 1px 8px 0 white,
-            5px 13px 15px black;
-        }
+.logo_position {
+    padding: 50px;
+}
 
-        .threeD:hover {
-          transition: 0.3s;
-          transform: scale(1.1)translate(-50%, -50%);
-          text-shadow: 1px -1px 0 white, 1px -2px 0 white, 1px -3px 0 white,
-            1px -4px 0 white, 1px -5px 0 white, 1px -6px 0 white, 1px -7px 0 white,
-            1px -8px 0 white, 5px -13px 15px black, 5px -13px 25px #808080;
-        }
+------------------------------------------TITULO RESTAURANT----------------------------------------------------- body {
+    margin: 0;
+    padding: 0;
+    height: 50vw;
+    background: #60a3bc;
+}
 
+.threeD {
+    color: red;
+    white-space: nowrap;
+    position: absolute;
+    top: 9%;
+    left: 25%;
+    transform: translate(-50%, -50%);
+    font-size: 2.5em;
+    font-family: sans-serif;
+    letter-spacing: 0.1em;
+    transition: 0.3s;
+    text-shadow: 1px 1px 0 white, 1px 2px 0 white, 1px 3px 0 white, 1px 4px 0 white, 1px 5px 0 white, 1px 6px 0 white, 1px 7px 0 white, 1px 8px 0 white, 5px 13px 15px black;
+}
 
-
+.threeD:hover {
+    transition: 0.3s;
+    transform: scale(1.1)translate(-50%, -50%);
+    text-shadow: 1px -1px 0 white, 1px -2px 0 white, 1px -3px 0 white, 1px -4px 0 white, 1px -5px 0 white, 1px -6px 0 white, 1px -7px 0 white, 1px -8px 0 white, 5px -13px 15px black, 5px -13px 25px #808080;
+}
 
 
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
+
 body {
-  font-family: "Open Sans", sans-serif;
-  color: #272829;
+    font-family: "Open Sans", sans-serif;
+    color: #272829;
 }
 
 a {
-  color: #149ddd;
-  text-decoration: none;
+    color: #149ddd;
+    text-decoration: none;
 }
 
 a:hover {
-  color: #37b3ed;
-  text-decoration: none;
+    color: #37b3ed;
+    text-decoration: none;
 }
 
 h1,
@@ -276,129 +277,135 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Raleway", sans-serif;
+    font-family: "Raleway", sans-serif;
 }
+
 
 /*--------------------------------------------------------------
 # Header
 --------------------------------------------------------------*/
+
 #header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  width: 300px;
-  transition: all ease-in-out 0.5s;
-  z-index: 9997;
-  transition: all 0.5s;
-  padding: 0 15px;
-  background: #040b14;
-  overflow-y: auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 300px;
+    transition: all ease-in-out 0.5s;
+    z-index: 9997;
+    transition: all 0.5s;
+    padding: 0 15px;
+    background: #040b14;
+    overflow-y: auto;
 }
 
 #header .profile img {
-  margin: 15px auto;
-  display: block;
-  width: 120px;
-  border: 8px solid #2c2f3f;
+    margin: 15px auto;
+    display: block;
+    width: 120px;
+    border: 8px solid #2c2f3f;
 }
 
 #header .profile h1 {
-  font-size: 24px;
-  margin: 0;
-  padding: 0;
-  font-weight: 600;
-  -moz-text-align-last: center;
-  text-align-last: center;
-  font-family: "Poppins", sans-serif;
+    font-size: 24px;
+    margin: 0;
+    padding: 0;
+    font-weight: 600;
+    -moz-text-align-last: center;
+    text-align-last: center;
+    font-family: "Poppins", sans-serif;
 }
 
 #header .profile h1 a,
 #header .profile h1 a:hover {
-  color: #fff;
-  text-decoration: none;
+    color: #fff;
+    text-decoration: none;
 }
 
 #header .profile .social-links a {
-  font-size: 18px;
-  display: inline-block;
-  background: #212431;
-  color: #fff;
-  line-height: 1;
-  padding: 8px 0;
-  margin-right: 4px;
-  border-radius: 50%;
-  text-align: center;
-  width: 36px;
-  height: 36px;
-  transition: 0.3s;
+    font-size: 18px;
+    display: inline-block;
+    background: #212431;
+    color: #fff;
+    line-height: 1;
+    padding: 8px 0;
+    margin-right: 4px;
+    border-radius: 50%;
+    text-align: center;
+    width: 36px;
+    height: 36px;
+    transition: 0.3s;
 }
 
 #main {
-  margin-left: 300px;
+    margin-left: 300px;
 }
 
 @media (max-width: 1199px) {
-  #header {
-    left: -300px;
-  }
-
-  #main {
-    margin-left: 0;
-  }
+    #header {
+        left: -300px;
+    }
+    #main {
+        margin-left: 0;
+    }
 }
+
 
 /*--------------------------------------------------------------
 # Navigation Menu
 --------------------------------------------------------------*/
+
+
 /* Desktop Navigation */
+
 .nav-submenu {
-  padding: 30px 0 0 0;
+    padding: 30px 0 0 0;
 }
 
 .nav-submenu * {
-  margin: 0;
-  padding: 0;
-  list-style: none;
+    margin: 0;
+    padding: 0;
+    list-style: none;
 }
 
 .nav-submenu>ul>li {
-  position: relative;
-  white-space: nowrap;
+    position: relative;
+    white-space: nowrap;
 }
 
 .nav-submenu a,
 .nav-submenu a:focus {
-  display: flex;
-  align-items: center;
-  color: #040b14;
-  padding: 12px 15px;
-  margin-bottom: 8px;
-  transition: 0.3s;
-  font-size: 15px;
+    display: flex;
+    align-items: center;
+    color: #040b14;
+    padding: 12px 15px;
+    margin-bottom: 8px;
+    transition: 0.3s;
+    font-size: 15px;
 }
 
 .nav-submenu a i,
 .nav-submenu a:focus i {
-  font-size: 24px;
-  padding-right: 8px;
-  color: #6f7180;
+    font-size: 24px;
+    padding-right: 8px;
+    color: #6f7180;
 }
 
 .nav-submenu a:hover,
 .nav-submenu .active,
 .nav-submenu .active:focus,
 .nav-submenu li:hover>a {
-  text-decoration: none;
-  color: #fff;
+    text-decoration: none;
+    color: #fff;
 }
 
 .nav-submenu a:hover i,
 .nav-submenu .active i,
 .nav-submenu .active:focus i,
 .nav-submenu li:hover>a i {
-  color: #149ddd;
+    color: #149ddd;
 }
+
 .navbar-brand {
     display: inline-block;
     padding-top: 0.3125rem;
@@ -409,7 +416,8 @@ h6 {
     white-space: nowrap;
     background: #040b14;
 }
-.navfondo{
+
+.navfondo {
     background: #040b14;
 }
 
@@ -417,33 +425,34 @@ h6 {
 /*--------------------------------------------------------------
 # Footer
 --------------------------------------------------------------*/
+
 #footer {
-  padding: 15px;
-  color: #f4f6fd;
-  font-size: 14px;
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 300px;
-  z-index: 9999;
-  background: #040b14;
+    padding: 15px;
+    color: #f4f6fd;
+    font-size: 14px;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 300px;
+    z-index: 9999;
+    background: #040b14;
 }
 
 #footer .copyright {
-  text-align: center;
+    text-align: center;
 }
 
 #footer .credits {
-  padding-top: 5px;
-  text-align: center;
-  font-size: 13px;
-  color: #eaebf0;
+    padding-top: 5px;
+    text-align: center;
+    font-size: 13px;
+    color: #eaebf0;
 }
 
 @media (max-width: 1199px) {
-  #footer {
-    position: static;
-    width: auto;
-    padding-right: 20px 15px;
-  }
+    #footer {
+        position: static;
+        width: auto;
+        padding-right: 20px 15px;
+    }
 }

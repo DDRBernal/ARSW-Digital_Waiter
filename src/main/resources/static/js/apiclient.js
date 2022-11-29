@@ -46,7 +46,6 @@ apiclient = (function() {
                 contentType: "application/json",
             });
             get_request.then(function(data) {
-                console.log(data);
                 callback(data, data);
             }, function(error) {
                 alert("The user doesn't exists !")
@@ -54,7 +53,6 @@ apiclient = (function() {
         },
 
         getMenusByRestaurant: function(idRestaurant, callback) {
-            console.log(idRestaurant);
             const get_request = $.ajax({
                 url: "/dg/menusByR/" + idRestaurant,
                 contentType: "application/json",
@@ -87,6 +85,20 @@ apiclient = (function() {
                 callback(data, data);
             }, function(error) {
                 alert("There aren't restaurants in the Database !")
+            });
+        },
+
+        setTableDisponibilityByRestaurant: function(idTable, idRestaurant, state, callback) {
+            const post_request = $.ajax({
+                url: "dg/setTableByR/" + idTable + "/" + idRestaurant + "/" + state,
+                type: "POST",
+                data: '{"idTable":' + idTable + ',"idRestaurant:"' + idRestaurant + ',"state:"' + state + '}',
+                contentType: "application/json",
+            });
+            post_request.then(function(data) {
+                callback(true, true, true, true);
+            }, function(error) {
+                alert("Couldn't set the table")
             });
         }
 

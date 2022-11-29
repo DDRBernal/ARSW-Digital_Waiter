@@ -58,36 +58,33 @@ var app = (function() {
     }
 
     function getTablesByRestaurant() {
-        var link = window.location.href;
-        idRestaurant = link.replace("http://localhost:8080/tables.html?", "");
-        console.log(idRestaurant);
-        apiclient.getTablesByRestaurant(idRestaurant, (req, res) => {
-            console.log(res);
+
+        apiclient.getTablesByRestaurant(sessionStorage.getItem("idRestaurant"), (req, res) => {
             addTableRestaurant(res);
         });
     }
 
     function getMenusByRestaurant() {
-        var link = window.location.href;
-        idRestaurant = link.replace("http://localhost:8080/menuLists.html?", "");
-        console.log(idRestaurant);
-        apiclient.getMenusByRestaurant(idRestaurant, (req, res) => {
+        //var link = window.location.href;
+        //idRestaurant = link.replace("http://localhost:8080/menuLists.html?", "");
+        //sessionStorage.setItem('idRestaurant', idRestaurant); // Here we save the id restaurant
+        console.log(sessionStorage.getItem("idRestaurant"));
+        apiclient.getMenusByRestaurant(sessionStorage.getItem("idRestaurant"), (req, res) => {
             createTableMenus(res);
         });
     }
 
     function getRestaurants() {
         apiclient.getRestaurants((req, res) => {
-            createTable(res);
+            createRestaurants(res);
         });
     }
 
     function createTableMenus(data) {
         //row-starters gy-5
-        console.log(data);
         let table = $("#fl-table1 tbody");
         table.empty();
-        var elemento = document.getElementById("starters");
+        var elemento = document.getElementById("Today's menu");
         if (data !== undefined) {
             const datanew = data.map((menu) => {
                 return {
@@ -97,9 +94,9 @@ var app = (function() {
                 }
             });
             datanew.forEach(({ name, price, calories }) => {
-                var link = window.location.href
-                idRestaurant = link.replace("http://localhost:8080/menuLists.html?", "");
-                console.log(idRestaurant);
+                //var link = window.location.href
+                idRestaurant = sessionStorage.getItem("idRestaurant");
+                //link.replace("http://localhost:8080/menuLists.html?", "");
                 elemento.innerHTML +=
                     `<div class="col-lg-4 menu-item">
                      <a href="img/menu/menu-item-1.png" class="glightbox"><img src="img/menu/menu-item-1.png" class="menu-img img-fluid" alt=""></a>
@@ -110,9 +107,8 @@ var app = (function() {
                      <p class="price">
                        ${price}$
                      </p>
-                     <button type="button" class="btn btn-outline-danger" onclick="app.setTableRestaurant('${idRestaurant}')">Seleccionar</button>
+                     <button type="button" class="btn btn-outline-danger" onclick="app.setTableRestaurant('${idRestaurant}','${name}')">Seleccionar</button>
                    </div><!-- Menu Item -->`
-
             })
         }
     }
@@ -140,16 +136,13 @@ var app = (function() {
                     `<div class="col-lg-4 menu-item">
                      <a href="img/menu/menu-item-1.png" class="glightbox"><img src="img/${image}" class="menu-img img-fluid" alt=""></a>
                      <h4>Mesa ${name}</h4>
-                     <button type="button" class="btn btn-outline-danger">Seleccionar</button>
+                     <button type="button" onclick="app.tableAvaliableSelected('${id}')" class="btn btn-outline-danger">Seleccionar</button>
                    </div><!-- Menu Item -->`
-
             })
         }
     }
 
-
-
-    function createTable(data) {
+    function createRestaurants(data) {
         let table = $("#fl-table tbody");
         table.empty();
         if (data !== undefined) {
@@ -174,31 +167,34 @@ var app = (function() {
         }
     }
 
-    function setIdRestaurant(newid) {
-        idRestaurant = newid;
+    function setIdRestaurant(idRestaurant) {
+        sessionStorage.setItem('idRestaurant', idRestaurant); // Here we save the id restaurant
         goToSite("menuLists.html?" + idRestaurant);
     }
 
-    function setTableRestaurant() {
-        var link = window.location.href;
-        idRestaurant = link.replace("http://localhost:8080/menuLists.html?", "");
+    function setTableRestaurant(idRestaurant, name_menu) {
+        sessionStorage.setItem('name_menu', name_menu); // Here we save the id restaurant
         goToSite("tables.html?" + idRestaurant);
     }
 
-
-    function addNewName() {
-
+    function tableAvaliableSelected(idTable) {
+        var menu_selected = sessionStorage.getItem('name_menu');
+        //We check if one menu was selected
+        var idRestaurant = sessionStorage.getItem('idRestaurant');
+        var sesion = false;
+        apiclient.setTableDisponibilityByRestaurant(idTable, idRestaurant, sesion, (req, res) => {
+            console.log(res);
+        });
+        if (menu_selected === undefined) {
+            //alert("No olvides seleccionar un menu para poder continuar con el proceso!");
+        } else {}
     }
 
     function goToSite(page) {
         window.location.replace(page);
     }
 
-
-
-
     return {
-        addNewName: addNewName,
         login: login,
         signUp: signUp,
         getMenusByRestaurant: getMenusByRestaurant,
@@ -206,7 +202,8 @@ var app = (function() {
         setIdRestaurant: setIdRestaurant,
         checkCookies: checkCookies,
         getTablesByRestaurant: getTablesByRestaurant,
-        setTableRestaurant: setTableRestaurant
+        setTableRestaurant: setTableRestaurant,
+        tableAvaliableSelected: tableAvaliableSelected
     };
 
 })();
