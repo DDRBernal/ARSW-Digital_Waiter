@@ -12,7 +12,7 @@ var app = (function() {
                 //check if the user is a restaurant or not
                 apiclient.imIAdmin(username, (req, res) => {
                     if (res) {
-                        goToSite("admin_view/restaurant_admin.html");
+                        goToSite("restaurant_admin.html");
                     } else {
                         goToSite("restaurant.html");
                     }
@@ -154,6 +154,8 @@ var app = (function() {
         table.empty();
         var elemento = document.getElementById("tables");
         elemento.innerHTML = `<div></div>`;
+        var select_table = "Seleccionar";
+        if (sessionStorage.getItem('tableAvaliable')) { select_table = "Liberar Mesa"; }
         if (data !== undefined) {
             const datanew = data.map((table) => {
                 return {
@@ -171,7 +173,7 @@ var app = (function() {
                     `<div class="col-lg-4 menu-item">
                      <a href="../img/menu/menu-item-1.png" class="glightbox"><img src="../img/${image}" class="menu-img img-fluid" alt=""></a>
                      <h4>Mesa ${name}</h4>
-                     <button type="button" onclick="app.tableAvaliableSelected('${id}');app.sendResponse()" class="btn btn-outline-danger">Seleccionar</button>
+                     <button type="button" onclick="app.tableAvaliableSelected('${id}');app.sendResponse()" class="btn btn-outline-danger">${select_table}</button>
                    </div><!-- Menu Item -->`
             })
         }
@@ -226,24 +228,16 @@ var app = (function() {
         });
     }
 
-    function tableUnAvaliableSelected(idTable) {
-        var menu_selected = sessionStorage.getItem('name_menu');
-        //We check if one menu was selected
-        var idRestaurant = sessionStorage.getItem('idRestaurant');
-        var sesion = false;
-        apiclient.setTableDisponibilityByRestaurant(idTable, idRestaurant, sesion, (req, res) => {
-            console.log(res);
-        });
-        if (menu_selected === undefined) {
-            //alert("No olvides seleccionar un menu para poder continuar con el proceso!");
-        } else {}
+    function setTableAvaliable() {
+        sessionStorage.setItem('tableAvaliable', true);
     }
 
     function tableAvaliableSelected(idTable) {
         var menu_selected = sessionStorage.getItem('name_menu');
-        //We check if one menu was selected
+        // We check if one menu was selected
         var idRestaurant = sessionStorage.getItem('idRestaurant');
         var sesion = false;
+        if (sessionStorage.getItem('tableAvaliable')) { sesion = true; }
         apiclient.setTableDisponibilityByRestaurant(idTable, idRestaurant, sesion, (req, res) => {
             console.log(res);
         });
@@ -301,7 +295,8 @@ var app = (function() {
         getTablesByRestaurant: getTablesByRestaurant,
         setTableRestaurant: setTableRestaurant,
         tableAvaliableSelected: tableAvaliableSelected,
-        sendResponse: sendResponse
+        sendResponse: sendResponse,
+        setTableAvaliable: setTableAvaliable
     };
 
 })();
