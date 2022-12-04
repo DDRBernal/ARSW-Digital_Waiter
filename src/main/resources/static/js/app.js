@@ -1,6 +1,8 @@
 var app = (function() {
     let idRestaurant;
 
+    var stompClient = null;
+
     function login(username, passwd) {
         apiclient.getUserByName(username, passwd, (req, res) => {
             //login succefully
@@ -57,11 +59,39 @@ var app = (function() {
         return isValid;
     }
 
-    function getTablesByRestaurant() {
-
-        apiclient.getTablesByRestaurant(sessionStorage.getItem("idRestaurant"), (req, res) => {
-            addTableRestaurant(res);
+    function connect() {
+        console.info('Connecting to WS...');
+        var idRestaurant = sessionStorage.getItem("idRestaurant");
+        console.log(idRestaurant);
+        var socket = new SockJS("/stomp/tablesByR/");
+        stompClient = Stomp.over(socket);
+        //"/TableByR/body"
+        stompClient.connect({}, function(frame) {
+            console.log('Connected: ' + frame);
+            stompClient.subscribe('/stomp/table', function(eventbody) {
+                var response = JSON.parse(eventbody.body);
+                console.log(response.body);
+                console.log(typeof response.body);
+                addTableRestaurant(response.body);
+            });
         });
+
+        if (stompClient.connected) {
+            stompClient.send("/app/tablesByR/", {}, idRestaurant);
+        }
+    }
+
+    function sendResponse() {
+        var idRestaurant = sessionStorage.getItem("idRestaurant");
+        stompClient.send("/app/tablesByR/", {}, idRestaurant);
+    }
+
+    //init
+    function getTablesByRestaurant() {
+        connect();
+        //apiclient.getTablesByRestaurant(sessionStorage.getItem("idRestaurant"), (req, res) => {
+        //addTableRestaurant(res);
+        //});
     }
 
     function getMenusByRestaurant() {
@@ -84,7 +114,7 @@ var app = (function() {
         //row-starters gy-5
         let table = $("#fl-table1 tbody");
         table.empty();
-        var elemento = document.getElementById("Today's menu");
+        var elemento = document.getElementById("starters");
         if (data !== undefined) {
             const datanew = data.map((menu) => {
                 return {
@@ -113,12 +143,17 @@ var app = (function() {
         }
     }
 
+    /**
+     * Method to add the tables in the front
+     * @param {*} data 
+     */
     function addTableRestaurant(data) {
         //row-starters gy-5
-        console.log(data);
+        console.log(typeof data);
         let table = $("#fl-table1 tbody");
         table.empty();
-        var elemento = document.getElementById("starters");
+        var elemento = document.getElementById("tables");
+        elemento.innerHTML = `<div></div>`;
         if (data !== undefined) {
             const datanew = data.map((table) => {
                 return {
@@ -136,7 +171,7 @@ var app = (function() {
                     `<div class="col-lg-4 menu-item">
                      <a href="img/menu/menu-item-1.png" class="glightbox"><img src="img/${image}" class="menu-img img-fluid" alt=""></a>
                      <h4>Mesa ${name}</h4>
-                     <button type="button" onclick="app.tableAvaliableSelected('${id}')" class="btn btn-outline-danger">Seleccionar</button>
+                     <button type="button" onclick="app.tableAvaliableSelected('${id}');app.sendResponse()" class="btn btn-outline-danger">Seleccionar</button>
                    </div><!-- Menu Item -->`
             })
         }
@@ -190,6 +225,32 @@ var app = (function() {
         } else {}
     }
 
+    function addDataRestaurant(data) {
+        //row-starters gy-5
+        console.log(data);
+        let table = $("#fl-table1 tbody");
+        table.empty();
+        var elemento = document.getElementById("starters");
+        if (data !== undefined) {
+            const datanew = data.map((restaurant) => {
+                return {
+                    id: restaurant.id,
+                    name: restaurant.name,
+                    address: restaurant.address,
+                    phonenumber: restaurant.phonenumber
+                }
+            });
+            datanew.forEach(({ id, name, address, phonenumber }) => {
+                elemento.innerHTML +=
+                    `<div class="col-lg-4 menu-item">
+                     <a href="img/menu/menu-item-1.png" class="glightbox"><img src="img/${image}" class="menu-img img-fluid" alt=""></a>
+                     <h4>Mesa ${name}</h4>
+                     <button type="button" onclick="app.tableAvaliableSelected('${id}')" class="btn btn-outline-danger">Seleccionar</button>
+                   </div><!-- Menu Item -->`
+            })
+        }
+    }
+
     function goToSite(page) {
         window.location.replace(page);
     }
@@ -203,7 +264,8 @@ var app = (function() {
         checkCookies: checkCookies,
         getTablesByRestaurant: getTablesByRestaurant,
         setTableRestaurant: setTableRestaurant,
-        tableAvaliableSelected: tableAvaliableSelected
+        tableAvaliableSelected: tableAvaliableSelected,
+        sendResponse: sendResponse
     };
 
 })();

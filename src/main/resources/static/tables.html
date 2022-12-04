@@ -13,6 +13,9 @@
     <link href="css/style.css" rel="stylesheet">
     <script src="js/apiclient.js"></script>
     <script src="js/app.js"></script>
+    <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+    <script src="/webjars/stomp-websocket/stomp.min.js"></script>
+
 </head>
 
 <body onload="app.getTablesByRestaurant();app.checkCookies()">
@@ -59,100 +62,42 @@
     <section id="menu" class="menu">
         <div data-aos="fade-up">
 
-            <div class="section-header">
+            <div class=" section-header ">
                 <h2>Disponibilidad de mesas</h2>
                 <p>Selecciona alguna mesa disponible <span></span></p>
             </div>
 
-            <ul class="nav nav-tabs d-flex justify-content-center" data-aos="fade-up" data-aos-delay="200">
+            <ul class="nav nav-tabs d-flex justify-content-center " data-aos="fade-up " data-aos-delay="200 ">
 
-                <li class="nav-item">
-                    <a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#menu-starters">
-                        <h4>Entradas</h4>
+                <li class="nav-item ">
+                    <a class="nav-link active show " data-bs-toggle="tab " data-bs-target="#menu-starters ">
+                        <button type="button" class="btn btn-outline-danger" onclick=app.sendResponse()>Mostrar mesas</button>
                     </a>
                 </li>
                 <!-- End tab nav item -->
 
-                <li class="nav-item">
-                    <a class="nav-link" data-bs-toggle="tab" data-bs-target="#menu-breakfast">
-                        <h4>Platos del dia</h4>
-                    </a>
-                    <!-- End tab nav item -->
 
-                    <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="tab" data-bs-target="#menu-lunch">
-                            <h4>Especiales</h4>
-                        </a>
-                    </li>
-                    <!-- End tab nav item -->
-
-                    <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="tab" data-bs-target="#menu-dinner">
-                            <h4>Postres</h4>
-                        </a>
-                    </li>
-                    <!-- End tab nav item -->
 
             </ul>
 
-            <div class="tab-content" data-aos="fade-up" data-aos-delay="300">
+            <div class="tab-content " data-aos="fade-up " data-aos-delay="300 ">
 
-                <div class="tab-pane fade active show" id="menu-starters">
-                    <div class="tab-header text-center">
-                        <p>Menu</p>
-                        <h3>Entradas</h3>
+                <div class="tab-pane fade active show " id="menu-starters ">
+                    <div class="tab-header text-center ">
+
                     </div>
 
-                    <div id="starters" class="row gy-5">
+                    <div id="tables" class="row gy-5 ">
                         <!--Code generate in JS-->
                     </div>
 
                 </div>
                 <!-- End Starter Menu Content -->
 
-                <div class="tab-pane fade" id="menu-breakfast">
 
-                    <div class="tab-header text-center">
-                        <p>Menu</p>
-                        <h3>Platos del dia</h3>
-                    </div>
 
-                    <div id="breakfast" class="row gy-5">
-                        <!--Code generate in JS-->
-                        <!-- Menu Item -->
-                    </div>
-                </div>
-                <!-- End Breakfast Menu Content -->
 
-                <div class="tab-pane fade" id="menu-lunch">
 
-                    <div class="tab-header text-center">
-                        <p>Menu</p>
-                        <h3>Especiales</h3>
-                    </div>
-
-                    <div id="lunch" class="row gy-5">
-                        <!--Code generate in JS-->
-                        <!-- Menu Item -->
-
-                    </div>
-                </div>
-                <!-- End Lunch Menu Content -->
-
-                <div id="dinner" class="tab-pane fade" id="menu-dinner">
-
-                    <div class="tab-header text-center">
-                        <p>Menu</p>
-                        <h3>Postres</h3>
-                    </div>
-
-                    <div class="row gy-5">
-                        <!--Code generate in JS-->
-                        <!-- Menu Item -->
-
-                    </div>
-                </div>
-                <!-- End Dinner Menu Content -->
 
             </div>
 
@@ -164,7 +109,7 @@
 
 
     <!-- Vendor JS Files -->
-    <script src="js/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="js/bootstrap/bootstrap.bundle.min.js "></script>
 
 </body>
 
