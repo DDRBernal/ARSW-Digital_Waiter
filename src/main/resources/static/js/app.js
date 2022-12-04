@@ -106,7 +106,7 @@ var app = (function() {
 
     function getRestaurants() {
         apiclient.getRestaurants((req, res) => {
-            createRestaurants(res);
+            addDataRestaurant(res);
         });
     }
 
@@ -230,7 +230,7 @@ var app = (function() {
         console.log(data);
         let table = $("#fl-table1 tbody");
         table.empty();
-        var elemento = document.getElementById("starters");
+        var elemento = document.getElementById("sectionRestaurant");
         if (data !== undefined) {
             const datanew = data.map((restaurant) => {
                 return {
@@ -242,11 +242,18 @@ var app = (function() {
             });
             datanew.forEach(({ id, name, address, phonenumber }) => {
                 elemento.innerHTML +=
-                    `<div class="col-lg-4 menu-item">
-                     <a href="img/menu/menu-item-1.png" class="glightbox"><img src="img/${image}" class="menu-img img-fluid" alt=""></a>
-                     <h4>Mesa ${name}</h4>
-                     <button type="button" onclick="app.tableAvaliableSelected('${id}')" class="btn btn-outline-danger">Seleccionar</button>
-                   </div><!-- Menu Item -->`
+                    `<div class="col-lg-6 col-xxl-4 mb-5">
+                     <div class="card bg-light border-0 h-100">
+                     <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
+                     <div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4">
+                     <img src="img/restaurante1.jpg" alt="restaurante1" width="420" height="300"></div>
+                     <h2 class="fs-4 fw-bold">${name}</h2>
+                     <p class="mb-0">${address}</p>
+                     <p class="mb-0">${phonenumber}</p>
+                     <button class="btn btn-outline-success" onclick="app.setIdRestaurant('${id}')">Seleccionar</button>
+                     </div>
+                     </div>
+                     </div>`
             })
         }
     }
