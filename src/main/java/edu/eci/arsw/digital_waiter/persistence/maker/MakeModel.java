@@ -1,5 +1,5 @@
 
-package edu.eci.arsw.digital_waiter.persistence.impl;
+package edu.eci.arsw.digital_waiter.persistence.maker;
 
 import edu.eci.arsw.digital_waiter.model.Ingredient;
 import edu.eci.arsw.digital_waiter.model.Menu;

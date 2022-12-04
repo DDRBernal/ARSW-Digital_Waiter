@@ -1,5 +1,6 @@
 package edu.eci.arsw.digital_waiter.services;
 
+import edu.eci.arsw.digital_waiter.model.Admin;
 import edu.eci.arsw.digital_waiter.model.Ingredient;
 import edu.eci.arsw.digital_waiter.model.Menu;
 import edu.eci.arsw.digital_waiter.model.Plato;
@@ -71,6 +72,16 @@ public class DigitalWaiterServices {
      */
     public Set<User> getUserByID(String id) throws DigitalWaiterPersistenceException {
         return dpp.getUserByID(id);
+    }
+    
+    /**
+     * 
+     * @param email
+     * @return
+     * @throws DigitalWaiterPersistenceException 
+     */
+    public Set<User> getUserByEmail(String email) throws DigitalWaiterPersistenceException {
+        return dpp.getUserByEmail(email);
     }
 
     /**
@@ -171,7 +182,12 @@ public class DigitalWaiterServices {
     public Set<Plato> getPlatosByrestaurant(String restaurantId)throws DigitalWaiterPersistenceException{
         return dpp.getPlatosByrestaurant(restaurantId);
     }
-    
+    /**
+     * 
+     * @param userId
+     * @return
+     * @throws DigitalWaiterPersistenceException 
+     */
     public Set<Restaurant> getRestaurantByUser(String userId) throws DigitalWaiterPersistenceException{
         return dpp.getRestaurantByUser(userId);
     }
@@ -220,6 +236,16 @@ public class DigitalWaiterServices {
      */
     public void setTableDisponibilityByRestaurant( String idTable, String idRestaurant, boolean state)throws DigitalWaiterPersistenceException{
         dpp.setTableDisponibilityByRestaurant( idTable, idRestaurant, state);
+    }
+    
+    /**
+     * 
+     * @param email
+     * @return
+     * @throws DigitalWaiterPersistenceException 
+     */
+    public boolean imIAdmin( String email)throws DigitalWaiterPersistenceException{
+        return getUserByEmail(email).iterator().next() instanceof Admin;
     }
 
 }
