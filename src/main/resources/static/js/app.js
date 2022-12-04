@@ -125,7 +125,7 @@ var app = (function() {
                     id: table.id,
                     name: table.name,
                     zone: table.zone,
-                    disponibility: table.disponibility,
+                    disponibility: table.disponibility,7
                     idRestaurant: table.idRestaurant
                 }
             });
@@ -189,7 +189,31 @@ var app = (function() {
             //alert("No olvides seleccionar un menu para poder continuar con el proceso!");
         } else {}
     }
-
+    function addDataRestaurant(data) {
+            //row-starters gy-5
+            console.log(data);
+            let table = $("#fl-table1 tbody");
+            table.empty();
+            var elemento = document.getElementById("starters");
+            if (data !== undefined) {
+                const datanew = data.map((restaurant) => {
+                    return {
+                        id: restaurant.id,
+                        name: restaurant.name,
+                        address: restaurant.address,
+                        phonenumber: restaurant.phonenumber
+                    }
+                });
+                datanew.forEach(({ id, name, address, phonenumber }) => {
+                    elemento.innerHTML +=
+                        `<div class="col-lg-4 menu-item">
+                         <a href="img/menu/menu-item-1.png" class="glightbox"><img src="img/${image}" class="menu-img img-fluid" alt=""></a>
+                         <h4>Mesa ${name}</h4>
+                         <button type="button" onclick="app.tableAvaliableSelected('${id}')" class="btn btn-outline-danger">Seleccionar</button>
+                       </div><!-- Menu Item -->`
+                })
+            }
+        }
     function goToSite(page) {
         window.location.replace(page);
     }
