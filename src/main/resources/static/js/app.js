@@ -244,9 +244,6 @@ var app = (function() {
         apiclient.setTableDisponibilityByRestaurant(idTable, idRestaurant, sesion, (req, res) => {
             console.log(res);
         });
-        if (menu_selected === undefined) {
-            //alert("No olvides seleccionar un menu para poder continuar con el proceso!");
-        } else {}
     }
 
     function addDataRestaurant(data) {
