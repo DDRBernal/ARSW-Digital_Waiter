@@ -159,9 +159,6 @@ var app = (function() {
         data.sort(function(a, b) {
             return parseFloat(a.name) - parseFloat(b.name);
         });
-        data.sort(function(a, b) {
-            return parseFloat(a.name) - parseFloat(b.name);
-        });
         if (data !== undefined) {
             const datanew = data.map((table) => {
                 return {
@@ -291,6 +288,14 @@ var app = (function() {
         window.location.replace(page);
     }
 
+    function cleanCookies() {
+        sessionStorage.setItem('usuario', undefined);
+        sessionStorage.setItem('idRestaurant', undefined);
+        sessionStorage.setItem('name_menu', undefined);
+        sessionStorage.setItem('tableAvaliable', undefined);
+        goToSite("index.html");
+    }
+
     return {
         login: login,
         signUp: signUp,
@@ -302,7 +307,8 @@ var app = (function() {
         setTableRestaurant: setTableRestaurant,
         tableAvaliableSelected: tableAvaliableSelected,
         sendResponse: sendResponse,
-        setTableAvaliable: setTableAvaliable
+        setTableAvaliable: setTableAvaliable,
+        cleanCookies: cleanCookies
     };
 
 })();
