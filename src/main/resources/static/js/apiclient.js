@@ -89,6 +89,7 @@ apiclient = (function() {
         },
 
         setTableDisponibilityByRestaurant: function(idTable, idRestaurant, state, callback) {
+            var url = $(this).attr("action");
             const post_request = $.ajax({
                 url: "dg/setTableByR/" + idTable + "/" + idRestaurant + "/" + state,
                 type: "POST",
