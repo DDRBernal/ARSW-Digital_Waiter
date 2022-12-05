@@ -156,6 +156,12 @@ var app = (function() {
         elemento.innerHTML = `<div></div>`;
         var select_table = "Seleccionar";
         if (sessionStorage.getItem('tableAvaliable')) { select_table = "Liberar Mesa"; }
+        data.sort(function(a, b) {
+            return parseFloat(a.name) - parseFloat(b.name);
+        });
+        data.sort(function(a, b) {
+            return parseFloat(a.name) - parseFloat(b.name);
+        });
         if (data !== undefined) {
             const datanew = data.map((table) => {
                 return {
