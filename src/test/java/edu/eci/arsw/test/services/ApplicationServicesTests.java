@@ -2,6 +2,7 @@
 
 
 import edu.eci.arsw.digital_waiter.database.JavaPostgreSQL;
+import edu.eci.arsw.digital_waiter.login.Hash;
 import edu.eci.arsw.digital_waiter.model.Menu;
 import edu.eci.arsw.digital_waiter.model.Plato;
 import edu.eci.arsw.digital_waiter.model.Table;
@@ -153,6 +154,19 @@ public class ApplicationServicesTests {
             Assert.assertTrue(dgservices.getRestaurantByUser("fe20b0291bf1b8e32d2e4be90ff79cc5").iterator().hasNext());
             sqlConnection.insertQuery("DELETE FROM restaurant where idusuario= 'fe20b0291bf1b8e32d2e4be90ff79cc5'");
             Assert.assertFalse(dgservices.getRestaurantByUser("fe20b0291bf1b8e32d2e4be90ff79cc5").iterator().hasNext());
+        } catch (DigitalWaiterPersistenceException | SQLException ex) {
+            Logger.getLogger(ApplicationServicesTests.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    @Test
+    public void deberiaAgregarUnaMesaAunRestaurante(){
+        String idMesa = Hash.hashThis("mesaTestr002"); 
+        try {
+            Assert.assertFalse(dgservices.getTableById(idMesa).iterator().hasNext());
+            dgservices.addNewteableRestaurant("r002", "mesaTest");
+            Assert.assertEquals(dgservices.getTableById(idMesa).iterator().next().getName(), "mesaTest");
+            sqlConnection.insertQuery("DELETE FROM mesa where id= '"+idMesa+"'");
         } catch (DigitalWaiterPersistenceException | SQLException ex) {
             Logger.getLogger(ApplicationServicesTests.class.getName()).log(Level.SEVERE, null, ex);
         }
