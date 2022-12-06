@@ -91,12 +91,6 @@
 
                 </div>
                 <!-- End Starter Menu Content -->
-
-
-
-
-
-
             </div>
 
         </div>
@@ -105,6 +99,31 @@
     </main>
     <!-- End #main -->
 
+    <button class="open-button" onclick="openForm()">Para agregar una mesa</button>
+
+    <div class="form-popup" id="myForm">
+        <form action="/" class="form-container">
+
+            <label for="email"><b>Ingrese el nombre de la mesa nueva</b></label>
+            <input type="text" placeholder="" name="email" required>
+
+            <button type="submit" class="btn">Agregar</button>
+            <button type="button" class="btn cancel" onclick="closeForm()">Cerrar</button>
+        </form>
+    </div>
+
+    <script>
+        function openForm() {
+            document.getElementById("myForm").style.display = "block";
+        }
+
+        function closeForm() {
+            document.getElementById("myForm").style.display = "none";
+        }
+    </script>
+
+    <!-- Vendor JS Files -->
+    <script src="js/bootstrap/bootstrap.bundle.min.js "></script>
 
     <!-- Vendor JS Files -->
     <script src="/js/bootstrap/bootstrap.bundle.min.js "></script>
