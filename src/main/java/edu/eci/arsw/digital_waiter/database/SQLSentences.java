@@ -47,6 +47,10 @@ public class SQLSentences {
     public static String addRestaurant(String name, String address, String phonenumber, String idusuario) {
         return "INSERT INTO restaurant (name, address, phonenumber, idusuario) VALUES ('" + name + "', '" + address + "' ,'" + phonenumber + "' ,'" + idusuario + "');";
     }
+    
+    public static String addTableRestaurant(String id, String zone, boolean disponibility, String name, String idrestaurant) {
+        return "INSERT INTO mesa (id, zone, disponibility, name, idrestaurant) VALUES ('" + id + "', '" + zone + "' ,'" + disponibility + "' ,'" + name + "' ,'" + idrestaurant +"');";
+    }
 
     public static String setTableDisponibilityByRestaurant(String idRestaurant, String idTable, boolean state) {
         return "UPDATE mesa SET disponibility = '" + state + "' WHERE id = '" + idTable + "' AND idrestaurant = '" + idRestaurant + "';";

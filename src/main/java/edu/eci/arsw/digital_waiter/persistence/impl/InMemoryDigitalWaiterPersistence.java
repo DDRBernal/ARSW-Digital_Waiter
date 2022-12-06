@@ -43,10 +43,10 @@ public class InMemoryDigitalWaiterPersistence implements DigitalWaiterPersistenc
     private HashMap<String, ArrayList<String>> SQLQuery(String sentence) throws DigitalWaiterPersistenceException {
         HashMap<String, ArrayList<String>> result = null;
         try {
-            synchronized(sqlConnection){
+            synchronized (sqlConnection) {
                 result = sqlConnection.Query(sentence);
             }
-            
+
         } catch (SQLException ex) {
             throw new DigitalWaiterPersistenceException(DigitalWaiterPersistenceException.ERROR_SQL_CON);
         }
@@ -55,14 +55,16 @@ public class InMemoryDigitalWaiterPersistence implements DigitalWaiterPersistenc
 
     private void insertSQLQuery(String sentence) throws DigitalWaiterPersistenceException {
         try {
-            sqlConnection.insertQuery(sentence);
+            synchronized (sqlConnection) {
+                sqlConnection.insertQuery(sentence);
+            }
         } catch (SQLException ex) {
             throw new DigitalWaiterPersistenceException(DigitalWaiterPersistenceException.ERROR_SQL_INSERT);
         }
     }
 
     @Override
-    public Set<User> getAllUsers() throws DigitalWaiterPersistenceException{
+    public Set<User> getAllUsers() throws DigitalWaiterPersistenceException {
         String sentence = SQLSentences.all("usuario");
         HashMap<String, ArrayList<String>> users = SQLQuery(sentence);
         return maker.makeUser(users);
@@ -225,5 +227,11 @@ public class InMemoryDigitalWaiterPersistence implements DigitalWaiterPersistenc
         String sentence = SQLSentences.userByEmail(email);
         HashMap<String, ArrayList<String>> user = SQLQuery(sentence);
         return maker.makeUser(user);
+    }
+
+    @Override
+    public void addNewteableRestaurant(String idRestaurant, String name) throws DigitalWaiterPersistenceException{
+        String sentence = SQLSentences.addTableRestaurant(Hash.hashThis(name + idRestaurant), "1", true, name, idRestaurant);
+        insertSQLQuery(sentence);
     }
 }

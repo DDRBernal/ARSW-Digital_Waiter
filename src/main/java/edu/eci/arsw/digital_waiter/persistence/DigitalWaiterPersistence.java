@@ -62,4 +62,6 @@ public interface DigitalWaiterPersistence {
     public void addNewRestaurant(String name, String address, String phonenumber, String idUsuario) throws DigitalWaiterPersistenceException;
 
     public Set<User> getUserByEmail(String email) throws DigitalWaiterPersistenceException;
+
+    public void addNewteableRestaurant(String idRestaurant, String name) throws DigitalWaiterPersistenceException;
 }

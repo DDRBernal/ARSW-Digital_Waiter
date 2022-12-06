@@ -247,5 +247,14 @@ public class DigitalWaiterServices {
     public boolean imIAdmin( String email)throws DigitalWaiterPersistenceException{
         return getUserByEmail(email).iterator().next() instanceof Admin;
     }
-
+    
+    /**
+     * 
+     * @param idRestaurant
+     * @param name
+     * @throws DigitalWaiterPersistenceException 
+     */
+    public void addNewteableRestaurant( String idRestaurant, String name) throws DigitalWaiterPersistenceException {
+         dpp.addNewteableRestaurant( idRestaurant, name);
+    }
 }

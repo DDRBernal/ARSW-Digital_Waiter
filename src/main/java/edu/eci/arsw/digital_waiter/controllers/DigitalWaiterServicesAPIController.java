@@ -251,7 +251,16 @@ public class DigitalWaiterServicesAPIController {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
-
+    
+    @RequestMapping(method = RequestMethod.POST, value="/addTableR/{name}/{restaurant}")
+    public ResponseEntity<?> addNewteableRestaurant(@PathVariable("restaurant") String idRestaurant, @PathVariable("name") String name){
+        try {
+            digitalWaiterServices.addNewteableRestaurant( idRestaurant, name);           
+            return new ResponseEntity<>(HttpStatus.ACCEPTED);
+        } catch (DigitalWaiterPersistenceException e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
 
 }
 
