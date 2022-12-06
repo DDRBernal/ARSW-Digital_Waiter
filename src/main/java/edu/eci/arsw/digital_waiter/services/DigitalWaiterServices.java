@@ -15,7 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 /**
- *
+ * Clase que presta los servicios principales de digital waiter
  * @authors Andres - David - Juan
  */
 @Service
