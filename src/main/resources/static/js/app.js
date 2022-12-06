@@ -12,7 +12,7 @@ var app = (function() {
                 //check if the user is a restaurant or not
                 apiclient.imIAdmin(username, (req, res) => {
                     if (res) {
-                        goToSite("restaurant.html");
+                        goToSite("restaurant_admin.html");
                     } else {
                         goToSite("restaurant.html");
                     }
@@ -129,7 +129,7 @@ var app = (function() {
                 //link.replace("http://localhost:8080/menuLists.html?", "");
                 elemento.innerHTML +=
                     `<div class="col-lg-4 menu-item">
-                     <a href="img/menu/menu-item-1.png" class="glightbox"><img src="img/menu/menu-item-1.png" class="menu-img img-fluid" alt=""></a>
+                     <a href="../img/menu/menu-item-1.png" class="glightbox"><img src="../img/menu/menu-item-1.png" class="menu-img img-fluid" alt=""></a>
                      <h4>${name}</h4>
                      <p class="ingredients">
                        Calorias: ${calories}
@@ -154,6 +154,11 @@ var app = (function() {
         table.empty();
         var elemento = document.getElementById("tables");
         elemento.innerHTML = `<div></div>`;
+        var select_table = "Seleccionar";
+        if (sessionStorage.getItem('tableAvaliable')) { select_table = "Liberar Mesa"; }
+        data.sort(function(a, b) {
+            return parseFloat(a.name) - parseFloat(b.name);
+        });
         if (data !== undefined) {
             const datanew = data.map((table) => {
                 return {
@@ -169,9 +174,9 @@ var app = (function() {
                 if (!disponibility) { image = "table_not_avaliable.png"; }
                 elemento.innerHTML +=
                     `<div class="col-lg-4 menu-item">
-                     <a href="img/menu/menu-item-1.png" class="glightbox"><img src="img/${image}" class="menu-img img-fluid" alt=""></a>
+                     <a href="../img/menu/menu-item-1.png" class="glightbox"><img src="../img/${image}" class="menu-img img-fluid" alt=""></a>
                      <h4>Mesa ${name}</h4>
-                     <button type="button" onclick="app.tableAvaliableSelected('${id}');app.sendResponse()" class="btn btn-outline-danger">Seleccionar</button>
+                     <button type="button" onclick="app.tableAvaliableSelected('${id}');app.sendResponse()" class="btn btn-outline-danger">${select_table}</button>
                    </div><!-- Menu Item -->`
             })
         }
@@ -204,25 +209,41 @@ var app = (function() {
 
     function setIdRestaurant(idRestaurant) {
         sessionStorage.setItem('idRestaurant', idRestaurant); // Here we save the id restaurant
-        goToSite("menuLists.html?" + idRestaurant);
+        console.log(username);
+        apiclient.imIAdmin(sessionStorage.getItem('usuario'), (req, res) => {
+            if (res) {
+                goToSite("menuLists_admin.html");
+            } else {
+                goToSite("menuLists.html?" + idRestaurant);
+            }
+        });
+
     }
 
     function setTableRestaurant(idRestaurant, name_menu) {
         sessionStorage.setItem('name_menu', name_menu); // Here we save the id restaurant
-        goToSite("tables.html?" + idRestaurant);
+        apiclient.imIAdmin(sessionStorage.getItem('usuario'), (req, res) => {
+            if (res) {
+                goToSite("tables_admin.html");
+            } else {
+                goToSite("tables.html?" + idRestaurant);
+            }
+        });
+    }
+
+    function setTableAvaliable() {
+        sessionStorage.setItem('tableAvaliable', true);
     }
 
     function tableAvaliableSelected(idTable) {
         var menu_selected = sessionStorage.getItem('name_menu');
-        //We check if one menu was selected
+        // We check if one menu was selected
         var idRestaurant = sessionStorage.getItem('idRestaurant');
         var sesion = false;
+        if (sessionStorage.getItem('tableAvaliable')) { sesion = true; }
         apiclient.setTableDisponibilityByRestaurant(idTable, idRestaurant, sesion, (req, res) => {
             console.log(res);
         });
-        if (menu_selected === undefined) {
-            //alert("No olvides seleccionar un menu para poder continuar con el proceso!");
-        } else {}
     }
 
     function addDataRestaurant(data) {
@@ -247,7 +268,7 @@ var app = (function() {
                      <div class="card bg-light border-0 h-100">
                      <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
                      <div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4">
-                     <img src="img/restaurante1.jpg" alt="restaurante1" width="420" height="300"></div>
+                     <img src="../img/restaurante1.jpg" alt="restaurante1" width="420" height="300"></div>
                      <h2 class="fs-4 fw-bold">${name}</h2>
                      <p class="mb-0">${address}</p>
                      <p class="mb-0">${phonenumber}</p>
@@ -264,6 +285,14 @@ var app = (function() {
         window.location.replace(page);
     }
 
+    function cleanCookies() {
+        sessionStorage.setItem('usuario', undefined);
+        sessionStorage.setItem('idRestaurant', undefined);
+        sessionStorage.setItem('name_menu', undefined);
+        sessionStorage.setItem('tableAvaliable', undefined);
+        goToSite("index.html");
+    }
+
     return {
         login: login,
         signUp: signUp,
@@ -274,7 +303,9 @@ var app = (function() {
         getTablesByRestaurant: getTablesByRestaurant,
         setTableRestaurant: setTableRestaurant,
         tableAvaliableSelected: tableAvaliableSelected,
-        sendResponse: sendResponse
+        sendResponse: sendResponse,
+        setTableAvaliable: setTableAvaliable,
+        cleanCookies: cleanCookies
     };
 
 })();
