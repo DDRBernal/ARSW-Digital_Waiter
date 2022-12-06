@@ -253,7 +253,7 @@ public class DigitalWaiterServicesAPIController {
     }
     
     @RequestMapping(method = RequestMethod.POST, value="/addTableR/{name}/{restaurant}")
-    public ResponseEntity<?> addNewteableRestaurant(@PathVariable("restaurant") String idRestaurant, @PathVariable("name") String name){
+    public ResponseEntity<?> addNewteableRestaurant( @PathVariable("name") String name, @PathVariable("restaurant") String idRestaurant){
         try {
             digitalWaiterServices.addNewteableRestaurant( idRestaurant, name);           
             return new ResponseEntity<>(HttpStatus.ACCEPTED);
