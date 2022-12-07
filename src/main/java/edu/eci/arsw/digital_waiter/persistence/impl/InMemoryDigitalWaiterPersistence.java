@@ -28,15 +28,17 @@ import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 
 /**
- *
+ * Componente de persistencia de datos de digitalwaiter
  * @author Andres - David - Juan
  */
 @Component
 @Qualifier("inMemory")
 public class InMemoryDigitalWaiterPersistence implements DigitalWaiterPersistence {
 
+    //Inyeccion del componente de conexion con base de datos 
     @Autowired
     JavaPostgreSQL sqlConnection = null;
+    //Inyeccion del componente de creacion de objetos del modelo de digitalwaiter
     @Autowired
     MakeModel maker = null;
 

@@ -10,7 +10,7 @@ import edu.eci.arsw.digital_waiter.model.User;
 import java.util.Set;
 
 /**
- *
+ * Interfaz del componente de persistencia de digitalwaiter
  * @author Andres - David - Juan
  */
 public interface DigitalWaiterPersistence {

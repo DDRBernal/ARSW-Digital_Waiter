@@ -3,7 +3,7 @@ package edu.eci.arsw.digital_waiter.database;
 import edu.eci.arsw.digital_waiter.login.Hash;
 
 /**
- *
+ * Sentencias SQL para las consultas y persistencia de datos en la bases de datos
  * @author juane
  */
 public class SQLSentences {

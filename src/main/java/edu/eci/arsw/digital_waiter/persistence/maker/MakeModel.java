@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.Set;
 
 /**
- *
+ * Interfaz del componente makemodel de digitalwaiter
  * @author juane
  */
 public interface MakeModel {
