@@ -1,3 +1,4 @@
+<< << << < HEAD
 var app = (function() {
     let idRestaurant;
     var stompClient = null;
@@ -395,5 +396,6 @@ var app = (function() {
         openForm: openForm,
         closeForm: closeForm
     };
+
 
 })();
