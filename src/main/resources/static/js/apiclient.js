@@ -1,4 +1,3 @@
-<< << << < HEAD
 apiclient = (function() {
 
     return {

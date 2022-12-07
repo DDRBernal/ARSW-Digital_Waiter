@@ -1,4 +1,3 @@
-<< << << < HEAD
 var app = (function() {
     let idRestaurant;
     var stompClient = null;
