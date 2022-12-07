@@ -1,3 +1,5 @@
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=DDRBernal_ARSW-Digital_Waiter&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=DDRBernal_ARSW-Digital_Waiter)
+
 # DIGITAL WAITER
 
 # ARSW-Digital_Waiter
