@@ -1,4 +1,4 @@
-package edu.eci.arsw.test.services;
+/*package edu.eci.arsw.test.services;
 
 
 import edu.eci.arsw.digital_waiter.database.JavaPostgreSQL;
@@ -171,4 +171,4 @@ public class ApplicationServicesTests {
             Logger.getLogger(ApplicationServicesTests.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-}
+}*/
