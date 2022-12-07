@@ -1,4 +1,11 @@
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=DDRBernal_ARSW-Digital_Waiter&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=DDRBernal_ARSW-Digital_Waiter)
+[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=DDRBernal_ARSW-Digital_Waiter&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=DDRBernal_ARSW-Digital_Waiter)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=DDRBernal_ARSW-Digital_Waiter&metric=code_smells)](https://sonarcloud.io/summary/new_code?id=DDRBernal_ARSW-Digital_Waiter)
+[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=DDRBernal_ARSW-Digital_Waiter&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=DDRBernal_ARSW-Digital_Waiter)
+[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=DDRBernal_ARSW-Digital_Waiter&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=DDRBernal_ARSW-Digital_Waiter)
+[![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=DDRBernal_ARSW-Digital_Waiter&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=DDRBernal_ARSW-Digital_Waiter)
+[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=DDRBernal_ARSW-Digital_Waiter&metric=bugs)](https://sonarcloud.io/summary/new_code?id=DDRBernal_ARSW-Digital_Waiter)
+[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=DDRBernal_ARSW-Digital_Waiter&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=DDRBernal_ARSW-Digital_Waiter)
 
 # DIGITAL WAITER
 
