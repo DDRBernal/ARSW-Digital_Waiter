@@ -214,43 +214,6 @@
         .logo_position{
             padding: 50px;
         }
-
-		------------------------------------------TITULO RESTAURANT-----------------------------------------------------
-        body {
-          margin: 0;
-          padding: 0;
-          height: 50vw;
-          background: #60a3bc;
-        }
-
-        .threeD {
-          color: red;
-          white-space: nowrap;
-          position: absolute;
-          top: 9%;
-          left: 25%;
-          transform: translate(-50%, -50%);
-          font-size: 2.5em;
-          font-family: sans-serif;
-          letter-spacing: 0.1em;
-          transition: 0.3s;
-          text-shadow: 1px 1px 0 white, 1px 2px 0 white, 1px 3px 0 white, 1px 4px 0 white,
-            1px 5px 0 white, 1px 6px 0 white, 1px 7px 0 white, 1px 8px 0 white,
-            5px 13px 15px black;
-        }
-
-        .threeD:hover {
-          transition: 0.3s;
-          transform: scale(1.1)translate(-50%, -50%);
-          text-shadow: 1px -1px 0 white, 1px -2px 0 white, 1px -3px 0 white,
-            1px -4px 0 white, 1px -5px 0 white, 1px -6px 0 white, 1px -7px 0 white,
-            1px -8px 0 white, 5px -13px 15px black, 5px -13px 25px #808080;
-        }
-
-
-
-
-
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
@@ -409,6 +372,10 @@ h6 {
 }
 .navfondo{
     background: #040b14;
+}
+
+.nav-desing{
+    color: #ffffff;
 }
 
 
