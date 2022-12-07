@@ -16,13 +16,18 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 /**
- *
+ * Componente encargado de crear los objetos del modelo de digitalwaiter
  * @author juane
  */
 @Component
 @Qualifier("MakerModel")
 public class MakeModelImpl implements MakeModel {
     
+    /**
+     * Crea los objetos de tipo User dados los datos obtenidos en el HashMap recibido por parametro
+     * @param users HashMap con los datos de los usuarios
+     * @return Set con los objetos de tipo User
+     */
     @Override
     public Set<User> makeUser(HashMap<String, ArrayList<String>> users) {
         Set<User> set = new HashSet<>();
@@ -39,6 +44,11 @@ public class MakeModelImpl implements MakeModel {
         }
         return set;
     }
+    /**
+     * Crea los objetos de tipo Restaurant dados los datos obtenidos en el HashMap recibido por parametro
+     * @param restaurants HashMap con los datos de los restaurantes
+     * @return Set con los objetos de tipo Restaurant
+     */
     @Override
     public Set<Restaurant> makeRestaurant(HashMap<String, ArrayList<String>> restaurants) {
         Set<Restaurant> set = new HashSet<>();
@@ -50,6 +60,11 @@ public class MakeModelImpl implements MakeModel {
         }
         return set;
     }
+    /**
+     * Crea los objetos de tipo Ingredient dados los datos obtenidos en el HashMap recibido por parametro
+     * @param ingredients HashMap con los datos de los ingredientes
+     * @return Set con los objetos de tipo Ingredient
+     */
     @Override
     public Set<Ingredient> makeIngredient(HashMap<String, ArrayList<String>> ingredients) {
         Set<Ingredient> set = new HashSet<>();
@@ -62,6 +77,11 @@ public class MakeModelImpl implements MakeModel {
         }
         return set;
     }
+    /**
+     * Crea los objetos de tipo Menu dados los datos obtenidos en el HashMap recibido por parametro
+     * @param menus HashMap con los datos de los Menus
+     * @return Set con los objetos de tipo Menu
+     */
     @Override
     public Set<Menu> makeMenu(HashMap<String, ArrayList<String>> menus) {
         Set<Menu> set = new HashSet<>();
@@ -75,6 +95,11 @@ public class MakeModelImpl implements MakeModel {
         return set;
 
     }
+    /**
+     * Crea los objetos de tipo Plato dados los datos obtenidos en el HashMap recibido por parametro
+     * @param platos HashMap con los datos de los platos
+     * @return Set con los objetos de tipo Plato
+     */
     @Override
     public Set<Plato> makePlato(HashMap<String, ArrayList<String>> platos) {
         Set<Plato> set = new HashSet<>();
@@ -87,7 +112,11 @@ public class MakeModelImpl implements MakeModel {
         }
         return set;
     }
-
+    /**
+     * Crea los objetos de tipo Table dados los datos obtenidos en el HashMap recibido por parametro
+     * @param tables HashMap con los datos de las mesas
+     * @return Set con los objetos de tipo Table
+     */
     @Override
     public Set<Table> makeTable(HashMap<String, ArrayList<String>> tables) {
         Set<Table> set = new HashSet<>();

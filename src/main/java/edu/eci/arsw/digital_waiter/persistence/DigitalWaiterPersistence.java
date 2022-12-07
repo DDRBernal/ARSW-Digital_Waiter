@@ -10,7 +10,7 @@ import edu.eci.arsw.digital_waiter.model.User;
 import java.util.Set;
 
 /**
- *
+ * Interfaz del componente de persistencia de digitalwaiter
  * @author Andres - David - Juan
  */
 public interface DigitalWaiterPersistence {
@@ -62,4 +62,6 @@ public interface DigitalWaiterPersistence {
     public void addNewRestaurant(String name, String address, String phonenumber, String idUsuario) throws DigitalWaiterPersistenceException;
 
     public Set<User> getUserByEmail(String email) throws DigitalWaiterPersistenceException;
+
+    public void addNewteableRestaurant(String idRestaurant, String name) throws DigitalWaiterPersistenceException;
 }

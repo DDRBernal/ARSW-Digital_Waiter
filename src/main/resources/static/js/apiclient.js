@@ -89,7 +89,6 @@ apiclient = (function() {
         },
 
         setTableDisponibilityByRestaurant: function(idTable, idRestaurant, state, callback) {
-            var url = $(this).attr("action");
             const post_request = $.ajax({
                 url: "dg/setTableByR/" + idTable + "/" + idRestaurant + "/" + state,
                 type: "POST",
@@ -101,7 +100,21 @@ apiclient = (function() {
             }, function(error) {
                 alert("Couldn't set the table")
             });
-        }
+        },
+
+        addNewteableRestaurant: function(nameTable, idRestaurant, callback) {
+            const post_request = $.ajax({
+                url: "dg/addTableR/" + nameTable + "/" + idRestaurant,
+                type: "POST",
+                data: '{"nameTable":' + nameTable + ',"idRestaurant:"' + idRestaurant + '}',
+                contentType: "application/json",
+            });
+            post_request.then(function(data) {
+                callback(true, true, true);
+            }, function(error) {
+                alert("Couldn't set the table")
+            });
+        },
 
 
     }
