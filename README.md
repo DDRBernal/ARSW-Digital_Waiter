@@ -6,6 +6,7 @@
 [![Vulnerabilities](https://sonarcloud.io/api/project_badges/measure?project=DDRBernal_ARSW-Digital_Waiter&metric=vulnerabilities)](https://sonarcloud.io/summary/new_code?id=DDRBernal_ARSW-Digital_Waiter)
 [![Bugs](https://sonarcloud.io/api/project_badges/measure?project=DDRBernal_ARSW-Digital_Waiter&metric=bugs)](https://sonarcloud.io/summary/new_code?id=DDRBernal_ARSW-Digital_Waiter)
 [![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=DDRBernal_ARSW-Digital_Waiter&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=DDRBernal_ARSW-Digital_Waiter)
+[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=DDRBernal_ARSW-Digital_Waiter&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=DDRBernal_ARSW-Digital_Waiter)
 
 # DIGITAL WAITER
 
