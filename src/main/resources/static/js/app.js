@@ -1,8 +1,12 @@
 var app = (function() {
     let idRestaurant;
-
     var stompClient = null;
 
+    /**
+     * Este metodo permite a la persona de logearse si está registrada
+     * @param {String} username 
+     * @param {String} passwd 
+     */
     function login(username, passwd) {
         apiclient.getUserByName(username, passwd, (req, res) => {
             //login succefully
@@ -23,6 +27,9 @@ var app = (function() {
         });
     }
 
+    /**
+     * En este metodo verificamos las cookies guardadas para modificarlas por el nombre del usuario
+     */
     function checkCookies() {
         var email_user = sessionStorage.getItem('usuario');
         apiclient.getUserByEmail(email_user, (req, res) => {
@@ -32,6 +39,15 @@ var app = (function() {
         });
     }
 
+    /**
+     * 
+     * @param {String} name 
+     * @param {String} age 
+     * @param {String} phonenumber 
+     * @param {String} email 
+     * @param {String} password 
+     * @param {String} repassword 
+     */
     function signUp(name, age, phonenumber, email, password, repassword) {
         var checkedValue = document.getElementById('isRestaurant').checked;
         console.log(checkedValue);
@@ -47,6 +63,14 @@ var app = (function() {
         }
     }
 
+    /**
+     * Este metodo valida que los datos ingresados por el usuario sean validos para el registro
+     * @param {*} name 
+     * @param {*} email 
+     * @param {*} password 
+     * @param {*} repassword 
+     * @returns 
+     */
     function validateDataSignUp(name, email, password, repassword) {
         let isValid = false;
         let validation_email = email.toLowerCase().match(/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/);
@@ -59,19 +83,17 @@ var app = (function() {
         return isValid;
     }
 
+    /**
+     * Este metodo es la conexion para la visualizacion de mesas en tiempo real.
+     */
     function connect() {
-        console.info('Connecting to WS...');
         var idRestaurant = sessionStorage.getItem("idRestaurant");
-        console.log(idRestaurant);
         var socket = new SockJS("/stomp/tablesByR/");
         stompClient = Stomp.over(socket);
         //"/TableByR/body"
         stompClient.connect({}, function(frame) {
-            console.log('Connected: ' + frame);
             stompClient.subscribe('/stomp/table', function(eventbody) {
                 var response = JSON.parse(eventbody.body);
-                console.log(response.body);
-                console.log(typeof response.body);
                 addTableRestaurant(response.body);
             });
         });
@@ -81,37 +103,45 @@ var app = (function() {
         }
     }
 
+    /**
+     * Este metodo permite enviar una validacion con el id del restaurante a stompClient para poder ver las 
+     * mesas del restaurante seleccionado
+     */
     function sendResponse() {
         var idRestaurant = sessionStorage.getItem("idRestaurant");
         stompClient.send("/app/tablesByR/", {}, idRestaurant);
     }
 
-    //init
+    /**
+     * Aqui hacemos la conexion con stompClient para poder ver las mesas
+     */
     function getTablesByRestaurant() {
         connect();
-        //apiclient.getTablesByRestaurant(sessionStorage.getItem("idRestaurant"), (req, res) => {
-        //addTableRestaurant(res);
-        //});
     }
 
+    /**
+     * Aqui obtenemos los datos del menu por un restaurante seleccionado
+     */
     function getMenusByRestaurant() {
-        //var link = window.location.href;
-        //idRestaurant = link.replace("http://localhost:8080/menuLists.html?", "");
-        //sessionStorage.setItem('idRestaurant', idRestaurant); // Here we save the id restaurant
-        console.log(sessionStorage.getItem("idRestaurant"));
         apiclient.getMenusByRestaurant(sessionStorage.getItem("idRestaurant"), (req, res) => {
             createTableMenus(res);
         });
     }
 
+    /**
+     * Aqui obtenemos los restaurantes que existen
+     */
     function getRestaurants() {
         apiclient.getRestaurants((req, res) => {
             addDataRestaurant(res);
         });
     }
 
+    /**
+     * 
+     * @param {List} data 
+     */
     function createTableMenus(data) {
-        //row-starters gy-5
         let table = $("#fl-table1 tbody");
         table.empty();
         var elemento = document.getElementById("starters");
@@ -124,9 +154,7 @@ var app = (function() {
                 }
             });
             datanew.forEach(({ name, price, calories }) => {
-                //var link = window.location.href
                 idRestaurant = sessionStorage.getItem("idRestaurant");
-                //link.replace("http://localhost:8080/menuLists.html?", "");
                 elemento.innerHTML +=
                     `<div class="col-lg-4 menu-item">
                      <a href="../img/menu/menu-item-1.png" class="glightbox"><img src="../img/menu/menu-item-1.png" class="menu-img img-fluid" alt=""></a>
@@ -148,7 +176,6 @@ var app = (function() {
      * @param {*} data 
      */
     function addTableRestaurant(data) {
-        //row-starters gy-5
         console.log(typeof data);
         let table = $("#fl-table1 tbody");
         table.empty();
@@ -182,6 +209,10 @@ var app = (function() {
         }
     }
 
+    /**
+     * 
+     * @param {*} data 
+     */
     function createRestaurants(data) {
         let table = $("#fl-table tbody");
         table.empty();
@@ -207,9 +238,13 @@ var app = (function() {
         }
     }
 
+
+    /**
+     * 
+     * @param {*} idRestaurant 
+     */
     function setIdRestaurant(idRestaurant) {
         sessionStorage.setItem('idRestaurant', idRestaurant); // Here we save the id restaurant
-        console.log(username);
         apiclient.imIAdmin(sessionStorage.getItem('usuario'), (req, res) => {
             if (res) {
                 goToSite("menuLists_admin.html");
@@ -220,6 +255,11 @@ var app = (function() {
 
     }
 
+    /**
+     * 
+     * @param {*} idRestaurant 
+     * @param {*} name_menu 
+     */
     function setTableRestaurant(idRestaurant, name_menu) {
         sessionStorage.setItem('name_menu', name_menu); // Here we save the id restaurant
         apiclient.imIAdmin(sessionStorage.getItem('usuario'), (req, res) => {
@@ -231,10 +271,17 @@ var app = (function() {
         });
     }
 
+    /**
+     * 
+     */
     function setTableAvaliable() {
         sessionStorage.setItem('tableAvaliable', true);
     }
 
+    /**
+     * 
+     * @param {*} idTable 
+     */
     function tableAvaliableSelected(idTable) {
         var menu_selected = sessionStorage.getItem('name_menu');
         // We check if one menu was selected
@@ -246,6 +293,10 @@ var app = (function() {
         });
     }
 
+    /**
+     * 
+     * @param {*} data 
+     */
     function addDataRestaurant(data) {
         //row-starters gy-5
         console.log(data);
@@ -281,10 +332,17 @@ var app = (function() {
         }
     }
 
+    /**
+     * 
+     * @param {*} page 
+     */
     function goToSite(page) {
         window.location.replace(page);
     }
 
+    /**
+     * 
+     */
     function cleanCookies() {
         sessionStorage.setItem('usuario', undefined);
         sessionStorage.setItem('idRestaurant', undefined);
@@ -293,6 +351,11 @@ var app = (function() {
         goToSite("index.html");
     }
 
+
+    /**
+     * 
+     * @param {*} nameTable 
+     */
     function addNewteableRestaurant(nameTable) {
         apiclient.addNewteableRestaurant(nameTable, sessionStorage.getItem('idRestaurant'), (req, res) => {
             if (res) {
@@ -301,10 +364,16 @@ var app = (function() {
         });
     }
 
+    /**
+     * 
+     */
     function openForm() {
         document.getElementById("myForm").style.display = "block";
     }
 
+    /**
+     * 
+     */
     function closeForm() {
         document.getElementById("myForm").style.display = "none";
     }
@@ -326,5 +395,6 @@ var app = (function() {
         openForm: openForm,
         closeForm: closeForm
     };
+
 
 })();

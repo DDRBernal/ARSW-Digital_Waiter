@@ -1,7 +1,6 @@
 apiclient = (function() {
 
     return {
-        //dg/login/prueba@gmail.com/123456
         getUserByName: function(name, password, callback) {
             const get_request = $.get({
                 url: "/dg/login/" + name + "/" + password,
@@ -115,8 +114,5 @@ apiclient = (function() {
                 alert("Couldn't set the table")
             });
         },
-
-
     }
-
 })();
