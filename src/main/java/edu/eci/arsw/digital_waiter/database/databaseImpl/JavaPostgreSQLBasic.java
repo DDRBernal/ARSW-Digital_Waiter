@@ -6,7 +6,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
-
+/**
+ * Componente de  conexion con base de datos PostgreSQL
+ * @author juane
+ */
 @Component
 @Qualifier("SQLConnection")
 public class JavaPostgreSQLBasic implements JavaPostgreSQL {
@@ -86,7 +89,12 @@ public class JavaPostgreSQLBasic implements JavaPostgreSQL {
         }
 
     }
-
+    /**
+     * Ejecuta Sentencias SQL de consulta en la base de datos
+     * @param sentence sentencia SQL a ejecutar
+     * @return HashMap con objetos de tipo ArrayList con los datos consultados
+     * @throws SQLException 
+     */
     @Override
     public HashMap<String, ArrayList<String>> Query(String sentence) throws SQLException {
         Statement stmt = connection.createStatement();
@@ -110,7 +118,11 @@ public class JavaPostgreSQLBasic implements JavaPostgreSQL {
         stmt.close();
         return table;
     }
-
+    /**
+     * Ejecuta Sentencias SQL para Insertar, borrar y actualizar en la base de datos
+     * @param sentence sentecia SQL a ejecutar
+     * @throws SQLException 
+     */
     @Override
     public void insertQuery(String sentence) throws SQLException {
         Statement stmt = connection.createStatement();

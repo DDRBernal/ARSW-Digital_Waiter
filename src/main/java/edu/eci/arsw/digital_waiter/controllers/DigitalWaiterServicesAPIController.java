@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Controlador rest
  */
 package edu.eci.arsw.digital_waiter.controllers;
 
@@ -251,7 +249,16 @@ public class DigitalWaiterServicesAPIController {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
     }
-
+    
+    @RequestMapping(method = RequestMethod.POST, value="/addTableR/{name}/{restaurant}")
+    public ResponseEntity<?> addNewteableRestaurant( @PathVariable("name") String name, @PathVariable("restaurant") String idRestaurant){
+        try {
+            digitalWaiterServices.addNewteableRestaurant( idRestaurant, name);           
+            return new ResponseEntity<>(HttpStatus.ACCEPTED);
+        } catch (DigitalWaiterPersistenceException e) {
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
 
 }
 

@@ -293,6 +293,22 @@ var app = (function() {
         goToSite("index.html");
     }
 
+    function addNewteableRestaurant(nameTable) {
+        apiclient.addNewteableRestaurant(nameTable, sessionStorage.getItem('idRestaurant'), (req, res) => {
+            if (res) {
+                sendResponse();
+            }
+        });
+    }
+
+    function openForm() {
+        document.getElementById("myForm").style.display = "block";
+    }
+
+    function closeForm() {
+        document.getElementById("myForm").style.display = "none";
+    }
+
     return {
         login: login,
         signUp: signUp,
@@ -305,7 +321,10 @@ var app = (function() {
         tableAvaliableSelected: tableAvaliableSelected,
         sendResponse: sendResponse,
         setTableAvaliable: setTableAvaliable,
-        cleanCookies: cleanCookies
+        cleanCookies: cleanCookies,
+        addNewteableRestaurant: addNewteableRestaurant,
+        openForm: openForm,
+        closeForm: closeForm
     };
 
 })();
