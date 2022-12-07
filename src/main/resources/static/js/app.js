@@ -1,8 +1,12 @@
 var app = (function() {
     let idRestaurant;
-
     var stompClient = null;
 
+    /**
+     * This method will allows t
+     * @param {*} username 
+     * @param {*} passwd 
+     */
     function login(username, passwd) {
         apiclient.getUserByName(username, passwd, (req, res) => {
             //login succefully
